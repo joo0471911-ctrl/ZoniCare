@@ -3,7 +3,6 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: fluid column up to 1180px. Header with brand, small WhatsApp and Facebook icons, desktop nav. Featured row (swipe on phones, four across on desktop), search, category chips, product grid, payment-aware order sheet. Bottom tab bar on phones only. */
 :root {
   --bg: #FFF5F8;
   --surface: #FFFFFF;
@@ -49,7 +48,6 @@ a { color: var(--accent); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .wrap { max-width: 1180px; margin: 0 auto; }
 
-/* header */
 .top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px 10px; display: flex; align-items: center; gap: 14px; }
 .brand { flex: 1; margin: 0; }
 .brandbtn { display: flex; align-items: center; gap: 10px; border: 0; background: none; padding: 0; text-align: left; }
@@ -66,7 +64,6 @@ a { color: var(--accent); }
 .sbtn svg { width: 19px; height: 19px; }
 .sbtn:hover { background: var(--soft); }
 
-/* home */
 .hero { padding-block: 8px 6px; }
 .hero2 { display: grid; gap: 24px; padding: clamp(20px, 4vw, 52px); border-radius: 28px; background: linear-gradient(120deg, var(--soft) 0%, var(--bg) 100%); border: 1px solid var(--line); margin-top: 6px; }
 .eyebrow { font-weight: 600; letter-spacing: 0.03em; color: var(--accent); font-size: 14px; }
@@ -119,11 +116,6 @@ section[id] { scroll-margin-top: 84px; }
 .pay.plogo { padding: 0 12px; height: 44px; flex: none; }
 .pay { background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 10px; height: 38px; padding: 0 14px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
 .pay svg { width: 20px; height: 20px; }
-.pay.bkash { color: #E2136E; font-style: italic; }
-.pay.nagad { color: #E8590C; }
-.pay.rocket { color: #8C3494; }
-.pay.bank { color: #1565C0; }
-.pay.cardpay { color: #37474F; }
 .fnote { margin: 0; font-size: 12px; }
 .allb { border-radius: 28px; padding: clamp(20px, 3.5vw, 40px); background: linear-gradient(115deg, #7D0F47 0%, #C2185B 58%, #D9567F 100%); color: #fff; overflow: hidden; }
 .allb-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
@@ -183,7 +175,6 @@ section[id] { scroll-margin-top: 84px; }
 .foot { margin-top: 32px; padding-block: 22px 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; display: grid; gap: 6px; }
 .foot b { color: var(--ink); }
 
-/* order page */
 h2.screen { font-family: var(--f-display); font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.02em; margin: 8px 0 12px; }
 .hint { background: var(--soft); border-radius: 12px; padding: 10px 12px; font-size: 13.5px; color: var(--muted); margin: 0 0 8px; }
 .cartgrid { display: grid; gap: 18px; align-items: start; }
@@ -204,7 +195,6 @@ a.primary { color: var(--accent-ink); }
 .ghost { border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 13px 18px; font-weight: 600; text-decoration: none; color: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
 .ghost svg { width: 19px; height: 19px; color: var(--accent); }
 
-/* bottom tab bar, phones only */
 .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding: 8px max(16px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
 .tabs div { max-width: 520px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .tab { border: 0; background: none; padding: 8px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12.5px; color: var(--muted); position: relative; }
@@ -212,7 +202,6 @@ a.primary { color: var(--accent-ink); }
 .tab[aria-current="page"] { color: var(--accent); font-weight: 600; background: var(--soft); }
 .dot { position: absolute; top: 2px; left: calc(50% + 6px); min-width: 18px; height: 18px; border-radius: 99px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 600; display: grid; place-items: center; padding: 0 5px; }
 
-/* sheet: bottom sheet on phones, centred dialog on larger screens */
 .scrim { position: fixed; inset: 0; z-index: 20; background: rgba(20, 8, 14, 0.55); display: flex; align-items: flex-end; justify-content: center; }
 .sheet { position: relative; width: 100%; max-width: 560px; max-height: 92%; overflow-y: auto; background: var(--surface); border-radius: 24px 24px 0 0; box-shadow: var(--shadow); padding: 18px max(18px, env(safe-area-inset-right, 0px)) 0 max(18px, env(safe-area-inset-left, 0px)); animation: up 0.22s ease-out; }
 @keyframes up { from { transform: translateY(24px); opacity: 0.6; } to { transform: none; opacity: 1; } }
@@ -239,7 +228,6 @@ a.primary { color: var(--accent-ink); }
 .poster { width: 100%; height: auto; border-radius: 14px; display: block; border: 1px solid var(--line); }
 .end { height: calc(20px + env(safe-area-inset-bottom, 0px)); }
 
-/* checkout form and payment methods */
 .form { display: grid; gap: 12px; margin-top: 10px; }
 .form label.f { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
 .form input[type="text"], .form input[type="tel"], .form textarea { width: 100%; border: 1px solid var(--line); background: var(--bg); border-radius: 12px; padding: 12px 14px; color: var(--ink); font-size: 16px; }
@@ -271,7 +259,6 @@ a.primary { color: var(--accent-ink); }
 .doneBtns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 6px; }
 .copy:hover { background: var(--accent); color: var(--accent-ink); }
 
-
 .toast { position: fixed; left: 50%; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 14px; max-width: calc(100% - 32px); }
 
 @media (min-width: 760px) {
@@ -295,7 +282,6 @@ a.primary { color: var(--accent-ink); }
   .info { padding: 12px 14px 14px; }
 }
 
-/* Order and checkout pages */
 .script { font-family: var(--f-display); font-style: italic; font-weight: 600; color: var(--accent); font-size: clamp(18px, 2vw, 24px); }
 .elabel { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
 .ohead { display: grid; gap: var(--gap); margin-top: 6px; }
@@ -354,7 +340,6 @@ a.primary { color: var(--accent-ink); }
   .obottom { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
-/* Bangla + English, payment guide */
 .bi { display: block; line-height: 1.25; }
 .bi small { display: block; font-size: 0.84em; font-weight: 500; opacity: 0.85; }
 .bsub { display: block; font-size: 0.86em; font-weight: 500; opacity: 0.85; margin-top: 2px; }
@@ -402,8 +387,6 @@ h2.screen small.enl { display: block; margin: 2px 0 0; }
 .ob h3 small { font-size: 0.6em; }
 @media (min-width: 760px) { .howto { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-
-/* Compact payment step */
 .pms { grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 8px; }
 .pm { padding: 10px 12px; gap: 10px; border-radius: 14px; }
 .pm img { width: 46px; height: 34px; }
@@ -430,8 +413,6 @@ h2.screen small.enl { display: block; margin: 2px 0 0; }
 .helpb .how li { background: var(--bg); }
 .helpb .qrbox { margin-top: 12px; }
 
-
-/* Slim payment logos + compact mobile order pages */
 .pms { display: flex; flex-wrap: nowrap; gap: 8px; justify-content: space-between; }
 .pm { flex: 1 1 0; min-width: 0; max-width: 120px; flex-direction: column; justify-content: flex-start; gap: 3px; padding: 8px 4px 7px; border-radius: 14px; text-align: center; position: relative; border: 2px solid var(--line); }
 .pm input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; order: 0; }
@@ -486,7 +467,6 @@ h2.screen small.enl { display: block; margin: 2px 0 0; }
   .osoc .sbtn { width: 42px; height: 42px; }
 }
 
-/* One clean support section */
 .obottom { display: block; margin-top: clamp(24px, 3vw, 40px); }
 .osupport { background: var(--soft); border: 1px solid var(--line); border-radius: 22px; padding: clamp(14px, 2vw, 24px); display: grid; gap: 12px; }
 .oshead h3 { font-family: var(--f-display); font-size: clamp(18px, 2vw, 24px); margin: 0; line-height: 1.15; letter-spacing: -0.01em; }
@@ -501,7 +481,6 @@ h2.screen small.enl { display: block; margin: 2px 0 0; }
 .otile small { color: var(--muted); font-size: 11.5px; }
 @media (min-width: 900px) { .obottom { grid-template-columns: none; } .otiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-/* Payment: two-box layout, clear font, clean footer */
 .ohead, .cartgrid, .obottom { font-family: var(--f-pay); }
 .ohead h2, .ohead .script, .cartgrid .osec, .cartgrid .oname, .cartgrid .script, .cartgrid strong, .oshead h3, .cartgrid .pm b, .cartgrid .stp { font-family: var(--f-pay); font-style: normal; }
 .ohead h2, .cartgrid .osec, .oshead h3 { font-weight: 700; letter-spacing: -0.02em; }
@@ -545,7 +524,6 @@ h2.screen small.enl { display: block; margin: 2px 0 0; }
 .foot2 .cr { text-transform: none; letter-spacing: 0; line-height: 1.5; }
 @media (max-width: 420px) { .qn { font-size: 15px; letter-spacing: -0.02em; } .qnumbox { padding: 10px; } }
 
-/* Mobile home: compact, same look as the web design */
 @media (max-width: 599px) {
   .hero2 { padding: 16px; gap: 14px; border-radius: 22px; margin-top: 2px; }
   .eyebrow { font-size: 12.5px; }
@@ -599,7 +577,6 @@ h2.screen small.enl { display: block; margin: 2px 0 0; }
   .badge { top: 6px; left: 6px; font-size: 10px; padding: 1px 8px; }
 }
 
-/* Footer: three parts */
 .foot2 { margin-top: 28px; padding: 18px 12px 14px; gap: 12px; border-radius: 20px; align-items: stretch; }
 .f3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.25fr); gap: 8px; align-items: center; width: 100%; max-width: 900px; margin: 0 auto; }
 .fcol { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -644,128 +621,6 @@ h2.screen small.enl { display: block; margin: 2px 0 0; }
   .fmid .fname { font-size: 20px; } .fmid .ftag { font-size: 13px; }
 }
 
-/* Footer v3: brand + menu on top, three boxes below */
-.foot2 { gap: 12px; padding: 16px 12px 12px; }
-.ftop { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.fbrand2 { display: flex; align-items: center; justify-content: center; gap: 12px; text-align: left; }
-.fbrand2 .flogo { width: 56px; height: 56px; flex: none; }
-.fbrand2 .fname { font-size: 20px; line-height: 1.1; }
-.fbrand2 .ftag { margin: 3px 0 0; font-size: 12px; line-height: 1.3; }
-.ftop .flinks { justify-content: center; gap: 4px; }
-.ftop .fl { padding: 6px 12px; font-size: 11.5px; letter-spacing: 0.08em; }
-.f3 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
-.f3 .fpay { border: 0; padding: 0; width: auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; }
-.f3 .fpay > span { font-size: 10.5px; letter-spacing: 0.1em; }
-.f3 .pays { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin: 0; }
-.f3 .pay.plogo { height: 30px; padding: 0 5px; border-radius: 8px; }
-.f3 .pay img { height: 20px; }
-.f3 .pays { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; max-width: 120px; }
-.f3 .pay.plogo { height: 28px; padding: 0 3px; justify-content: center; }
-.f3 .pay img { height: 18px; max-width: 100%; object-fit: contain; }
-.f3 .pays .pay:last-child { grid-column: 1 / -1; justify-self: center; width: 52px; }
-@media (max-width: 599px) { .ftop .fl { padding: 5px 9px; font-size: 10.5px; letter-spacing: 0.04em; } .ftop .flinks { flex-wrap: nowrap; } .fbrand2 .fname { font-size: 18px; } .fbrand2 .ftag { font-size: 11.5px; } }
-@media (min-width: 760px) {
-  .f3 .pays { display: flex; flex-wrap: nowrap; max-width: none; width: auto; }
-  .f3 .pays .pay:last-child { width: auto; }
-  .f3 { grid-template-columns: 1fr 1.5fr 1fr; }
-  .foot2 { padding: 22px 28px 14px; }
-  .f3 { align-items: center; }
-  .f3 .fpay { gap: 10px; } .f3 .fpay > span { font-size: 12px; }
-  .f3 .pay.plogo { height: 38px; padding: 0 9px; } .f3 .pay img { height: 26px; }
-}
-
-/* Footer mobile fit */
-@media (max-width: 599px) {
-  .f3 .store { padding: 5px 6px; gap: 5px; min-width: 0; width: 100%; }
-  .f3 .store svg, .f3 .store img { width: 18px; height: 18px; }
-  .f3 .store b { font-size: 10.5px; white-space: nowrap; }
-  .f3 .fpay .pay.plogo { height: 30px; padding: 0 5px; }
-  .f3 .fpay .pay img { height: 20px; }
-}
-
-/* Footer final: stores | brand | contact, menu, then We accept at the bottom */
-.foot2 { gap: 12px; padding: 18px 12px 14px; }
-.foot2 .f3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.25fr); grid-template-areas: "st mid con" "nav nav nav"; gap: 8px; align-items: center; width: 100%; max-width: 900px; margin: 0 auto; border: 0; padding: 0; }
-.foot2 .fstores { grid-area: st; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.foot2 .fmid { grid-area: mid; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; min-width: 0; }
-.foot2 .fcon { grid-area: con; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.foot2 .f3 > .flinks { grid-area: nav; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin-top: 2px; }
-.foot2 .f3 > .flinks .fl { padding: 4px 9px; font-size: 10.5px; letter-spacing: 0.04em; }
-.foot2 .fmid .flogo { width: 64px; height: 64px; }
-.foot2 .fmid .fname { font-size: 15px; line-height: 1.15; }
-.foot2 .fmid .ftag { margin: 0; font-size: 11px; line-height: 1.25; }
-.foot2 .fmid .ftag small { display: block; font-size: 0.95em; opacity: 0.9; }
-.foot2 .fstores .store { width: 100%; min-width: 0; padding: 5px 6px; gap: 5px; border-radius: 10px; }
-.foot2 .fstores .store svg, .foot2 .fstores .store img { width: 18px; height: 18px; }
-.foot2 .fstores .store small { display: none; }
-.foot2 .fstores .store b { font-size: 10.5px; white-space: nowrap; }
-.foot2 > .fpay { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 10px; border-top: 1px solid var(--line); padding-top: 10px; width: 100%; max-width: 900px; margin: 0 auto; }
-.foot2 > .fpay > span { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; }
-.foot2 > .fpay .pays { display: flex; gap: 6px; margin: 0; }
-.foot2 > .fpay .pay.plogo { height: 30px; padding: 0 7px; border-radius: 8px; }
-.foot2 > .fpay .pay img { height: 20px; }
-@media (min-width: 760px) {
-  .foot2 { padding: 24px 28px 16px; }
-  .foot2 .f3 { grid-template-columns: 1fr 1.7fr 1fr; grid-template-areas: "st mid con" "st nav con"; gap: 10px 20px; }
-  .foot2 .f3 > .flinks { flex-wrap: nowrap; }
-  .foot2 .fstores { align-items: flex-start; } .foot2 .fstores .store { max-width: 190px; padding: 6px 12px 6px 10px; }
-  .foot2 .fstores .store small { display: block; } .foot2 .fstores .store b { font-size: 14px; }
-  .foot2 .fstores .store svg, .foot2 .fstores .store img { width: 24px; height: 24px; }
-  .foot2 .fcon { align-items: flex-end; } .foot2 .fcl { width: fit-content; font-size: 13.5px; padding: 8px 14px; }
-  .foot2 .fmid .fname { font-size: 20px; } .foot2 .fmid .ftag { font-size: 13px; }
-  .foot2 .f3 > .flinks .fl { padding: 7px 14px; font-size: 12px; letter-spacing: 0.08em; }
-  .foot2 > .fpay .pay.plogo { height: 36px; padding: 0 9px; } .foot2 > .fpay .pay img { height: 24px; }
-}
-
-/* Footer: clear sections with rules */
-.foot2 { border: 1px solid var(--line); gap: 0; padding: 18px 12px 12px; }
-.foot2 .f3 { align-items: stretch; }
-.foot2 .fh { margin: 0 0 2px; font-family: var(--f-pay); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); line-height: 1.25; }
-.foot2 .fh small { display: block; margin-top: 1px; font-size: 0.95em; letter-spacing: 0; text-transform: none; font-weight: 500; color: var(--muted); }
-.foot2 .fstores, .foot2 .fcon { justify-content: center; }
-.foot2 .fmid { border-left: 1px solid var(--line); border-right: 1px solid var(--line); padding: 2px 6px; justify-content: center; }
-.foot2 .f3 > .flinks { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 10px; }
-.foot2 > .fpay { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 12px; }
-.foot2 > .cr { border-top: 1px solid var(--line); margin: 12px auto 0; padding-top: 10px; width: 100%; max-width: 900px; }
-@media (max-width: 599px) { .foot2 .fcon, .foot2 .fstores { gap: 6px; } .foot2 .fh { font-size: 10px; letter-spacing: 0.1em; } }
-@media (min-width: 760px) {
-  .foot2 { padding: 28px 32px 16px; }
-  .foot2 .f3 { gap: 12px 28px; grid-template-areas: "st mid con" "st mid con"; }
-  .foot2 .f3 > .flinks { grid-area: auto; grid-column: 2; grid-row: 2; border-top: 1px solid var(--line); margin-top: 6px; padding: 14px 0 2px; }
-  .foot2 .fmid { grid-row: 1; padding: 0 20px; }
-  .foot2 .fstores { grid-row: 1 / span 2; } .foot2 .fcon { grid-row: 1 / span 2; }
-  .foot2 .fstores, .foot2 .fcon { justify-content: flex-start; gap: 10px; }
-  .foot2 .fh { font-size: 12px; margin-bottom: 4px; }
-  .foot2 > .fpay { margin-top: 20px; padding-top: 16px; }
-  .foot2 > .cr { margin-top: 16px; padding-top: 12px; }
-}
-
-/* Header hides on scroll down, returns on scroll up */
-.top { transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s ease; will-change: transform; }
-.top.hide { transform: translateY(-115%); box-shadow: none; }
-.tabs { transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform; }
-.tabs.hide { transform: translateY(115%); }
-.top.scrolled:not(.hide) { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14); }
-@media (prefers-reduced-motion: reduce) { .top { transition: none; } }
-
-/* Product detail: Bangla + why it works */
-.bnd { font-family: var(--f-pay); color: var(--muted); font-size: 14px; line-height: 1.55; margin: 4px 0 0; }
-.label .bl { text-transform: none; letter-spacing: 0; font-size: 12.5px; margin-left: 6px; font-weight: 500; }
-.why { display: grid; gap: 8px; }
-.whyi { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; }
-.whyi b { display: block; font-family: var(--f-pay); font-size: 14.5px; line-height: 1.25; }
-.whyi b small { display: block; font-size: 12.5px; font-weight: 500; color: var(--accent); margin-top: 1px; }
-.whyi p { margin: 5px 0 0; font-size: 14px; line-height: 1.5; }
-.whyi p.bnd { margin-top: 3px; }
-.gk { margin-top: 12px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 12px 12px 0; padding: 10px 12px; }
-.gk b { font-family: var(--f-pay); font-size: 13.5px; }
-.gk b .bl { font-weight: 500; color: var(--muted); font-size: 12.5px; margin-left: 4px; }
-.gk p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.5; }
-.gk .disc { font-size: 11.5px; color: var(--muted); margin-top: 8px; }
-.gk .disc .bnd { font-size: inherit; margin: 0; }
-.thumbs { flex-wrap: wrap; }
-
-/* Smooth motion */
 html { scroll-behavior: smooth; }
 @keyframes vin { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 #view.vin { animation: vin 0.38s cubic-bezier(0.22, 0.8, 0.3, 1); }
@@ -793,7 +648,7 @@ html { scroll-behavior: smooth; }
 
 <div class="wrap">
   <header class="top">
-    <h1 class="brand"><button class="brandbtn" type="button" data-go="shop" data-home="1" aria-label="Zoni Skin Care home"><img class="logo" src="img/logo.png" alt="Zoni Skin Care logo"><span class="bname">Zoni<small>Skin Care</small></span></button></h1>
+    <h1 class="brand"><button class="brandbtn" type="button" data-go="shop" data-home="1" aria-label="Zoni Skin Care home"><img class="logo" src="logo.png" alt="Zoni Skin Care logo"><span class="bname">Zoni<small>Skin Care</small></span></button></h1>
     <nav class="nav" aria-label="Pages">
       <button class="navbtn" id="nav-shop" data-go="shop" data-home="1" type="button">Home</button>
       <button class="navbtn" type="button" data-scroll="products">Shop</button>
@@ -827,21 +682,17 @@ html { scroll-behavior: smooth; }
 
 <script>
 (function () {
-  var WA_CATALOG = 'https://wa.me/c/8801349751534';   // prices live in this WhatsApp catalog
-  var WA_CHAT = 'https://wa.me/8801349751534';        // orders are sent to this number
+  var WA_CATALOG = 'https://wa.me/c/8801349751534';
+  var WA_CHAT = 'https://wa.me/8801349751534';
   var FB = 'https://www.facebook.com/share/19kcMm9c6L/';
   var ICON_FB = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21h3z"/></svg>';
   var ICON_WA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 00-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1012 3.5z"/><path d="M9 8.8c.3 2.8 2.4 5 5.3 5.7l1-1.3-1.9-.9-.7.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.7-.9-1.9L9 8.8z"/></svg>';
 
-  // Store links. Paste your Google Play and App Store addresses here once the app is published. Empty means the button shows "Coming soon".
   var APP_LINKS = { play: '', apple: '' };
 
-  // Payment methods. Put your own numbers in num (bKash, Nagad, Rocket) and your bank details in info.
-  // While they are empty, customers are told you will send the number on WhatsApp.
   var QR = { n: 21, d: 'M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM10 0h1v1h-1zM12 0h1v1h-1zM14 0h1v1h-1zM15 0h1v1h-1zM16 0h1v1h-1zM17 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM20 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM12 1h1v1h-1zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM14 2h1v1h-1zM16 2h1v1h-1zM17 2h1v1h-1zM18 2h1v1h-1zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h1v1h-1zM17 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h1v1h-1zM12 4h1v1h-1zM14 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM16 6h1v1h-1zM17 6h1v1h-1zM18 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM0 8h1v1h-1zM1 8h1v1h-1zM2 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM18 8h1v1h-1zM0 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM8 9h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM11 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM15 9h1v1h-1zM16 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM0 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM20 10h1v1h-1zM0 11h1v1h-1zM4 11h1v1h-1zM5 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM15 11h1v1h-1zM16 11h1v1h-1zM18 11h1v1h-1zM3 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM11 12h1v1h-1zM14 12h1v1h-1zM16 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM8 13h1v1h-1zM13 13h1v1h-1zM15 13h1v1h-1zM17 13h1v1h-1zM20 13h1v1h-1zM0 14h1v1h-1zM1 14h1v1h-1zM2 14h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM12 14h1v1h-1zM14 14h1v1h-1zM16 14h1v1h-1zM18 14h1v1h-1zM19 14h1v1h-1zM20 14h1v1h-1zM0 15h1v1h-1zM6 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM20 15h1v1h-1zM0 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM4 16h1v1h-1zM6 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM0 17h1v1h-1zM2 17h1v1h-1zM3 17h1v1h-1zM4 17h1v1h-1zM6 17h1v1h-1zM11 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h1v1h-1zM3 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM14 18h1v1h-1zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM8 19h1v1h-1zM9 19h1v1h-1zM11 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM20 19h1v1h-1zM0 20h1v1h-1zM1 20h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM6 20h1v1h-1zM8 20h1v1h-1zM11 20h1v1h-1zM14 20h1v1h-1zM15 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1z' };
-  // Android app packages used to open the wallet apps. If the app is not installed the phone opens its Play Store page.
   var APPPKG = { bkash: 'com.bKash.customerapp', nagad: 'com.konasl.nagad', rocket: 'com.dbbl.mbs.apps.main' };
-  var LOGO = { bkash: 'img/l-bkash.png', nagad: 'img/l-nagad.png', rocket: 'img/l-rocket.png', bank: 'img/l-bank.png', card: 'img/l-card.png', apple: 'img/l-apple.png', play: 'img/l-play.png' };
+  var LOGO = { bkash: 'l-bkash.png', nagad: 'l-nagad.png', rocket: 'l-rocket.png', bank: 'l-bank.png', card: 'l-card.png', apple: 'l-apple.png', play: 'l-play.png' };
   function intentUrl(id) { var pk = APPPKG[id]; return 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=' + pk + ';S.browser_fallback_url=' + encodeURIComponent('https://play.google.com/store/apps/details?id=' + pk) + ';end'; }
   var PAY = [
     { id: 'cod', n: 'Cash on delivery', bn: 'ক্যাশ অন ডেলিভারি', s: 'Pay in cash when your order arrives', c: '#2E7D32' },
@@ -852,20 +703,19 @@ html { scroll-behavior: smooth; }
     { id: 'card', n: 'Debit or credit card', bn: 'ডেবিট বা ক্রেডিট কার্ড', s: 'We send a secure payment link', c: '#455A64' }
   ];
 
-  // feat: 1 puts a product in the Featured row on the home page.
   var P = [
     { id: 1, n: 'Salicylic Acid 3% Acne Repair Cream', b: 'Sadoer', t: 'Face cream', feat: 1, bn: 'নিখুঁত ত্বকের জন্য ৩% স্যালিসাইলিক অ্যাসিডের শক্তি', d: 'A 3% salicylic acid cream for acne-prone skin. It helps clear pimples, shrink the look of pores and fade acne marks, while nourishing and moisturizing.', k: ['Salicylic acid 3%'], poster: 1 },
     { id: 2, n: 'Retinol Collagen Day & Night Cream', b: 'BL Vterly', t: 'Face cream', feat: 1, tag: 'New', s: '50 g', bn: 'যৌবনের ছাপ দূর করে ত্বক টানটান রাখে', d: 'A retinol and collagen cream that softens fine lines and wrinkles and helps skin feel firm, smooth and bright. For all skin types.', k: ['Retinol', 'Collagen', 'Hyaluronic acid', 'Vitamin E', 'Glycerin'], poster: 1 },
     { id: 3, n: 'Baby Moisturizing Cream', b: 'Bioaqua', t: 'Face cream', bn: 'গভীর ময়েশ্চারাইজিংয়ের ক্রিম', d: 'A mild hydrating cream that locks in water and helps relieve dryness and rough patches. For all skin types.', k: ['Hyaluronic acid', 'Glycerin', 'Milk protein', 'Plant extract'], u: 'After cleansing, massage a generous amount gently into the face. Use twice a day.', poster: 1 },
     { id: 4, n: 'Rice Raw Pulp Neck Cream', b: 'Bioaqua', t: 'Neck cream', s: '60 g', bn: 'বায়োঅ্যাকুয়া রাইস র-পাল্প নেক ক্রিম', d: 'A hydrating, firming neck cream with rice polypeptide. It helps reduce the look of fine lines on the neck and leaves skin tender, smooth and elastic.', k: ['Rice polypeptide', 'Rice pulp'], u: 'Wash and dry your neck. Massage the cream upward. Use every night.', poster: 1 },
-    { id: 5, n: 'Anti-Aging Collagen Face Cream', b: 'Sadoer', t: 'Face cream', s: '40 g', bn: 'কোলাজেন ফেস ক্রিম', d: 'A collagen face cream that helps firm skin, soften wrinkles and keep it deeply moisturized, smooth and bright.', k: ['Natural active collagen'], u: 'Use morning and night.', poster: 1 },
-    { id: 6, n: 'Freckle Snail Whitening Cream', b: 'Vterly', t: 'Face cream', s: '50 g', bn: 'শামুক ও ফর্সা করার ক্রিম', d: 'A snail whitening cream made to help even out and brighten the look of freckled skin.', k: ['Snail extract'], poster: 1 },
+    { id: 5, n: 'Anti-Aging Collagen Face Cream', b: 'Sadoer', t: 'Face cream', s: '50 g', bn: 'কোলাজেন ফেস ক্রিম', d: 'A collagen face cream that helps firm skin, soften wrinkles and keep it deeply moisturized, smooth and bright.', k: ['Natural active collagen'], u: 'Use morning and night.', poster: 1 },
+    { id: 6, n: 'Freckle Snail Whitening Cream', b: 'Zoni', t: 'Face cream', s: '20 g', bn: 'শামুক ও ফর্সা করার ক্রিম', d: 'A snail whitening cream made to help even out and brighten the look of freckled skin.', k: ['Snail extract'], poster: 1 },
     { id: 7, n: 'Nicotinamide Whitening Anti-Freckle Cream', b: 'Sadoer', t: 'Face cream', s: '20 g', bn: 'নিকোটিনামাইড হোয়াইটেনিং অ্যান্টি-ফ্রেকল ক্রিম', d: 'A nicotinamide cream that helps lighten dullness and dark spots, leaving skin bright, soft and smooth.', k: ['Nicotinamide'], u: 'Wash your face well. Wash and dry your hands, then apply a small amount at night.', poster: 1 },
     { id: 8, n: 'Nicotinamide Whitening Freckle Essence', b: 'Sadoer', t: 'Serum', s: '30 ml', d: 'A nicotinamide essence made to lighten freckles and pigmentation. It leaves skin moisturized, smooth, tender and bright.', k: ['Nicotinamide'] },
     { id: 9, n: 'Minoxidil Keratin Black Rice Serum', b: 'Saoder', t: 'Serum', feat: 1, s: '30 ml', imgs: ['t9', 't9b'], d: 'A hair serum for anti-hair loss and regrowth, with minoxidil, keratin and black rice extract. Made for stronger hair roots and healthier, shinier hair. For all hair types.', k: ['Minoxidil', 'Keratin', 'Black rice extract'] },
     { id: 10, n: 'Salicylic Acid 3% Acne Repair Serum', b: 'Sadoer', t: 'Serum', s: '40 ml', bn: 'সাদোর স্যালিসাইলিক অ্যাসিড ব্রণ সারানোর সিরাম', d: 'An acne repair serum that helps clear pimples fast. Centella and niacinamide keep skin calm and nourished, while it helps shrink the look of pores and hydrates deeply.', k: ['Salicylic acid 3%', 'Collagen peptide', 'Centella asiatica', 'Niacinamide'], poster: 1 },
     { id: 11, n: 'Whitening Dark Knuckle Serum', b: 'Sadoer', t: 'Serum', s: '50 ml', d: 'A whitening and brightening serum for dark knuckles, with niacinamide and vitamin C.', k: ['Niacinamide', 'Vitamin C'] },
-    { id: 12, n: 'Aloe Vera Eye Serum', b: 'Moika', t: 'Eye serum', feat: 1, s: '30 ml', bn: 'অ্যালোভেরা আই সিরাম, চোখের কালো দাগ দূর করে উজ্জ্বল ও তরুণ দেখায়', d: 'A lightweight eye serum that helps reduce dark circles, puffiness and fine lines around the eyes while it hydrates. Paraben free and sulfate free.', k: ['Aloe vera extract', 'Caffeine', 'Hyaluronic acid', 'Vitamin E'], u: 'On clean skin, gently tap a small amount around the eyes. Use morning and night.', poster: 1 },
+    { id: 12, n: 'Aloe Vera Eye Serum', b: 'Vioaya', t: 'Eye serum', feat: 1, s: '20 ml', bn: 'অ্যালোভেরা আই সিরাম, চোখের কালো দাগ দূর করে উজ্জ্বল ও তরুণ দেখায়', d: 'A lightweight eye serum that helps reduce dark circles, puffiness and fine lines around the eyes while it hydrates. Paraben free and sulfate free.', k: ['Aloe vera extract', 'Caffeine', 'Hyaluronic acid', 'Vitamin E'], u: 'On clean skin, gently tap a small amount around the eyes. Use morning and night.', poster: 1 },
     { id: 13, n: 'Lip Gloss', b: 'Liphop', t: 'Lips', d: 'Liphop lip gloss in soft coral and pink shades.', k: [] },
     { id: 14, n: 'Lip Paint, shade Love', b: 'Liphop', t: 'Lips', d: 'Liphop lip paint in the shade Love.', k: [] },
     { id: 15, n: 'Moisturizing Lip Care Set', b: 'Marc Buse', t: 'Lips', d: 'A pink moisturizing lip care set with a lip gel tube, a lip jar and a small applicator brush.', k: [] },
@@ -875,7 +725,6 @@ html { scroll-behavior: smooth; }
   ];
   var CATS = ['All'].concat(P.map(function (p) { return p.t; }).filter(function (t, i, a) { return a.indexOf(t) === i; }));
 
-  // Prices from your WhatsApp catalog, in BDT: id -> [sale price, original price]. Product 15 has no catalog price yet.
   var PRICE = { 1: [850, 950], 2: [450, 650], 3: [500, 600], 4: [750, 850], 5: [600, 700], 6: [700, 800], 7: [300, 400], 8: [400, 500], 9: [400, 550], 10: [750, 850], 11: [650, 750], 12: [550, 650], 13: [380, 450], 14: [380, 450], 16: [500, 600], 17: [400, 500], 18: [350, 400] };
   P.forEach(function (p) { var x = PRICE[p.id]; if (x) { p.pr = x[0]; p.was = x[1]; } });
 
@@ -891,9 +740,7 @@ html { scroll-behavior: smooth; }
   function money(n) { return '৳ ' + n.toLocaleString('en-US'); }
   function priceHtml(p) { return p.pr ? '<span class="price"><b>' + money(p.pr) + '</b><s>' + money(p.was) + '</s></span>' : '<span class="price ask">Price on WhatsApp</span>'; }
   function priceBlock(p) { return p.pr ? '<div class="pbox"><strong>' + money(p.pr) + '</strong><s>' + money(p.was) + '</s><span>Save ' + money(p.was - p.pr) + '</span></div>' : '<p class="meta">Price on WhatsApp</p>'; }
-  var NEWIMG = { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 18: 1 };
-  function timg(id) { return 'img/t' + id + (NEWIMG[id] ? 'n' : '') + '.jpg'; }
-  function photo(p, extra) { return '<div class="ph">' + (extra || '') + '<img src="' + timg(p.id) + '" alt="' + esc(p.n) + '" loading="lazy"></div>'; }
+  function photo(p, extra) { return '<div class="ph">' + (extra || '') + '<img src="t' + p.id + '.jpg" alt="' + esc(p.n) + '" loading="lazy"></div>'; }
   function ext(href, cls, icon, text) { return '<a class="' + cls + '" href="' + href + '" target="_blank" rel="noopener">' + icon + '<span>' + text + '</span></a>'; }
   function allPriced() { return S.cart.every(function (x) { return byId(x.id).pr; }); }
   function cartTotal() { return S.cart.reduce(function (a, x) { return a + (byId(x.id).pr || 0) * x.qty; }, 0); }
@@ -903,7 +750,6 @@ html { scroll-behavior: smooth; }
       return '<button class="card" type="button" data-open="' + p.id + '">' + photo(p, p.tag ? '<span class="badge">' + p.tag + '</span>' : '') + '<div class="info"><span class="cat">' + p.b + '</span><span class="name">' + p.n + '</span><span class="meta">' + (p.s || p.t) + '</span>' + priceHtml(p) + '</div></button>';
     }).join('');
   }
-  // Recommendations: products not already shown, same category as the first match first.
   function recs(list) {
     var ids = list.map(function (p) { return p.id; }), first = list[0];
     var pool = P.filter(function (p) { return ids.indexOf(p.id) < 0; });
@@ -925,13 +771,9 @@ html { scroll-behavior: smooth; }
     }).join('') + '</div></section>';
   }
 
-  function social() {
-    return '<section class="follow" aria-label="Follow us"><span>Follow us</span><a class="sbtn" href="' + FB + '" target="_blank" rel="noopener" aria-label="Facebook page" title="Facebook page">' + ICON_FB + '</a><a class="sbtn" href="' + WA_CATALOG + '" target="_blank" rel="noopener" aria-label="WhatsApp catalog" title="WhatsApp catalog">' + ICON_WA + '</a></section>';
-  }
-
   var HERO_IDS = [5, 8, 11];
   function hero() {
-    var vis = HERO_IDS.map(function (id) { var p = byId(id); return '<button class="hv" type="button" data-open="' + id + '" aria-label="' + esc(p.n) + '"><img src="' + timg(id) + '" alt="' + esc(p.n) + '"></button>'; }).join('');
+    var vis = HERO_IDS.map(function (id) { var p = byId(id); return '<button class="hv" type="button" data-open="' + id + '" aria-label="' + esc(p.n) + '"><img src="t' + id + '.jpg" alt="' + esc(p.n) + '"></button>'; }).join('');
     var ic = function (d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
     return '<section class="hero2"><div><span class="eyebrow">আসল ফ্যাক্টরি পণ্য</span><h2 class="lead">Natural glow,<br><em>pure care.</em></h2><p class="sub">Face creams, serums, face wash and more from brands like Sadoer, Bioaqua and BL Vterly. Delivered all over Bangladesh.</p><div class="cta-row"><button class="btn" type="button" data-scroll="products">Shop now <span aria-hidden="true">&rarr;</span></button><a class="ghost pill" href="' + WA_CATALOG + '" target="_blank" rel="noopener">' + ICON_WA + '<span>WhatsApp catalog</span></a></div>' +
       '<ul class="trust"><li>' + ic('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/>') + '<b>Original products</b></li>' +
@@ -942,18 +784,17 @@ html { scroll-behavior: smooth; }
     var cats = CATS.slice(1);
     return '<section class="block" id="categories"><div class="sec-head"><h2>Shop by category</h2><span>' + cats.length + ' categories</span></div><div class="cats">' + cats.map(function (c) {
       var items = P.filter(function (p) { return p.t === c; });
-      return '<button class="cat-tile" type="button" data-cat="' + c + '" data-scroll="products"><img src="' + timg(items[0].id) + '" alt="" loading="lazy"><b>' + c + '</b><small>' + items.length + (items.length > 1 ? ' products' : ' product') + '</small></button>';
+      return '<button class="cat-tile" type="button" data-cat="' + c + '" data-scroll="products"><img src="t' + items[0].id + '.jpg" alt="" loading="lazy"><b>' + c + '</b><small>' + items.length + (items.length > 1 ? ' products' : ' product') + '</small></button>';
     }).join('') + '</div></section>';
   }
   function promo() {
-    var tile = function (p, dup) { return '<button class="mt" type="button" data-open="' + p.id + '" aria-label="' + esc(p.n) + '"' + (dup ? ' tabindex="-1" aria-hidden="true"' : '') + '><img src="' + timg(p.id) + '" alt="' + (dup ? '' : esc(p.n)) + '" loading="lazy"></button>'; };
-    return '<section class="block" aria-label="All products"><div class="allb"><div class="allb-top"><div class="allb-t"><img class="allb-logo" src="img/logo.png" alt=""><div><span class="allb-eye">' + P.length + ' products, one shop</span><h2>Everything for your skin, <em>in one place.</em></h2></div></div><button class="btn gold" type="button" data-scroll="products">Shop all products <span aria-hidden="true">&rarr;</span></button></div>' +
+    var tile = function (p, dup) { return '<button class="mt" type="button" data-open="' + p.id + '" aria-label="' + esc(p.n) + '"' + (dup ? ' tabindex="-1" aria-hidden="true"' : '') + '><img src="t' + p.id + '.jpg" alt="' + (dup ? '' : esc(p.n)) + '" loading="lazy"></button>'; };
+    return '<section class="block" aria-label="All products"><div class="allb"><div class="allb-top"><div class="allb-t"><img class="allb-logo" src="logo.png" alt=""><div><span class="allb-eye">' + P.length + ' products, one shop</span><h2>Everything for your skin, <em>in one place.</em></h2></div></div><button class="btn gold" type="button" data-scroll="products">Shop all products <span aria-hidden="true">&rarr;</span></button></div>' +
       '<div class="marq"><div class="track">' + P.map(function (p) { return tile(p, false); }).join('') + P.map(function (p) { return tile(p, true); }).join('') + '</div></div></div></section>';
   }
   var PHONE = '+880 1349-751534', PHONE_TEL = '+8801349751534';
   var ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>';
   function footer() {
-    var sv = function (d, fill) { return '<svg viewBox="0 0 24 24" ' + (fill ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"') + ' aria-hidden="true">' + d + '</svg>'; };
     var store = function (url, icon, top, name) {
       var inner = icon + '<span><small>' + (url ? top : 'Coming soon') + '</small><b>' + name + '</b></span>';
       return url ? '<a class="store" href="' + esc(url) + '" target="_blank" rel="noopener">' + inner + '</a>' : '<button class="store" type="button" disabled aria-label="' + name + ', coming soon">' + inner + '</button>';
@@ -961,11 +802,11 @@ html { scroll-behavior: smooth; }
     var pay = function (id, label) { return '<span class="pay plogo" title="' + label + '"><img src="' + LOGO[id] + '" alt="' + label + '"></span>'; };
     var pill = function (href, icon, label, ext) { return '<a class="fcl" href="' + href + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + icon + '<span>' + label + '</span></a>'; };
     return '<footer class="foot2" id="contact"><div class="f3">' +
-      '<div class="fcol fstores"><h4 class="fh">Get the app<small>অ্যাপ নিন</small></h4>' + store(APP_LINKS.play, '<img src="' + LOGO.play + '" alt="">', 'Get it on', 'Google Play') + store(APP_LINKS.apple, '<img src="' + LOGO.apple + '" alt="">', 'Download on the', 'App Store') + '</div>' +
-      '<div class="fcol fmid"><img class="flogo" src="img/logo.png" alt="Zoni Skin Care logo"><div class="fname">Zoni Skin Care</div><div class="ftag">Natural glow, pure care.<small>আসল ফ্যাক্টরি পণ্য</small></div></div>' +
-      '<div class="fcol fcon"><h4 class="fh">Contact us<small>যোগাযোগ</small></h4>' + pill('tel:' + PHONE_TEL, ICON_PHONE, PHONE) + pill(FB, ICON_FB, 'Facebook', 1) + pill(WA_CHAT, ICON_WA, 'WhatsApp', 1) + '</div>' +
-      '<nav class="flinks" aria-label="Footer"><button class="fl" type="button" data-go="shop" data-home="1">Home</button><button class="fl" type="button" data-scroll="products">Shop</button><button class="fl" type="button" data-scroll="categories">Categories</button><button class="fl" type="button" data-go="cart">My order</button></nav></div>' +
-      '<div class="fpay"><span>We accept</span><div class="pays" aria-label="Payment methods">' + pay('bkash', 'bKash') + pay('nagad', 'Nagad') + pay('rocket', 'Rocket') + pay('bank', 'Bank transfer') + pay('card', 'Card') + '</div></div>' +
+      '<div class="fcol fstores">' + store(APP_LINKS.play, '<img src="' + LOGO.play + '" alt="">', 'Get it on', 'Google Play') + store(APP_LINKS.apple, '<img src="' + LOGO.apple + '" alt="">', 'Download on the', 'App Store') + '</div>' +
+      '<div class="fcol fmid"><img class="flogo" src="logo.png" alt="Zoni Skin Care logo"><div class="fname">Zoni Skin Care</div><div class="ftag">Natural glow, pure care.<small>আসল ফ্যাক্টরি পণ্য</small></div></div>' +
+      '<div class="fcol fcon">' + pill('tel:' + PHONE_TEL, ICON_PHONE, PHONE) + pill(FB, ICON_FB, 'Facebook', 1) + pill(WA_CHAT, ICON_WA, 'WhatsApp', 1) + '</div></div>' +
+      '<div class="fbar"><nav class="flinks" aria-label="Footer"><button class="fl" type="button" data-go="shop" data-home="1">Home</button><button class="fl" type="button" data-scroll="products">Shop</button><button class="fl" type="button" data-scroll="categories">Categories</button><button class="fl" type="button" data-go="cart">My order</button></nav>' +
+      '<div class="fpay"><span>We accept</span><div class="pays" aria-label="Payment methods">' + pay('bkash', 'bKash') + pay('nagad', 'Nagad') + pay('rocket', 'Rocket') + pay('bank', 'Bank transfer') + pay('card', 'Card') + '</div></div></div>' +
       '<p class="cr">&copy; ' + new Date().getFullYear() + ' Zoni Skin Care. All rights reserved. Patch test new products on your inner arm first.</p></footer>';
   }
 
@@ -981,7 +822,6 @@ html { scroll-behavior: smooth; }
   }
 
   function bi(en, bn) { return '<span class="bi">' + en + '<small>' + bn + '</small></span>'; }
-  function bd(n) { return String(n).replace(/[0-9]/g, function (d) { return '০১২৩৪৫৬৭৮৯'.charAt(+d); }); }
   function ico(d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; }
   var IC = {
     bag: '<path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 016 0"/>',
@@ -1094,103 +934,20 @@ html { scroll-behavior: smooth; }
     return quick + help(guide(id, [['phone', 'Open the <b>' + m.n + '</b> app', m.bn + ' অ্যাপ খুলুন'], ['send', 'Tap <b>Send Money</b>', 'সেন্ড মানি চাপুন'], ['keypad', 'Send to the number shown above', 'ওপরের নম্বরে পাঠান'], ['taka', 'Amount: ' + amt, 'টাকার পরিমাণ'], ['lock', 'Confirm with your PIN', 'পিন দিন'], ['receipt', 'Type the <b>Transaction ID</b> from the SMS in the box below', 'ট্রানজেকশন আইডি লিখুন'], wa]) + qr);
   }
 
-  // Product detail content: Bangla translation, why it works, good to know. General skincare information, not medical advice.
-  var DET = {
-    1: { bd: '৩% স্যালিসাইলিক অ্যাসিডযুক্ত ক্রিম, ব্রণপ্রবণ ত্বকের জন্য। ব্রণ পরিষ্কার করতে, লোমকূপ ছোট দেখাতে ও ব্রণের দাগ হালকা করতে সাহায্য করে এবং ত্বককে পুষ্টি ও আর্দ্রতা দেয়।',
-      why: [['Clears clogged pores', 'ছিদ্র পরিষ্কার করে', 'Salicylic acid is an oil-soluble BHA. It loosens dead skin and reaches inside the pore to clear the oil and debris behind blackheads and pimples.', 'স্যালিসাইলিক অ্যাসিড তেলে মিশে যায়। এটি মৃত ত্বক আলগা করে এবং লোমকূপের ভেতরের তেল ও ময়লা পরিষ্কার করে, যা ব্ল্যাকহেড ও ব্রণের কারণ।'],
-        ['Builds up over weeks', 'কয়েক সপ্তাহে ফল দেখা যায়', 'It does not work overnight. Blackheads and breakouts usually look better after several weeks of regular use.', 'এক রাতে ফল হয় না। নিয়মিত কয়েক সপ্তাহ ব্যবহার করলে ব্ল্যাকহেড ও ব্রণ কম দেখায়।'],
-        ['Cream base moisturizes', 'ক্রিম ত্বক নরম রাখে', 'The cream base adds moisture, so skin feels less tight and dry while you use an active ingredient.', 'ক্রিমের আর্দ্রতা ত্বককে শুষ্ক ও টানটান হতে দেয় না।']],
-      note: ['Start every other day. Keep away from eyes and broken skin. Use sunscreen in the morning. Ask a doctor first if you are pregnant or allergic to aspirin.', 'প্রথমে একদিন পর পর লাগান। চোখ ও কাটা ত্বক এড়িয়ে চলুন। সকালে সানস্ক্রিন ব্যবহার করুন। গর্ভবতী হলে বা অ্যাসপিরিনে অ্যালার্জি থাকলে আগে ডাক্তারের পরামর্শ নিন।'] },
-    2: { bd: 'রেটিনল ও কোলাজেনযুক্ত ক্রিম, যা সূক্ষ্ম রেখা ও বলিরেখা নরম করে এবং ত্বক টানটান, মসৃণ ও উজ্জ্বল রাখতে সাহায্য করে। সব ধরনের ত্বকের জন্য।',
-      why: [['Retinol renews skin', 'রেটিনল ত্বক নতুন করে', 'Retinol speeds up skin renewal and supports the skin’s own collagen, so fine lines and rough texture can look softer with regular use over weeks to months.', 'রেটিনল ত্বকের নতুন কোষ তৈরি দ্রুত করে এবং নিজস্ব কোলাজেনকে সাহায্য করে। কয়েক সপ্তাহ থেকে মাস নিয়মিত ব্যবহারে সূক্ষ্ম রেখা নরম দেখায়।'],
-        ['Locks in moisture', 'আর্দ্রতা ধরে রাখে', 'Hyaluronic acid, glycerin and collagen hold water on the surface. Hydrated skin looks plumper and smoother.', 'হায়ালুরনিক অ্যাসিড, গ্লিসারিন ও কোলাজেন ত্বকে পানি ধরে রাখে। আর্দ্র ত্বক ভরাট ও মসৃণ দেখায়।'],
-        ['Vitamin E protects', 'ভিটামিন ই সুরক্ষা দেয়', 'Vitamin E is an antioxidant that helps protect skin from everyday stress.', 'ভিটামিন ই একটি অ্যান্টিঅক্সিডেন্ট, যা প্রতিদিনের ক্ষতি থেকে ত্বককে রক্ষা করতে সাহায্য করে।']],
-      note: ['Retinol can cause dryness or redness at first, so start slowly. Always use sunscreen in the daytime. Ask a doctor first if you are pregnant or breastfeeding.', 'রেটিনল প্রথমে ত্বক শুষ্ক বা লাল করতে পারে, তাই ধীরে শুরু করুন। দিনে অবশ্যই সানস্ক্রিন লাগান। গর্ভবতী বা বুকের দুধ খাওয়ালে আগে ডাক্তারের পরামর্শ নিন।'] },
-    3: { bd: 'হালকা আর্দ্রতার ক্রিম, যা ত্বকে পানি ধরে রাখে এবং শুষ্কতা ও খসখসে ভাব কমাতে সাহায্য করে। সব ধরনের ত্বকের জন্য।', bu: 'ক্লিনজিংয়ের পর মুখে হালকা হাতে পরিমাণমতো ক্রিম মালিশ করুন। দিনে দুইবার ব্যবহার করুন।',
-      why: [['Draws water into skin', 'ত্বকে পানি টানে', 'Hyaluronic acid and glycerin are humectants. They pull water into the top layer of skin and hold it there.', 'হায়ালুরনিক অ্যাসিড ও গ্লিসারিন ত্বকের উপরের স্তরে পানি টেনে ধরে রাখে।'],
-        ['Seals and softens', 'আর্দ্রতা আটকে নরম করে', 'The cream layer slows water loss, and milk protein helps skin feel soft and smooth.', 'ক্রিমের স্তর পানি হারানো কমায় এবং দুধের প্রোটিন ত্বক নরম ও মসৃণ রাখে।']],
-      note: ['Gentle enough for daily use. Try a small amount on your inner arm first if your skin is sensitive.', 'প্রতিদিন ব্যবহারের জন্য হালকা। ত্বক সংবেদনশীল হলে আগে হাতের ভেতরে অল্প লাগিয়ে দেখুন।'] },
-    4: { bd: 'চাল থেকে পাওয়া রাইস পলিপেপটাইডযুক্ত ময়েশ্চারাইজিং নেক ক্রিম। গলার সূক্ষ্ম রেখা কম দেখাতে সাহায্য করে এবং ত্বক নরম, মসৃণ ও স্থিতিস্থাপক রাখে।', bu: 'গলা ধুয়ে শুকিয়ে নিন। ক্রিম ওপরের দিকে মালিশ করুন। প্রতি রাতে ব্যবহার করুন।',
-      why: [['Hydrates thin neck skin', 'গলার পাতলা ত্বকে আর্দ্রতা', 'Neck skin is thinner and dries out easily. Rice-based peptides and moisturizers help it hold water, so lines look softer.', 'গলার ত্বক পাতলা ও সহজে শুষ্ক হয়। রাইস পেপটাইড ও ময়েশ্চারাইজার পানি ধরে রাখে, ফলে রেখা নরম দেখায়।'],
-        ['Upward massage', 'ওপরের দিকে মালিশ', 'Massaging upward helps the cream spread evenly and feels firming on the skin.', 'ওপরের দিকে মালিশ করলে ক্রিম সমানভাবে ছড়ায় এবং ত্বক টানটান লাগে।']],
-      note: ['Use sunscreen on the neck in the daytime. Results vary from person to person.', 'দিনে গলায় সানস্ক্রিন লাগান। ফল মানুষভেদে আলাদা হতে পারে।'] },
-    5: { bd: 'কোলাজেন ফেস ক্রিম, যা ত্বক টানটান ও বলিরেখা নরম করতে সাহায্য করে এবং ত্বককে গভীরভাবে আর্দ্র, মসৃণ ও উজ্জ্বল রাখে।', bu: 'সকাল ও রাতে ব্যবহার করুন।',
-      why: [['Collagen holds moisture', 'কোলাজেন আর্দ্রতা ধরে', 'Collagen in a cream is a large molecule that stays on the surface. It forms a moisture-holding film, so skin looks plumper and smoother.', 'ক্রিমের কোলাজেন বড় অণু, তাই ত্বকের উপরে থাকে। এটি আর্দ্রতা ধরে রাখার স্তর তৈরি করে, ফলে ত্বক ভরাট ও মসৃণ দেখায়।'],
-        ['Softens the look of lines', 'রেখা নরম দেখায়', 'Well-hydrated skin makes fine dry lines less visible.', 'ভালোভাবে আর্দ্র ত্বকে শুষ্কতার সূক্ষ্ম রেখা কম চোখে পড়ে।']],
-      note: ['It moisturizes the surface and does not replace the collagen your skin makes itself. Use daily for best results.', 'এটি ত্বকের উপরের স্তরে আর্দ্রতা দেয়, শরীরের নিজস্ব কোলাজেনের বিকল্প নয়। ভালো ফলের জন্য প্রতিদিন ব্যবহার করুন।'] },
-    6: { bd: 'শামুকের নির্যাসযুক্ত ক্রিম, যা ফ্রেকলযুক্ত ত্বকের রঙ সমান ও উজ্জ্বল দেখাতে সাহায্য করে।',
-      why: [['Snail extract hydrates', 'শামুকের নির্যাস আর্দ্রতা দেয়', 'Snail mucin may help skin hold on to moisture and feel soothed. Studies so far are small, so results vary.', 'শামুকের নির্যাস ত্বকে আর্দ্রতা ধরে রাখতে ও আরাম দিতে পারে। এখনকার গবেষণা ছোট, তাই ফল মানুষভেদে আলাদা।'],
-        ['Even-looking tone', 'সমান রঙ দেখায়', 'Smooth, hydrated skin reflects light more evenly, so freckles and dullness can look less noticeable.', 'মসৃণ ও আর্দ্র ত্বক আলো সমানভাবে ফেরায়, তাই ফ্রেকল ও নিস্তেজ ভাব কম চোখে পড়ে।']],
-      note: ['Sun makes freckles darker, so use sunscreen every day. If you have acne or eczema, try a small patch first.', 'রোদে ফ্রেকল গাঢ় হয়, তাই প্রতিদিন সানস্ক্রিন ব্যবহার করুন। ব্রণ বা একজিমা থাকলে আগে অল্প জায়গায় পরীক্ষা করুন।'] },
-    7: { bd: 'নিকোটিনামাইড ক্রিম, যা নিস্তেজ ভাব ও কালো দাগ হালকা করতে সাহায্য করে এবং ত্বক উজ্জ্বল, নরম ও মসৃণ রাখে।', bu: 'মুখ ভালো করে ধুয়ে নিন। হাত ধুয়ে শুকিয়ে রাতে অল্প পরিমাণ ক্রিম লাগান।',
-      why: [['Slows pigment spread', 'রঙের ছড়িয়ে পড়া কমায়', 'Niacinamide (vitamin B3) reduces the transfer of pigment to skin cells. Reviews report that it can lessen dark spots with regular use.', 'নিকোটিনামাইড (ভিটামিন বি৩) ত্বকের কোষে রঙ (মেলানিন) যাওয়া কমায়। নিয়মিত ব্যবহারে কালো দাগ হালকা হতে পারে বলে গবেষণায় বলা হয়েছে।'],
-        ['Supports the skin barrier', 'ত্বকের সুরক্ষা স্তর মজবুত', 'It also helps the skin barrier hold water, so skin looks smoother and brighter.', 'এটি ত্বকের সুরক্ষা স্তরকে পানি ধরে রাখতে সাহায্য করে, ফলে ত্বক মসৃণ ও উজ্জ্বল দেখায়।']],
-      note: ['Results usually take several weeks. Use sunscreen daily, because sun can bring dark spots back.', 'ফল পেতে সাধারণত কয়েক সপ্তাহ লাগে। প্রতিদিন সানস্ক্রিন লাগান, নইলে রোদে দাগ আবার গাঢ় হতে পারে।'] },
-    8: { bd: 'নিকোটিনামাইড এসেন্স, যা ফ্রেকল ও রঙের দাগ হালকা করতে সাহায্য করে। ত্বক আর্দ্র, মসৃণ, নরম ও উজ্জ্বল থাকে।',
-      why: [['Niacinamide brightens', 'নিকোটিনামাইড উজ্জ্বলতা দেয়', 'Niacinamide reduces the transfer of pigment to skin cells, which can lessen freckles and dark marks over time.', 'নিকোটিনামাইড ত্বকের কোষে রঙ যাওয়া কমায়, ফলে সময়ের সাথে ফ্রেকল ও দাগ হালকা হতে পারে।'],
-        ['Lightweight essence', 'হালকা এসেন্স', 'A thin essence sinks in fast and adds moisture without a heavy feel. Use it before your cream.', 'পাতলা এসেন্স দ্রুত ত্বকে মিশে যায় ও ভারী লাগে না। ক্রিমের আগে লাগান।']],
-      note: ['Be patient: visible change usually takes several weeks. Use sunscreen in the morning.', 'ধৈর্য ধরুন, পরিবর্তন দেখতে সাধারণত কয়েক সপ্তাহ লাগে। সকালে সানস্ক্রিন লাগান।'] },
-    9: { bd: 'মিনোক্সিডিল, কেরাটিন ও ব্ল্যাক রাইস নির্যাসযুক্ত হেয়ার সিরাম, চুল পড়া কমাতে ও নতুন চুল গজাতে সাহায্য করার জন্য। চুলের গোড়া মজবুত এবং চুল স্বাস্থ্যকর ও চকচকে রাখে। সব ধরনের চুলের জন্য।',
-      why: [['Minoxidil supports regrowth', 'মিনোক্সিডিল চুল গজাতে সাহায্য করে', 'Minoxidil is used for hereditary hair loss. It usually takes 2 to 4 months of regular use before you see a change, and regrown hair can fall out again if you stop.', 'মিনোক্সিডিল বংশগত চুল পড়ায় ব্যবহার হয়। ফল দেখতে সাধারণত ২ থেকে ৪ মাস নিয়মিত ব্যবহার করতে হয়। ব্যবহার বন্ধ করলে নতুন চুল আবার পড়ে যেতে পারে।'],
-        ['Keratin and black rice care', 'কেরাটিন ও ব্ল্যাক রাইস যত্ন', 'Keratin and black rice extract help condition hair, so strands feel smoother and look shinier.', 'কেরাটিন ও ব্ল্যাক রাইস নির্যাস চুল নরম করে, ফলে চুল মসৃণ ও চকচকে দেখায়।']],
-      note: ['For use on the scalp only. Check the minoxidil percentage on the pack. Ask a doctor first for sudden or patchy hair loss, if you are pregnant or breastfeeding, or if your scalp is red or sore. Not for children.', 'শুধু মাথার ত্বকে ব্যবহার করুন। প্যাকে মিনোক্সিডিলের শতাংশ দেখে নিন। হঠাৎ বা ছোপ ছোপ চুল পড়লে, গর্ভবতী বা বুকের দুধ খাওয়ালে, বা মাথার ত্বক লাল বা ব্যথা হলে আগে ডাক্তারের পরামর্শ নিন। শিশুদের জন্য নয়।'] },
-    10: { bd: 'ব্রণ সারানোর সিরাম, যা দ্রুত ব্রণ পরিষ্কার করতে সাহায্য করে। সেন্টেলা ও নিকোটিনামাইড ত্বককে শান্ত ও পুষ্ট রাখে, লোমকূপ ছোট দেখায় এবং গভীর আর্দ্রতা দেয়।',
-      why: [['Clears pores', 'লোমকূপ পরিষ্কার করে', 'Salicylic acid goes into the pore and clears oil and dead skin that cause blackheads and pimples.', 'স্যালিসাইলিক অ্যাসিড লোমকূপের ভেতরে গিয়ে তেল ও মৃত ত্বক পরিষ্কার করে, যা ব্ল্যাকহেড ও ব্রণের কারণ।'],
-        ['Centella calms', 'সেন্টেলা শান্ত করে', 'Centella asiatica is known for calming skin that feels red or irritated.', 'সেন্টেলা এশিয়াটিকা লাল বা জ্বালা করা ত্বককে শান্ত করার জন্য পরিচিত।'],
-        ['Niacinamide balances', 'নিকোটিনামাইড ভারসাম্য রাখে', 'Niacinamide supports the skin barrier and helps fade the look of marks.', 'নিকোটিনামাইড ত্বকের সুরক্ষা স্তরকে সাহায্য করে এবং দাগ হালকা দেখাতে পারে।']],
-      note: ['Start every other day and avoid the eye area. You may see small breakouts at first as pores clear. Use sunscreen in the morning. Ask a doctor first if you are pregnant or allergic to aspirin.', 'প্রথমে একদিন পর পর লাগান, চোখের চারপাশ এড়িয়ে চলুন। শুরুতে লোমকূপ পরিষ্কার হওয়ার সময় অল্প ব্রণ দেখা দিতে পারে। সকালে সানস্ক্রিন লাগান। গর্ভবতী বা অ্যাসপিরিনে অ্যালার্জি থাকলে আগে ডাক্তারের পরামর্শ নিন।'] },
-    11: { bd: 'নিকোটিনামাইড ও ভিটামিন সি-যুক্ত সিরাম, হাতের গিঁটের কালো ভাব হালকা ও উজ্জ্বল করতে সাহায্য করে।',
-      why: [['Niacinamide lightens', 'নিকোটিনামাইড হালকা করে', 'It reduces the transfer of pigment to skin cells, which can lessen dark patches over time.', 'এটি ত্বকের কোষে রঙ যাওয়া কমায়, ফলে সময়ের সাথে কালো ছোপ হালকা হতে পারে।'],
-        ['Vitamin C brightens', 'ভিটামিন সি উজ্জ্বল করে', 'Vitamin C is an antioxidant that helps brighten dull skin and supports an even tone.', 'ভিটামিন সি একটি অ্যান্টিঅক্সিডেন্ট, যা নিস্তেজ ত্বক উজ্জ্বল ও সমান রঙ করতে সাহায্য করে।']],
-      note: ['Apply on knuckles and other dark areas, then use sunscreen on exposed skin. Visible change takes several weeks.', 'গিঁট ও অন্য কালো জায়গায় লাগান, খোলা ত্বকে সানস্ক্রিন ব্যবহার করুন। পরিবর্তন দেখতে কয়েক সপ্তাহ লাগে।'] },
-    12: { bd: 'হালকা আই সিরাম, যা চোখের নিচের কালো দাগ, ফোলাভাব ও সূক্ষ্ম রেখা কমাতে সাহায্য করে এবং আর্দ্রতা দেয়। প্যারাবেন ও সালফেট মুক্ত।', bu: 'পরিষ্কার ত্বকে অল্প পরিমাণ সিরাম চোখের চারপাশে আলতো করে চাপড় দিয়ে লাগান। সকাল ও রাতে ব্যবহার করুন।',
-      why: [['Aloe and hyaluronic acid hydrate', 'অ্যালো ও হায়ালুরনিক অ্যাসিড আর্দ্রতা দেয়', 'Aloe vera soothes and hyaluronic acid holds water. Hydrated skin around the eyes makes fine lines look softer.', 'অ্যালোভেরা আরাম দেয় এবং হায়ালুরনিক অ্যাসিড পানি ধরে রাখে। চোখের চারপাশের ত্বক আর্দ্র থাকলে সূক্ষ্ম রেখা নরম দেখায়।'],
-        ['Caffeine wakes up the look', 'ক্যাফেইন সতেজ দেখায়', 'Caffeine is often used to help tired, puffy eyes look fresher.', 'ক্লান্ত ও ফোলা চোখ সতেজ দেখাতে ক্যাফেইন প্রায়ই ব্যবহার হয়।']],
-      note: ['Dark circles have many causes, such as sleep, genes and pigmentation, so a serum may soften their look but not remove them fully.', 'চোখের নিচের কালো দাগের অনেক কারণ আছে, যেমন ঘুম, বংশগতি ও রঙ। সিরাম দাগ হালকা দেখাতে পারে, পুরোপুরি দূর নাও করতে পারে।'] },
-    13: { bd: 'নরম কোরাল ও গোলাপি শেডে লিপহপ লিপ গ্লস।',
-      why: [['Shine and colour', 'উজ্জ্বলতা ও রঙ', 'A gloss reflects light, so lips look fuller and shinier, with a soft touch of colour.', 'গ্লস আলো ফেরায়, তাই ঠোঁট ভরাট ও চকচকে দেখায়, সাথে হালকা রঙ থাকে।']],
-      note: ['Apply with the wand on clean lips and reapply when needed.', 'পরিষ্কার ঠোঁটে ওয়ান্ড দিয়ে লাগান, দরকারে আবার লাগান।'] },
-    14: { bd: 'লিপহপের লিপ পেইন্ট, শেড "লাভ"।',
-      why: [['Rich colour', 'গাঢ় রঙ', 'A liquid lip paint gives strong colour in one or two strokes and stays on longer than a gloss.', 'তরল লিপ পেইন্ট এক-দুই টানেই গাঢ় রঙ দেয় এবং গ্লসের চেয়ে বেশিক্ষণ থাকে।']],
-      note: ['Prep lips with a balm first, then apply a thin layer and let it set.', 'আগে লিপ বাম লাগিয়ে নিন, তারপর পাতলা করে লাগিয়ে শুকাতে দিন।'] },
-    15: { bd: 'গোলাপি ময়েশ্চারাইজিং লিপ কেয়ার সেট, যাতে লিপ জেল টিউব, লিপ জার ও ছোট অ্যাপ্লিকেটর ব্রাশ আছে।',
-      why: [['Soft, moisturised lips', 'নরম ও আর্দ্র ঠোঁট', 'A lip gel and jar coat the lips and keep moisture in, so they feel soft and less dry.', 'লিপ জেল ও জার ঠোঁটে আস্তরণ দিয়ে আর্দ্রতা ধরে রাখে, ফলে ঠোঁট নরম ও কম শুষ্ক থাকে।']],
-      note: ['Use the brush for a neat, even layer. Apply at night for extra care.', 'ব্রাশ দিয়ে সমান করে লাগান। বাড়তি যত্নের জন্য রাতে লাগান।'] },
-    16: { bd: 'চালের নির্যাসযুক্ত গভীর পরিষ্কারের ফেস ওয়াশ। ত্বককে আরাম ও যত্ন দেয় এবং আর্দ্র ও কোমল রাখে।',
-      why: [['Lifts oil and dirt', 'তেল ও ময়লা তোলে', 'A cleanser lifts oil, dirt and sweat so they rinse away, leaving pores cleaner.', 'ক্লিনজার তেল, ময়লা ও ঘাম তুলে ফেলে, ধুয়ে ফেললে লোমকূপ পরিষ্কার থাকে।'],
-        ['Rice extract softens', 'চালের নির্যাস নরম করে', 'Rice extract is a gentle, soothing ingredient that helps skin feel soft after washing.', 'চালের নির্যাস মৃদু ও আরামদায়ক, যা ধোয়ার পর ত্বক নরম রাখে।']],
-      note: ['Massage on wet face for about 30 seconds, then rinse well. Use morning and night.', 'ভেজা মুখে প্রায় ৩০ সেকেন্ড মালিশ করে ভালো করে ধুয়ে ফেলুন। সকালে ও রাতে ব্যবহার করুন।'] },
-    17: { bd: 'চালের নির্যাসযুক্ত হেয়ার রিমুভাল ক্রিম। ব্যথা ছাড়াই দ্রুত লোম দূর করে, ত্বক উজ্জ্বল ও মসৃণ রাখে।',
-      why: [['Dissolves hair at the surface', 'ত্বকের উপরে লোম গলায়', 'Hair removal creams contain thioglycolate salts that break down keratin, the protein in hair. The weakened hair then wipes off at skin level.', 'হেয়ার রিমুভাল ক্রিমে থায়োগ্লাইকোলেট লবণ থাকে, যা চুলের কেরাটিন প্রোটিন ভেঙে দেয়। দুর্বল লোম ত্বকের উপর থেকে মুছে ফেলা যায়।'],
-        ['Painless and quick', 'ব্যথাহীন ও দ্রুত', 'It takes about 5 to 10 minutes or as the pack says. Smoothness usually lasts 3 to 7 days, because the root stays.', 'প্যাকের নির্দেশমতো সাধারণত ৫ থেকে ১০ মিনিট লাগে। গোড়া থাকে বলে মসৃণতা সাধারণত ৩ থেকে ৭ দিন থাকে।']],
-      note: ['Patch test on your inner arm 24 to 48 hours before first use. Do not use on broken, sunburnt or irritated skin, or on the face or private areas unless the pack says so. Do not leave on longer than directed.', 'প্রথমবার ব্যবহারের ২৪ থেকে ৪৮ ঘণ্টা আগে হাতের ভেতরে প্যাচ টেস্ট করুন। কাটা, রোদে পোড়া বা জ্বালা করা ত্বকে এবং প্যাকে না থাকলে মুখ বা গোপন অঙ্গে ব্যবহার করবেন না। নির্দেশের চেয়ে বেশিক্ষণ রাখবেন না।'] },
-    18: { bd: 'নিকোটিনামাইড ও ভিটামিন সি-যুক্ত হ্যান্ড ক্রিম, যা মেলানিন দাগ হালকা ও উজ্জ্বল করতে সাহায্য করে এবং হাতকে আর্দ্র ও পুষ্ট রাখে।',
-      why: [['Brightens dull hands', 'নিস্তেজ হাত উজ্জ্বল করে', 'Niacinamide and vitamin C help even skin tone and lessen dark patches over time.', 'নিকোটিনামাইড ও ভিটামিন সি ত্বকের রঙ সমান করে এবং সময়ের সাথে কালো ছোপ হালকা করতে সাহায্য করে।'],
-        ['Nourishes and softens', 'পুষ্টি ও কোমলতা', 'The cream base hydrates dry hands so they feel smooth and tender.', 'ক্রিম শুষ্ক হাতে আর্দ্রতা দেয়, ফলে হাত মসৃণ ও কোমল লাগে।']],
-      note: ['Apply after washing and drying your hands, and use sunscreen on the backs of your hands in the daytime.', 'হাত ধুয়ে শুকানোর পর লাগান। দিনে হাতের পিঠে সানস্ক্রিন ব্যবহার করুন।'] }
-  };
-
-  var GAL = { 1:'abc',2:'abc',3:'abc',4:'abc',5:'abc',6:'abc',7:'abc',8:'abc',9:'abc',10:'abc',11:'abc',12:'abc',13:'abc',14:'abc',15:'abc',16:'abc',17:'abc',18:'abc' };
-  function gallery(p) { var l = ['t' + p.id + 'n']; (GAL[p.id] || '').split('').forEach(function (c) { l.push('g' + p.id + c); }); if (p.id === 9) l.push('t9b'); return l; }
   function sheet() {
     var s = S.sheet; if (!s) return '';
     var end = '<div class="end"></div>', closeBtn = '<div class="closebar"><button class="close" type="button" data-act="close" aria-label="Close">&times;</button></div>';
     var p = byId(s.id);
-    var imgs = gallery(p), cur = Math.min(s.img || 0, imgs.length - 1);
-    var h = closeBtn + '<div class="pcols"><div><div class="hero"><img src="img/' + imgs[cur] + '.jpg" alt="' + esc(p.n) + '"></div>';
-    if (imgs.length > 1) h += '<div class="thumbs">' + imgs.map(function (m, i) { return '<button class="thumb" type="button" data-img="' + i + '" aria-pressed="' + (i === cur) + '" aria-label="Photo ' + (i + 1) + '"><img src="img/' + m + '.jpg" alt=""></button>'; }).join('') + '</div>';
-    h += '</div><div><span class="cat">' + p.b + ' &middot; ' + p.t + '</span><h3>' + p.n + '</h3>' + (p.bn ? '<p class="bn">' + p.bn + '</p>' : '') + priceBlock(p) + '<p>' + p.d + '</p>' + (DET[p.id] ? '<p class="bnd">' + DET[p.id].bd + '</p>' : '');
+    var imgs = p.imgs || ['t' + p.id], cur = Math.min(s.img || 0, imgs.length - 1);
+    var h = closeBtn + '<div class="pcols"><div><div class="hero"><img src="' + imgs[cur] + '.jpg" alt="' + esc(p.n) + '"></div>';
+    if (imgs.length > 1) h += '<div class="thumbs">' + imgs.map(function (m, i) { return '<button class="thumb" type="button" data-img="' + i + '" aria-pressed="' + (i === cur) + '" aria-label="Photo ' + (i + 1) + '"><img src="' + m + '.jpg" alt=""></button>'; }).join('') + '</div>';
+    h += '</div><div><span class="cat">' + p.b + ' &middot; ' + p.t + '</span><h3>' + p.n + '</h3>' + (p.bn ? '<p class="bn">' + p.bn + '</p>' : '') + priceBlock(p) + '<p>' + p.d + '</p>';
     if (p.s) h += '<div class="label">Pack</div><div class="row"><span class="size">' + p.s + '</span></div>';
     if (p.k.length) h += '<div class="label">Key ingredients</div><div class="tags">' + p.k.map(function (k) { return '<span>' + k + '</span>'; }).join('') + '</div>';
-    if (p.u) h += '<div class="label">How to use <span class="bl">ব্যবহারের নিয়ম</span></div><p style="margin:0">' + p.u + '</p>' + (DET[p.id] && DET[p.id].bu ? '<p class="bnd">' + DET[p.id].bu + '</p>' : '');
-    var dt = DET[p.id];
-    if (dt) {
-      h += '<div class="label">Why it works <span class="bl">কেন কাজ করে</span></div><div class="why">' + dt.why.map(function (w) { return '<div class="whyi"><b>' + w[0] + '<small>' + w[1] + '</small></b><p>' + w[2] + '</p><p class="bnd">' + w[3] + '</p></div>'; }).join('') + '</div>';
-      h += '<div class="gk"><b>Good to know <span class="bl">জেনে রাখুন</span></b><p>' + dt.note[0] + '</p><p class="bnd">' + dt.note[1] + '</p><p class="disc">General skincare information, not medical advice. Results vary from person to person.<span class="bnd"> সাধারণ তথ্য, চিকিৎসা পরামর্শ নয়। ফল মানুষভেদে আলাদা।</span></p></div>';
-    }
+    if (p.u) h += '<div class="label">How to use</div><p style="margin:0">' + p.u + '</p>';
     h += '<div class="pricelink">' + ext(WA_CATALOG, 'ghost', ICON_WA, 'Open WhatsApp catalog') + '</div></div></div>';
     h += '<div class="buy"><div class="qty"><button type="button" data-sq="-1" aria-label="Fewer">&minus;</button><output>' + s.qty + '</output><button type="button" data-sq="1" aria-label="More">+</button></div><button class="primary" type="button" data-act="add">Add to my order</button></div>';
-    if (p.poster) h += '<div class="label">Full product details</div><img class="poster" src="img/p' + p.id + '.jpg" alt="Product details for ' + esc(p.n) + '" loading="lazy">';
+    if (p.poster) h += '<div class="label">Full product details</div><img class="poster" src="p' + p.id + '.jpg" alt="Product details for ' + esc(p.n) + '" loading="lazy">';
     return h + end;
   }
 
@@ -1256,7 +1013,6 @@ html { scroll-behavior: smooth; }
     return msg;
   }
 
-  // Keep the WhatsApp button's link filled with the order text at all times, so the first tap already carries the message.
   function syncWa() {
     var a = $('wa-send'); if (!a) return;
     var f = S.form, ok = f.name.trim() && f.phone.trim() && f.addr.trim() && (!payById(S.pay).wallet || f.trx.trim());
@@ -1331,27 +1087,6 @@ html { scroll-behavior: smooth; }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && S.sheet) { S.sheet = null; draw(); } });
   draw();
-  // Header: slides up when scrolling down, slides back when scrolling up
-  (function () {
-    var hd = document.querySelector('header.top'); if (!hd) return;
-    var tb = document.querySelector('nav.tabs');
-    function setHide(on) { hd.classList.toggle('hide', on); if (tb) tb.classList.toggle('hide', on); }
-    var last = window.pageYOffset || 0, tick = false, acc = 0;
-    function update() {
-      tick = false;
-      var y = Math.max(0, window.pageYOffset || 0), dy = y - last; last = y;
-      var h = hd.offsetHeight || 64;
-      hd.classList.toggle('scrolled', y > 4);
-      if (y <= h) { acc = 0; setHide(false); return; }
-      if ((dy > 0) !== (acc > 0)) acc = 0;
-      acc += dy;
-      if (acc > 14) setHide(true);
-      else if (acc < -8) setHide(false);
-    }
-    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
-    hd.addEventListener('focusin', function () { setHide(false); });
-    window.addEventListener('hashchange', function () { setHide(false); });
-  })();
 })();
 </script>
 

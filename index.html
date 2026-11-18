@@ -1,0 +1,1358 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Zoni Skin Care</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: fluid column up to 1180px. Header with brand, small WhatsApp and Facebook icons, desktop nav. Featured row (swipe on phones, four across on desktop), search, category chips, product grid, payment-aware order sheet. Bottom tab bar on phones only. */
+:root {
+  --bg: #FFF5F8;
+  --surface: #FFFFFF;
+  --ink: #2A1620;
+  --muted: #7A5A68;
+  --line: #F0D9E1;
+  --accent: #C2185B;
+  --accent-ink: #FFFFFF;
+  --soft: #FCE4EC;
+  --gold: #A9792B;
+  --shadow: 0 -12px 40px rgba(42, 22, 32, 0.2);
+  --f-display: 'Playfair Display', Georgia, 'Noto Sans Bengali', serif;
+  --f-pay: 'Inter', 'Noto Sans Bengali', 'Segoe UI', system-ui, sans-serif;
+  --f-body: 'DM Sans', 'Noto Sans Bengali', 'Segoe UI', system-ui, sans-serif;
+  --gap: clamp(10px, 1.6vw, 20px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1B1015; --surface: #26161D; --ink: #FBEFF3; --muted: #D1A9B8; --line: #40262F;
+    --accent: #F26BA2; --accent-ink: #2A0D18; --soft: #34202A; --gold: #D9B26A;
+    --shadow: 0 -12px 40px rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1B1015; --surface: #26161D; --ink: #FBEFF3; --muted: #D1A9B8; --line: #40262F;
+  --accent: #F26BA2; --accent-ink: #2A0D18; --soft: #34202A; --gold: #D9B26A;
+  --shadow: 0 -12px 40px rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 96px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1180px; margin: 0 auto; }
+
+/* header */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px 10px; display: flex; align-items: center; gap: 14px; }
+.brand { flex: 1; margin: 0; }
+.brandbtn { display: flex; align-items: center; gap: 10px; border: 0; background: none; padding: 0; text-align: left; }
+.logo { width: 46px; height: 46px; border-radius: 50%; flex: none; display: block; }
+.bname { font-family: var(--f-display); font-weight: 700; font-size: 24px; letter-spacing: -0.01em; line-height: 1; }
+.bname small { display: block; font-family: var(--f-body); font-weight: 600; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+
+.nav { display: none; gap: 6px; }
+.navbtn { border: 0; background: none; padding: 8px 14px; border-radius: 999px; font-weight: 600; color: var(--muted); position: relative; }
+.navbtn[aria-current="page"] { background: var(--soft); color: var(--accent); }
+.navbtn .dot { position: static; display: inline-grid; margin-left: 6px; vertical-align: 1px; }
+.social { display: flex; gap: 8px; flex: 1; justify-content: flex-end; }
+.sbtn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--accent); display: grid; place-items: center; text-decoration: none; }
+.sbtn svg { width: 19px; height: 19px; }
+.sbtn:hover { background: var(--soft); }
+
+/* home */
+.hero { padding-block: 8px 6px; }
+.hero2 { display: grid; gap: 24px; padding: clamp(20px, 4vw, 52px); border-radius: 28px; background: linear-gradient(120deg, var(--soft) 0%, var(--bg) 100%); border: 1px solid var(--line); margin-top: 6px; }
+.eyebrow { font-weight: 600; letter-spacing: 0.03em; color: var(--accent); font-size: 14px; }
+.lead { font-family: var(--f-display); font-size: clamp(36px, 5.6vw, 66px); line-height: 1.03; letter-spacing: -0.02em; margin: 8px 0 14px; text-wrap: balance; }
+.lead em { color: var(--accent); font-style: italic; font-weight: 600; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.btn { border: 0; background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 14px 26px; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; }
+.ghost.pill { border-radius: 999px; padding: 13px 22px; }
+.trust { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.trust li { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.trust svg { width: 26px; height: 26px; color: var(--accent); flex: none; }
+.trust b { font-size: 12.5px; line-height: 1.25; font-weight: 600; }
+@media (min-width: 640px) { .trust li { flex-direction: row; text-align: left; gap: 10px; } .trust b { font-size: 14px; } }
+.hvis { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: clamp(8px, 1.4vw, 16px); align-items: center; }
+.hv { border: 0; padding: 0; background: var(--surface); border-radius: 20px; overflow: hidden; aspect-ratio: 3 / 4; box-shadow: 0 10px 30px rgba(194, 24, 91, 0.14); }
+.hv:nth-child(2) { aspect-ratio: 3 / 4.3; }
+.hv img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.block { margin-top: clamp(30px, 5vw, 60px); }
+.cats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); }
+.cat-tile { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 10px 10px 14px; display: flex; flex-direction: column; align-items: center; gap: 2px; text-align: center; }
+.cat-tile:hover { border-color: var(--accent); }
+.cat-tile img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; margin-bottom: 8px; display: block; }
+.cat-tile b { font-weight: 600; }
+.cat-tile small { color: var(--muted); font-size: 13px; }
+.promo { display: block; width: 100%; padding: 0; border: 0; border-radius: 22px; overflow: hidden; background: var(--soft); }
+.promo img { width: 100%; height: auto; display: block; }
+section[id] { scroll-margin-top: 84px; }
+.foot2 { margin-top: clamp(36px, 6vw, 64px); background: var(--soft); border-radius: 28px; padding: clamp(30px, 5vw, 56px) 20px; text-align: center; color: var(--muted); font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.flogo { width: 88px; height: 88px; border-radius: 50%; display: block; }
+.fname { font-family: var(--f-display); font-size: 24px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+.ftag { margin-top: -12px; }
+.flinks { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.fl { border: 0; background: none; padding: 2px 0; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.fl:hover { color: var(--accent); }
+.fsoc { display: flex; gap: 12px; }
+.fsq { width: 46px; height: 46px; display: grid; place-items: center; color: var(--ink); text-decoration: none; border: 1px solid color-mix(in srgb, var(--muted) 45%, transparent); background: transparent; }
+.fsq:hover { background: var(--surface); color: var(--accent); }
+.fsq svg { width: 20px; height: 20px; }
+.fphone { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 600; font-size: 15px; text-decoration: none; }
+.fphone svg { width: 17px; height: 17px; color: var(--accent); }
+.stores { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.store { display: flex; align-items: center; gap: 10px; background: #111; color: #fff; border: 1px solid #555; border-radius: 12px; padding: 8px 18px 8px 12px; text-align: left; text-decoration: none; min-width: 160px; }
+.store svg, .store img { width: 28px; height: 28px; flex: none; }
+.store small { display: block; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+.store b { display: block; font-size: 16px; line-height: 1.15; font-weight: 600; }
+.store:disabled { opacity: 0.7; cursor: not-allowed; }
+.cr { margin: 0; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+.pays { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.pay img { height: 30px; width: auto; max-width: none; flex: none; display: block; }
+.pay.plogo { padding: 0 12px; height: 44px; flex: none; }
+.pay { background: #fff; border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 10px; height: 38px; padding: 0 14px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+.pay svg { width: 20px; height: 20px; }
+.pay.bkash { color: #E2136E; font-style: italic; }
+.pay.nagad { color: #E8590C; }
+.pay.rocket { color: #8C3494; }
+.pay.bank { color: #1565C0; }
+.pay.cardpay { color: #37474F; }
+.fnote { margin: 0; font-size: 12px; }
+.allb { border-radius: 28px; padding: clamp(20px, 3.5vw, 40px); background: linear-gradient(115deg, #7D0F47 0%, #C2185B 58%, #D9567F 100%); color: #fff; overflow: hidden; }
+.allb-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
+.allb-t { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.allb-logo { width: 64px; height: 64px; border-radius: 50%; flex: none; border: 2px solid rgba(255, 255, 255, 0.5); }
+.allb-eye { font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #F6D9A8; font-weight: 600; }
+.allb h2 { font-family: var(--f-display); font-size: clamp(24px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -0.01em; margin: 4px 0 0; text-wrap: balance; }
+.allb h2 em { color: #F6D9A8; font-style: italic; }
+.btn.gold { background: #F6D9A8; color: #4A1030; }
+.marq { margin-top: 22px; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.track { display: flex; gap: 12px; width: max-content; animation: slide 70s linear infinite; }
+.marq:hover .track, .marq:focus-within .track { animation-play-state: paused; }
+@keyframes slide { to { transform: translateX(calc(-50% - 6px)); } }
+.mt { flex: none; width: clamp(104px, 13vw, 148px); aspect-ratio: 4 / 5; padding: 0; border: 2px solid rgba(255, 255, 255, 0.4); border-radius: 16px; overflow: hidden; background: #fff; }
+.mt img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (prefers-reduced-motion: reduce) { .track { animation: none; } .marq { overflow-x: auto; } }
+.sub { color: var(--muted); margin: 0 0 18px; max-width: 46ch; font-size: 16px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 14px 0 10px; }
+.sec-head h2 { font-family: var(--f-display); font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -0.01em; margin: 0; }
+.sec-head span { color: var(--muted); font-size: 13.5px; }
+.feat-row { display: flex; gap: var(--gap); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; }
+.feat-row::-webkit-scrollbar { display: none; }
+.fcard { flex: 0 0 min(64%, 250px); scroll-snap-align: start; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.fopen { border: 0; background: none; padding: 0; text-align: left; display: flex; flex-direction: column; flex: 1; }
+.fcard .info { padding: 12px 14px 8px; }
+.mini { margin: 4px 14px 14px; border: 1px solid var(--accent); background: none; color: var(--accent); border-radius: 12px; padding: 9px 12px; font-weight: 600; }
+.mini:hover { background: var(--accent); color: var(--accent-ink); }
+
+.search { width: 100%; border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; max-width: 560px; display: block; }
+.search::placeholder { color: var(--muted); }
+.chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 6px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip { flex: none; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 7px 14px; font-size: 14px; }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--gap); margin-top: 14px; }
+.card { text-align: left; padding: 0; background: var(--surface); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--line); }
+.card:hover, .fcard:hover { border-color: var(--accent); }
+.ph { background: var(--soft); aspect-ratio: 4 / 5; position: relative; overflow: hidden; }
+.ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.badge { position: absolute; top: 8px; left: 8px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 999px; }
+.info { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.cat { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.name { font-weight: 600; line-height: 1.25; }
+.meta { color: var(--muted); font-size: 13px; }
+.empty { grid-column: 1 / -1; text-align: center; color: var(--muted); padding: 36px 0; }
+.recs { grid-column: 1 / -1; font-family: var(--f-display); font-size: 20px; letter-spacing: -0.01em; margin: 14px 0 0; }
+.price { margin-top: auto; padding-top: 6px; font-variant-numeric: tabular-nums; }
+.price b { font-weight: 600; }
+.price s { color: var(--muted); font-size: 13px; margin-left: 6px; }
+.price.ask { color: var(--muted); font-size: 13px; }
+.pbox { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 6px 0 4px; font-variant-numeric: tabular-nums; }
+.pbox strong { font-family: var(--f-body); font-weight: 700; font-size: 26px; color: var(--accent); }
+.pbox s { color: var(--muted); }
+.pbox span { background: var(--soft); color: var(--accent); font-size: 12.5px; font-weight: 600; border-radius: 999px; padding: 2px 10px; }
+
+.foot { margin-top: 32px; padding-block: 22px 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; display: grid; gap: 6px; }
+.foot b { color: var(--ink); }
+
+/* order page */
+h2.screen { font-family: var(--f-display); font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.02em; margin: 8px 0 12px; }
+.hint { background: var(--soft); border-radius: 12px; padding: 10px 12px; font-size: 13.5px; color: var(--muted); margin: 0 0 8px; }
+.cartgrid { display: grid; gap: 18px; align-items: start; }
+.line { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.line .ph { aspect-ratio: 1 / 1; border-radius: 12px; }
+.line .name { font-size: 14.5px; }
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); margin-top: 6px; }
+.qty button { width: 32px; height: 32px; border: 0; background: none; font-size: 18px; line-height: 1; }
+.qty output { min-width: 22px; text-align: center; font-variant-numeric: tabular-nums; font-weight: 600; }
+.summary { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 16px; display: grid; gap: 12px; }
+.total { display: flex; justify-content: space-between; align-items: baseline; font-variant-numeric: tabular-nums; }
+.total strong { font-size: 20px; }
+.summary .small { margin: 0; font-size: 13px; color: var(--muted); }
+
+.primary { width: 100%; border: 0; background: var(--accent); color: var(--accent-ink); border-radius: 14px; padding: 15px 18px; font-weight: 600; font-size: 16px; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none; text-align: center; }
+.primary svg { width: 20px; height: 20px; }
+a.primary { color: var(--accent-ink); }
+.ghost { border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 13px 18px; font-weight: 600; text-decoration: none; color: var(--ink); display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.ghost svg { width: 19px; height: 19px; color: var(--accent); }
+
+/* bottom tab bar, phones only */
+.tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; background: var(--surface); border-top: 1px solid var(--line); padding: 8px max(16px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.tabs div { max-width: 520px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tab { border: 0; background: none; padding: 8px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12.5px; color: var(--muted); position: relative; }
+.tab svg { width: 24px; height: 24px; }
+.tab[aria-current="page"] { color: var(--accent); font-weight: 600; background: var(--soft); }
+.dot { position: absolute; top: 2px; left: calc(50% + 6px); min-width: 18px; height: 18px; border-radius: 99px; background: var(--accent); color: var(--accent-ink); font-size: 11px; font-weight: 600; display: grid; place-items: center; padding: 0 5px; }
+
+/* sheet: bottom sheet on phones, centred dialog on larger screens */
+.scrim { position: fixed; inset: 0; z-index: 20; background: rgba(20, 8, 14, 0.55); display: flex; align-items: flex-end; justify-content: center; }
+.sheet { position: relative; width: 100%; max-width: 560px; max-height: 92%; overflow-y: auto; background: var(--surface); border-radius: 24px 24px 0 0; box-shadow: var(--shadow); padding: 18px max(18px, env(safe-area-inset-right, 0px)) 0 max(18px, env(safe-area-inset-left, 0px)); animation: up 0.22s ease-out; }
+@keyframes up { from { transform: translateY(24px); opacity: 0.6; } to { transform: none; opacity: 1; } }
+.closebar { position: sticky; top: 8px; height: 0; z-index: 3; }
+.sheet .close { position: absolute; top: 0; right: 0; z-index: 2; border: 1px solid var(--line); background: var(--surface); width: 36px; height: 36px; border-radius: 50%; font-size: 20px; line-height: 1; }
+.pcols { display: grid; gap: 14px; }
+.sheet .hero { background: var(--soft); border-radius: 18px; height: 260px; overflow: hidden; }
+.sheet .hero img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.thumbs { display: flex; gap: 8px; margin-top: 10px; }
+.thumb { width: 56px; height: 70px; padding: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--soft); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumb[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.sheet h3 { font-family: var(--f-display); font-size: 24px; letter-spacing: -0.02em; margin: 2px 0 4px; line-height: 1.15; }
+.sheet p { margin: 8px 0; }
+.sheet .bn { color: var(--muted); font-size: 14.5px; margin: 0 0 6px; }
+.label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 14px 0 6px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { background: var(--soft); border-radius: 999px; font-size: 13px; padding: 3px 10px; }
+.size { border: 1px solid var(--line); background: var(--surface); border-radius: 12px; padding: 8px 14px; }
+.pricelink { margin-top: 14px; }
+.buy { position: sticky; bottom: 0; background: var(--surface); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; margin-top: 16px; padding: 12px 0 calc(12px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--line); }
+.buy .qty { margin: 0; }
+.poster { width: 100%; height: auto; border-radius: 14px; display: block; border: 1px solid var(--line); }
+.end { height: calc(20px + env(safe-area-inset-bottom, 0px)); }
+
+/* checkout form and payment methods */
+.form { display: grid; gap: 12px; margin-top: 10px; }
+.form label.f { display: grid; gap: 4px; font-size: 13px; color: var(--muted); }
+.form input[type="text"], .form input[type="tel"], .form textarea { width: 100%; border: 1px solid var(--line); background: var(--bg); border-radius: 12px; padding: 12px 14px; color: var(--ink); font-size: 16px; }
+.form textarea { min-height: 84px; resize: vertical; }
+.form .fine { font-size: 13px; color: var(--muted); margin: 0; }
+.form .err { color: var(--accent); font-weight: 600; }
+.pms { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.pm { display: flex; gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--bg); cursor: pointer; }
+.pm input { accent-color: var(--accent); margin: 0; flex: none; }
+.pm:has(input:checked) { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.pm i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.pm img { width: 44px; height: 32px; object-fit: contain; flex: none; background: #fff; border-radius: 8px; padding: 3px; border: 1px solid var(--line); }
+.pm b { font-weight: 600; }
+.pm small { display: block; color: var(--muted); font-size: 12.5px; line-height: 1.3; }
+.payinfo { background: var(--soft); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+.payinfo b { color: var(--accent); user-select: all; }
+.copy { border: 1px solid var(--accent); background: var(--surface); color: var(--accent); border-radius: 999px; padding: 2px 12px; font-size: 13px; font-weight: 600; margin-left: 6px; }
+.payact { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 2px; }
+.openapp { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; font-weight: 700; font-size: 14px; color: #fff; text-decoration: none; }
+.openapp img { width: 22px; height: 22px; object-fit: contain; background: #fff; border-radius: 6px; padding: 2px; }
+.qrbox { display: flex; align-items: center; gap: 14px; margin-top: 12px; padding: 12px; border-radius: 12px; background: #fff; color: #222; border: 1px solid var(--line); }
+.qrbox svg { width: 120px; height: 120px; flex: none; display: block; }
+.qrbox small { display: block; color: #555; font-size: 12.5px; line-height: 1.4; }
+.qrbox b { color: #222; user-select: all; }
+.doneBox { max-width: 520px; margin: 40px auto 28px; text-align: center; display: grid; gap: 12px; justify-items: center; }
+.doneBox p { margin: 0; }
+.doneBox b { color: var(--accent); }
+.tick { width: 64px; height: 64px; border-radius: 50%; background: #2E7D32; color: #fff; display: grid; place-items: center; font-size: 34px; }
+.doneBtns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 6px; }
+.copy:hover { background: var(--accent); color: var(--accent-ink); }
+
+
+.toast { position: fixed; left: 50%; bottom: calc(86px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); z-index: 30; background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: 999px; font-size: 14px; max-width: calc(100% - 32px); }
+
+@media (min-width: 760px) {
+  .scrim { align-items: center; }
+  .sheet { max-width: 940px; max-height: 90vh; border-radius: 24px; padding-inline: 26px; }
+  .sheet.narrow { max-width: 600px; }
+  .pcols { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 26px; }
+  .sheet .hero { height: 430px; }
+  .sheet h3 { font-size: 28px; }
+}
+@media (min-width: 640px) { .cats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 900px) {
+  .hero2 { grid-template-columns: 1fr 1fr; align-items: center; }
+  body { padding-bottom: 40px; }
+  .tabs { display: none; }
+  .nav { display: flex; }
+  .toast { bottom: 28px; }
+  .fcard { flex: 1 1 0; }
+  .feat-row { overflow: visible; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .info { padding: 12px 14px 14px; }
+}
+
+/* Order and checkout pages */
+.script { font-family: var(--f-display); font-style: italic; font-weight: 600; color: var(--accent); font-size: clamp(18px, 2vw, 24px); }
+.elabel { display: block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.ohead { display: grid; gap: var(--gap); margin-top: 6px; }
+.ocard { background: var(--surface); border: 1px solid var(--line); border-radius: 26px; padding: clamp(18px, 2.6vw, 30px); min-width: 0; }
+.otitle h2 { font-family: var(--f-display); font-size: clamp(38px, 5.4vw, 68px); line-height: 1; letter-spacing: -0.02em; margin: 4px 0 10px; }
+.otitle h2 em { color: var(--accent); font-style: normal; }
+.otitle p { margin: 0; color: var(--muted); }
+.osteps { background: var(--soft); display: grid; gap: 6px; align-content: start; }
+.stps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.stp { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 8px 16px; font-weight: 600; font-size: 14px; }
+.stp.done { color: var(--accent); border-color: var(--accent); }
+.stp[aria-current="step"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.cartgrid { margin-top: var(--gap); }
+.lines { display: grid; gap: var(--gap); min-width: 0; align-content: start; }
+.lines .hint { margin: 0; }
+.oline { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 12px 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 12px; }
+.oline .ph { aspect-ratio: 1 / 1; border-radius: 16px; }
+.oname { font-family: var(--f-display); font-weight: 700; font-size: clamp(17px, 1.8vw, 22px); line-height: 1.2; }
+.oprice { grid-column: 1 / -1; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-variant-numeric: tabular-nums; }
+.oprice b { font-size: clamp(18px, 2vw, 24px); }
+.orem { border: 0; background: none; color: var(--muted); font-size: 13px; text-decoration: underline; padding: 4px; }
+.orem:hover { color: var(--accent); }
+.addmore { justify-self: start; }
+.osum { background: var(--accent); color: var(--accent-ink); border-radius: 26px; padding: clamp(20px, 2.4vw, 28px); display: grid; gap: 12px; align-content: start; min-width: 0; }
+.osum .script { color: var(--accent-ink); }
+.srow { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.srow b { font-weight: 600; text-align: right; white-space: nowrap; }
+.sitem span { min-width: 0; overflow-wrap: anywhere; }
+.sline { border: 0; border-top: 1px solid color-mix(in srgb, var(--accent-ink) 35%, transparent); margin: 4px 0; width: 100%; }
+.stot strong { font-family: var(--f-display); font-size: clamp(30px, 3.2vw, 42px); line-height: 1; }
+.osum .primary { background: var(--surface); color: var(--accent); }
+.osum a.primary { color: var(--accent); }
+.osum .small, .osum .fine { margin: 0; font-size: 13px; color: var(--accent-ink); opacity: 0.9; }
+.osum .err { background: var(--surface); color: var(--accent); border-radius: 12px; padding: 9px 12px; font-weight: 600; opacity: 1; }
+.osec { font-family: var(--f-display); font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -0.01em; margin: 2px 0 6px; }
+.f2 { display: grid; gap: 12px; }
+.pms { grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); }
+.pm { border-radius: 18px; padding: 14px 16px; gap: 12px; }
+.pm input { order: 3; margin-left: auto; width: 20px; height: 20px; }
+.pm:has(input:checked) { background: var(--soft); }
+.pm img { width: 56px; height: 40px; }
+.obottom { display: grid; gap: var(--gap); margin-top: clamp(28px, 4vw, 48px); }
+.ob { background: var(--soft); border: 1px solid var(--line); border-radius: 26px; padding: clamp(20px, 2.4vw, 28px); display: grid; gap: 10px; align-content: start; min-width: 0; }
+.ob h3 { font-family: var(--f-display); font-size: clamp(20px, 2vw, 26px); letter-spacing: -0.01em; margin: 0; line-height: 1.15; }
+.ob p { margin: 0; color: var(--muted); font-size: 14.5px; }
+.ob .ghost.wide { justify-content: center; width: 100%; }
+.ob .ghost.wide svg { flex: none; }
+.obbtn { display: grid; gap: 8px; }
+.osoc { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+.osoc .sbtn { width: 46px; height: 46px; }
+@media (min-width: 600px) { .f2 { grid-template-columns: 1fr 1fr; } .oline { grid-template-columns: 96px minmax(0, 1fr) auto; } .oprice { grid-column: auto; flex-direction: column; align-items: flex-end; } }
+@media (min-width: 900px) {
+  .ohead { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); }
+  .cartgrid { grid-template-columns: minmax(0, 1fr) 400px; gap: var(--gap); align-items: start; }
+  .osum { position: sticky; top: 90px; }
+  .obottom { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Bangla + English, payment guide */
+.bi { display: block; line-height: 1.25; }
+.bi small { display: block; font-size: 0.84em; font-weight: 500; opacity: 0.85; }
+.bsub { display: block; font-size: 0.86em; font-weight: 500; opacity: 0.85; margin-top: 2px; }
+.hint .bsub, .fine .bsub { color: inherit; }
+.warn small { display: block; font-weight: 500; opacity: 0.85; }
+.script .bsub { font-family: var(--f-body); font-style: normal; font-size: 13px; opacity: 0.85; }
+.enl { font-family: var(--f-body); font-weight: 500; font-size: 0.62em; color: var(--muted); letter-spacing: 0; margin-left: 6px; }
+h2.screen small.enl { display: block; margin: 2px 0 0; }
+.osec .enl, .ob h3 small { display: block; margin: 2px 0 0; font-family: var(--f-body); font-size: 0.55em; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+.pm b .enl { font-size: 0.82em; color: var(--muted); margin-left: 4px; }
+.bnline { font-size: clamp(18px, 2vw, 24px); font-weight: 600; color: var(--ink) !important; margin: 0 0 6px !important; }
+.form label.f { font-size: 14px; }
+.form label.f .bi { color: var(--ink); font-weight: 600; }
+.form label.f .bi small { color: var(--muted); font-weight: 500; }
+.srow { align-items: center; }
+.srow .bi small { opacity: 0.85; }
+.howto { list-style: none; margin: var(--gap) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.hw { display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 10px 12px; font-weight: 600; font-size: 14px; min-width: 0; }
+.hw.on { background: var(--soft); border-color: var(--accent); }
+.hi { width: 44px; height: 44px; border-radius: 50%; background: var(--soft); color: var(--accent); display: grid; place-items: center; flex: none; position: relative; }
+.hw.on .hi { background: var(--accent); color: var(--accent-ink); }
+.hi svg { width: 24px; height: 24px; }
+.howh { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.howh img { height: 40px; width: auto; background: #fff; border-radius: 10px; padding: 4px; border: 1px solid var(--line); }
+.howh b { font-family: var(--f-display); font-size: 19px; color: var(--ink); user-select: auto; }
+.how { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.how li { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 10px 14px; }
+.how .hi { border-radius: 14px; width: 48px; height: 48px; }
+.how .hn { position: absolute; top: -7px; left: -7px; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-size: 12.5px; font-weight: 700; display: grid; place-items: center; }
+.how .ht { min-width: 0; }
+.how .t { display: block; font-weight: 600; font-size: 15.5px; color: var(--ink); line-height: 1.35; }
+.how .t b { color: var(--accent); }
+.how small { display: block; color: var(--muted); font-size: 12.5px; }
+.warn { margin: 8px 0 0; font-weight: 600; color: var(--accent); }
+.bankbox { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: grid; gap: 10px; }
+.brow { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.brow .bi { color: var(--muted); font-size: 14px; }
+.openapp .bi small { opacity: 0.9; }
+.openapp { padding: 10px 18px; }
+.payinfo { padding: 14px; }
+.payinfo .copy { margin-left: 4px; }
+.osum .primary .bi { text-align: left; }
+.osum .primary { justify-content: space-between; }
+.osum a.primary { justify-content: center; text-align: center; }
+.ob h3 small { font-size: 0.6em; }
+@media (min-width: 760px) { .howto { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+
+/* Compact payment step */
+.pms { grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 8px; }
+.pm { padding: 10px 12px; gap: 10px; border-radius: 14px; }
+.pm img { width: 46px; height: 34px; }
+.pm input { width: 18px; height: 18px; }
+.pm b { font-size: 14.5px; line-height: 1.2; }
+.pm b .enl { display: block; margin: 1px 0 0; font-size: 0.82em; }
+.payinfo { padding: 12px; margin-top: 2px; }
+.pnote { margin: 0; font-weight: 600; }
+.pnote small { display: block; font-weight: 500; color: var(--muted); font-size: 0.84em; }
+.warn { margin: 6px 0 0; font-size: 14px; }
+.quick { display: grid; gap: 10px; }
+.qline { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.qline .bi { color: var(--muted); font-size: 14px; }
+.qnum b, .qline > b { color: var(--accent); user-select: all; }
+.quick .payact { margin: 0; }
+.helpd { margin-top: 10px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); overflow: hidden; }
+.helpd summary { cursor: pointer; padding: 11px 14px; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; list-style: none; color: var(--accent); }
+.helpd summary::-webkit-details-marker { display: none; }
+.helpd summary::after { content: ""; width: 9px; height: 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg); transition: transform 0.25s ease; flex: none; margin-right: 4px; }
+.helpd[open] summary::after { transform: rotate(-135deg); }
+.helpd summary:hover { background: var(--soft); }
+.helpb { padding: 4px 14px 14px; animation: fadeb 0.25s ease; }
+.helpb .how { margin-bottom: 0; }
+.helpb .how li { background: var(--bg); }
+.helpb .qrbox { margin-top: 12px; }
+
+
+/* Slim payment logos + compact mobile order pages */
+.pms { display: flex; flex-wrap: nowrap; gap: 8px; justify-content: space-between; }
+.pm { flex: 1 1 0; min-width: 0; max-width: 120px; flex-direction: column; justify-content: flex-start; gap: 3px; padding: 8px 4px 7px; border-radius: 14px; text-align: center; position: relative; border: 2px solid var(--line); }
+.pm input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; order: 0; }
+.pm img { width: 48px; height: 36px; }
+.pm .pmi { width: 48px; height: 36px; display: grid; place-items: center; background: #fff; color: #2E7D32; border-radius: 8px; border: 1px solid var(--line); }
+.pm .pmi svg { width: 24px; height: 24px; }
+.pm b { font-size: 12.5px; line-height: 1.15; font-weight: 700; }
+.pm small { font-size: 10.5px; line-height: 1.1; color: var(--muted); margin: 0; }
+.pm:has(input:checked) { border-color: var(--accent); background: var(--soft); box-shadow: 0 0 0 1px var(--accent); }
+.pm:has(input:checked)::after { content: ""; position: absolute; top: 4px; right: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4 10-10'/%3E%3C/svg%3E") center / 9px no-repeat; }
+.pm:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 599px) {
+  .howto { display: none; }
+  .ohead { gap: 8px; margin-top: 0; }
+  .ocard { border-radius: 18px; padding: 14px; }
+  .otitle { padding: 12px 14px; }
+  .otitle .script, .otitle p:not(.bnline) { display: none; }
+  .otitle h2 { font-size: 30px; margin: 0; display: inline; }
+  .otitle .bnline { display: inline; margin-left: 8px; font-size: 13px; font-weight: 500; color: var(--muted); }
+  .osteps { padding: 8px; background: transparent; border: 0; }
+  .osteps .elabel, .osteps .script { display: none; }
+  .stps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin: 0; }
+  .stp { padding: 7px 4px; font-size: 12px; text-align: center; line-height: 1.2; border-radius: 12px; }
+  .cartgrid { margin-top: 8px; gap: 8px; }
+  .lines { gap: 8px; }
+  .hint { font-size: 12.5px; padding: 8px 10px; }
+  .oline { grid-template-columns: 60px minmax(0, 1fr); padding: 8px; border-radius: 16px; gap: 6px 10px; }
+  .oline .ph { border-radius: 12px; }
+  .oname { font-size: 15.5px; }
+  .osec { font-size: 20px; margin: 0 0 2px; }
+  .form { gap: 10px; margin-top: 6px; }
+  .form input[type="text"], .form input[type="tel"], .form textarea { padding: 10px 12px; }
+  .form textarea { min-height: 64px; }
+  .form label.f { font-size: 13px; }
+  .pms { gap: 5px; }
+  .pm { padding: 7px 2px 6px; border-radius: 12px; }
+  .pm img, .pm .pmi { width: 38px; height: 28px; }
+  .pm .pmi svg { width: 20px; height: 20px; }
+  .pm b { font-size: 11.5px; }
+  .pm small { font-size: 10px; }
+  .payinfo { padding: 10px; }
+  .osum { padding: 16px; border-radius: 18px; gap: 8px; }
+  .osum > .small { display: none; }
+  .stot strong { font-size: 28px; }
+  .obottom { gap: 8px; margin-top: 18px; }
+  .ob { padding: 14px; border-radius: 18px; gap: 6px; }
+  .ob p { display: none; }
+  .ob h3 { font-size: 17px; }
+  .ob h3 small { display: block; font-size: 0.76em; font-weight: 500; }
+  .obbtn { grid-template-columns: 1fr 1fr; }
+  .ob .ghost.wide { padding: 10px 8px; font-size: 13.5px; }
+  .osoc .sbtn { width: 42px; height: 42px; }
+}
+
+/* One clean support section */
+.obottom { display: block; margin-top: clamp(24px, 3vw, 40px); }
+.osupport { background: var(--soft); border: 1px solid var(--line); border-radius: 22px; padding: clamp(14px, 2vw, 24px); display: grid; gap: 12px; }
+.oshead h3 { font-family: var(--f-display); font-size: clamp(18px, 2vw, 24px); margin: 0; line-height: 1.15; letter-spacing: -0.01em; }
+.oshead h3 small { display: block; font-family: var(--f-body, inherit); font-size: 0.6em; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
+.otiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.otile { display: flex; align-items: center; gap: 10px; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; color: var(--ink); text-decoration: none; font-size: 14px; }
+.otile:hover { border-color: var(--accent); }
+.otile .oti { width: 36px; height: 36px; border-radius: 50%; background: var(--soft); color: var(--accent); display: grid; place-items: center; flex: none; }
+.otile .oti svg { width: 18px; height: 18px; }
+.otile .bi { min-width: 0; overflow-wrap: anywhere; }
+.otile b { font-weight: 600; font-size: 13.5px; line-height: 1.2; display: block; }
+.otile small { color: var(--muted); font-size: 11.5px; }
+@media (min-width: 900px) { .obottom { grid-template-columns: none; } .otiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Payment: two-box layout, clear font, clean footer */
+.ohead, .cartgrid, .obottom { font-family: var(--f-pay); }
+.ohead h2, .ohead .script, .cartgrid .osec, .cartgrid .oname, .cartgrid .script, .cartgrid strong, .oshead h3, .cartgrid .pm b, .cartgrid .stp { font-family: var(--f-pay); font-style: normal; }
+.ohead h2, .cartgrid .osec, .oshead h3 { font-weight: 700; letter-spacing: -0.02em; }
+.cartgrid .script { font-weight: 700; font-size: 17px; }
+.cartgrid .oname { font-weight: 600; }
+.stot strong { font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.quick { gap: 8px; }
+.qgrid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 8px; align-items: stretch; }
+.qnumbox { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; display: grid; gap: 6px; align-content: center; min-width: 0; }
+.qlab { font-size: 12.5px; color: var(--muted); font-weight: 500; }
+.qn { font-size: clamp(15px, 4.6vw, 20px); font-weight: 700; color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; user-select: all; }
+.qnumbox .copy { margin: 0; width: 100%; justify-content: center; padding: 6px 8px; font-size: 13px; }
+.qgrid .openapp { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center; color: #fff; text-decoration: none; border-radius: 16px; padding: 10px 8px; min-width: 0; }
+.qgrid .openapp img { width: 38px; height: 38px; border-radius: 10px; background: #fff; padding: 3px; object-fit: contain; }
+.qgrid .openapp .bi b { display: block; font-size: 14.5px; line-height: 1.2; font-weight: 700; }
+.qgrid .openapp .bi small { color: #fff; opacity: 0.92; font-size: 12px; }
+.qamt { padding: 2px 4px; }
+.qamt > b { font-size: 18px; font-variant-numeric: tabular-nums; }
+.foot2 { gap: 16px; padding: 24px 16px; border-radius: 22px; }
+.fbrand { display: flex; align-items: center; gap: 12px; text-align: left; }
+.fbrand .flogo { width: 56px; height: 56px; flex: none; }
+.fbrand .fname { font-size: 20px; }
+.fbrand .ftag { margin: 3px 0 0; font-size: 12.5px; }
+.flinks { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 4px 4px; }
+.fl { padding: 7px 14px; border-radius: 999px; font-size: 12px; letter-spacing: 0.1em; background: var(--surface); border: 1px solid var(--line); }
+.fcontact { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.fsq { width: 40px; height: 40px; border-radius: 50%; background: var(--surface); color: var(--accent); }
+.fsq svg { width: 18px; height: 18px; }
+.fphone { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; font-size: 14px; }
+.stores { gap: 8px; }
+.store { min-width: 0; padding: 6px 14px 6px 10px; border-radius: 10px; }
+.store svg, .store img { width: 24px; height: 24px; }
+.store b { font-size: 14px; }
+.fpay { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--line); padding-top: 14px; width: 100%; }
+.fpay > span { font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; }
+.fpay .pays { margin: 0; }
+.foot2 .cr { margin: 0; font-size: 12px; opacity: 0.85; max-width: 46ch; }
+.fpay .pay.plogo { height: 36px; padding: 0 8px; }
+.fpay .pay img { height: 24px; }
+.qgrid .openapp .bi b, .qgrid .openapp .bi small { color: #fff; }
+.foot2 .cr { text-transform: none; letter-spacing: 0; line-height: 1.5; }
+@media (max-width: 420px) { .qn { font-size: 15px; letter-spacing: -0.02em; } .qnumbox { padding: 10px; } }
+
+/* Mobile home: compact, same look as the web design */
+@media (max-width: 599px) {
+  .hero2 { padding: 16px; gap: 14px; border-radius: 22px; margin-top: 2px; }
+  .eyebrow { font-size: 12.5px; }
+  .lead { font-size: 30px; line-height: 1.05; margin: 4px 0 8px; }
+  .hero2 .sub { font-size: 13.5px; line-height: 1.4; margin: 0 0 12px; }
+  .cta-row { flex-wrap: nowrap; gap: 8px; }
+  .cta-row .btn, .cta-row .ghost.pill { padding: 10px 14px; font-size: 13.5px; white-space: nowrap; gap: 6px; }
+  .cta-row .ghost.pill svg { width: 18px; height: 18px; }
+  .trust { margin-top: 14px; gap: 6px; }
+  .trust svg { width: 22px; height: 22px; }
+  .trust b { font-size: 11.5px; }
+  .hvis { gap: 8px; }
+  .hv, .hv:nth-child(2) { border-radius: 14px; aspect-ratio: 4 / 5; box-shadow: 0 6px 16px rgba(194, 24, 91, 0.12); }
+  .hv:nth-child(2) { aspect-ratio: 4 / 5.6; }
+  .block { margin-top: 24px; }
+  .sec-head { margin: 8px 0 8px; }
+  .sec-head h2 { font-size: 19px; }
+  .sec-head span { font-size: 12px; }
+  .cats { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .cat-tile { padding: 5px 4px 7px; border-radius: 12px; gap: 0; }
+  .cat-tile img { aspect-ratio: 1 / 1; border-radius: 9px; margin-bottom: 5px; }
+  .cat-tile b { font-size: 11.5px; line-height: 1.15; }
+  .cat-tile small { display: none; }
+  .allb { padding: 14px; border-radius: 20px; }
+  .allb-top { gap: 10px; }
+  .allb-t { gap: 10px; }
+  .allb-logo { width: 42px; height: 42px; }
+  .allb-eye { font-size: 10px; }
+  .allb h2 { font-size: 18px; }
+  .allb .btn { padding: 9px 16px; font-size: 13px; }
+  .marq { margin-top: 12px; }
+  .track { gap: 8px; }
+  .mt { width: 78px; border-radius: 12px; }
+  .feat-row { gap: 8px; }
+  .fcard { flex: 0 0 44%; border-radius: 14px; }
+  .fcard .ph { aspect-ratio: 1 / 1; }
+  .fcard .name { font-size: 13.5px; }
+  .fcard .info { padding: 8px 10px 6px; }
+  .mini { margin: 2px 10px 10px; padding: 7px 10px; font-size: 13px; border-radius: 10px; }
+  .search { padding: 10px 12px; margin-bottom: 8px; border-radius: 12px; }
+  .chip { padding: 6px 12px; font-size: 13px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+  .card { border-radius: 14px; }
+  .ph { aspect-ratio: 1 / 1; }
+  .info { padding: 8px 10px 10px; gap: 1px; }
+  .cat { font-size: 10px; letter-spacing: 0.06em; }
+  .name { font-size: 13.5px; line-height: 1.22; }
+  .meta { font-size: 12px; }
+  .price { padding-top: 4px; font-size: 14px; }
+  .price s { font-size: 12px; margin-left: 4px; }
+  .badge { top: 6px; left: 6px; font-size: 10px; padding: 1px 8px; }
+}
+
+/* Footer: three parts */
+.foot2 { margin-top: 28px; padding: 18px 12px 14px; gap: 12px; border-radius: 20px; align-items: stretch; }
+.f3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.25fr); gap: 8px; align-items: center; width: 100%; max-width: 900px; margin: 0 auto; }
+.fcol { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.fmid { align-items: center; text-align: center; gap: 3px; }
+.fmid .flogo { width: 64px; height: 64px; }
+.fmid .fname { font-size: 15px; line-height: 1.15; }
+.fmid .ftag { margin: 0; font-size: 11px; line-height: 1.25; }
+.fmid .ftag small { display: block; font-size: 0.95em; opacity: 0.9; }
+.fstores .store { width: 100%; min-width: 0; padding: 6px 8px; gap: 6px; border-radius: 10px; }
+.fstores .store svg, .fstores .store img { width: 22px; height: 22px; }
+.fstores .store small { display: none; }
+.fstores .store b { font-size: 12px; white-space: nowrap; }
+.fcon { align-items: stretch; }
+.fcl { display: flex; align-items: center; gap: 5px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 9px; font-size: 11.5px; font-weight: 600; color: var(--ink); text-decoration: none; min-width: 0; }
+.fcl svg { width: 15px; height: 15px; color: var(--accent); flex: none; }
+.fcl span { min-width: 0; overflow-wrap: anywhere; line-height: 1.15; }
+.fcl:hover { border-color: var(--accent); }
+.fbar { display: flex; align-items: center; justify-content: space-between; gap: 8px 14px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 10px; width: 100%; max-width: 900px; margin: 0 auto; }
+.fbar .flinks { gap: 2px 2px; justify-content: flex-start; }
+.fbar .fl { padding: 5px 10px; font-size: 11px; letter-spacing: 0.06em; }
+.fbar .fpay { border: 0; padding: 0; width: auto; gap: 6px; }
+.fbar .fpay > span { font-size: 10.5px; }
+.fbar .pays { gap: 5px; }
+.fbar .fpay .pay.plogo { height: 28px; padding: 0 6px; border-radius: 8px; }
+.fbar .fpay .pay img { height: 18px; }
+.foot2 .cr { font-size: 11px; max-width: none; text-align: center; margin: 0; }
+@media (max-width: 599px) {
+  .fbar { justify-content: center; } .fbar .flinks { justify-content: center; }
+  .f3 { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.75fr) minmax(0, 1.15fr); gap: 6px; }
+  .fstores .store { padding: 5px 6px; gap: 5px; }
+  .fstores .store svg, .fstores .store img { width: 18px; height: 18px; }
+  .fstores .store b { font-size: 10.5px; }
+  .fbar .fl { padding: 4px 9px; font-size: 10.5px; letter-spacing: 0.04em; }
+  .fbar .fpay { flex-wrap: nowrap; }
+}
+@media (min-width: 760px) {
+  .foot2 { padding: 24px 28px 16px; }
+  .f3 { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .fstores { align-items: flex-start; } .fstores .store { max-width: 190px; }
+  .fstores .store small { display: block; }
+  .fcon { align-items: flex-end; } .fcl { width: fit-content; font-size: 13.5px; padding: 8px 14px; }
+  .fmid .fname { font-size: 20px; } .fmid .ftag { font-size: 13px; }
+}
+
+/* Footer v3: brand + menu on top, three boxes below */
+.foot2 { gap: 12px; padding: 16px 12px 12px; }
+.ftop { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.fbrand2 { display: flex; align-items: center; justify-content: center; gap: 12px; text-align: left; }
+.fbrand2 .flogo { width: 56px; height: 56px; flex: none; }
+.fbrand2 .fname { font-size: 20px; line-height: 1.1; }
+.fbrand2 .ftag { margin: 3px 0 0; font-size: 12px; line-height: 1.3; }
+.ftop .flinks { justify-content: center; gap: 4px; }
+.ftop .fl { padding: 6px 12px; font-size: 11.5px; letter-spacing: 0.08em; }
+.f3 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr); align-items: start; gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
+.f3 .fpay { border: 0; padding: 0; width: auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; }
+.f3 .fpay > span { font-size: 10.5px; letter-spacing: 0.1em; }
+.f3 .pays { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; margin: 0; }
+.f3 .pay.plogo { height: 30px; padding: 0 5px; border-radius: 8px; }
+.f3 .pay img { height: 20px; }
+.f3 .pays { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; max-width: 120px; }
+.f3 .pay.plogo { height: 28px; padding: 0 3px; justify-content: center; }
+.f3 .pay img { height: 18px; max-width: 100%; object-fit: contain; }
+.f3 .pays .pay:last-child { grid-column: 1 / -1; justify-self: center; width: 52px; }
+@media (max-width: 599px) { .ftop .fl { padding: 5px 9px; font-size: 10.5px; letter-spacing: 0.04em; } .ftop .flinks { flex-wrap: nowrap; } .fbrand2 .fname { font-size: 18px; } .fbrand2 .ftag { font-size: 11.5px; } }
+@media (min-width: 760px) {
+  .f3 .pays { display: flex; flex-wrap: nowrap; max-width: none; width: auto; }
+  .f3 .pays .pay:last-child { width: auto; }
+  .f3 { grid-template-columns: 1fr 1.5fr 1fr; }
+  .foot2 { padding: 22px 28px 14px; }
+  .f3 { align-items: center; }
+  .f3 .fpay { gap: 10px; } .f3 .fpay > span { font-size: 12px; }
+  .f3 .pay.plogo { height: 38px; padding: 0 9px; } .f3 .pay img { height: 26px; }
+}
+
+/* Footer mobile fit */
+@media (max-width: 599px) {
+  .f3 .store { padding: 5px 6px; gap: 5px; min-width: 0; width: 100%; }
+  .f3 .store svg, .f3 .store img { width: 18px; height: 18px; }
+  .f3 .store b { font-size: 10.5px; white-space: nowrap; }
+  .f3 .fpay .pay.plogo { height: 30px; padding: 0 5px; }
+  .f3 .fpay .pay img { height: 20px; }
+}
+
+/* Footer final: stores | brand | contact, menu, then We accept at the bottom */
+.foot2 { gap: 12px; padding: 18px 12px 14px; }
+.foot2 .f3 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.25fr); grid-template-areas: "st mid con" "nav nav nav"; gap: 8px; align-items: center; width: 100%; max-width: 900px; margin: 0 auto; border: 0; padding: 0; }
+.foot2 .fstores { grid-area: st; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.foot2 .fmid { grid-area: mid; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 3px; min-width: 0; }
+.foot2 .fcon { grid-area: con; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.foot2 .f3 > .flinks { grid-area: nav; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin-top: 2px; }
+.foot2 .f3 > .flinks .fl { padding: 4px 9px; font-size: 10.5px; letter-spacing: 0.04em; }
+.foot2 .fmid .flogo { width: 64px; height: 64px; }
+.foot2 .fmid .fname { font-size: 15px; line-height: 1.15; }
+.foot2 .fmid .ftag { margin: 0; font-size: 11px; line-height: 1.25; }
+.foot2 .fmid .ftag small { display: block; font-size: 0.95em; opacity: 0.9; }
+.foot2 .fstores .store { width: 100%; min-width: 0; padding: 5px 6px; gap: 5px; border-radius: 10px; }
+.foot2 .fstores .store svg, .foot2 .fstores .store img { width: 18px; height: 18px; }
+.foot2 .fstores .store small { display: none; }
+.foot2 .fstores .store b { font-size: 10.5px; white-space: nowrap; }
+.foot2 > .fpay { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 10px; border-top: 1px solid var(--line); padding-top: 10px; width: 100%; max-width: 900px; margin: 0 auto; }
+.foot2 > .fpay > span { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; }
+.foot2 > .fpay .pays { display: flex; gap: 6px; margin: 0; }
+.foot2 > .fpay .pay.plogo { height: 30px; padding: 0 7px; border-radius: 8px; }
+.foot2 > .fpay .pay img { height: 20px; }
+@media (min-width: 760px) {
+  .foot2 { padding: 24px 28px 16px; }
+  .foot2 .f3 { grid-template-columns: 1fr 1.7fr 1fr; grid-template-areas: "st mid con" "st nav con"; gap: 10px 20px; }
+  .foot2 .f3 > .flinks { flex-wrap: nowrap; }
+  .foot2 .fstores { align-items: flex-start; } .foot2 .fstores .store { max-width: 190px; padding: 6px 12px 6px 10px; }
+  .foot2 .fstores .store small { display: block; } .foot2 .fstores .store b { font-size: 14px; }
+  .foot2 .fstores .store svg, .foot2 .fstores .store img { width: 24px; height: 24px; }
+  .foot2 .fcon { align-items: flex-end; } .foot2 .fcl { width: fit-content; font-size: 13.5px; padding: 8px 14px; }
+  .foot2 .fmid .fname { font-size: 20px; } .foot2 .fmid .ftag { font-size: 13px; }
+  .foot2 .f3 > .flinks .fl { padding: 7px 14px; font-size: 12px; letter-spacing: 0.08em; }
+  .foot2 > .fpay .pay.plogo { height: 36px; padding: 0 9px; } .foot2 > .fpay .pay img { height: 24px; }
+}
+
+/* Footer: clear sections with rules */
+.foot2 { border: 1px solid var(--line); gap: 0; padding: 18px 12px 12px; }
+.foot2 .f3 { align-items: stretch; }
+.foot2 .fh { margin: 0 0 2px; font-family: var(--f-pay); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); line-height: 1.25; }
+.foot2 .fh small { display: block; margin-top: 1px; font-size: 0.95em; letter-spacing: 0; text-transform: none; font-weight: 500; color: var(--muted); }
+.foot2 .fstores, .foot2 .fcon { justify-content: center; }
+.foot2 .fmid { border-left: 1px solid var(--line); border-right: 1px solid var(--line); padding: 2px 6px; justify-content: center; }
+.foot2 .f3 > .flinks { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 10px; }
+.foot2 > .fpay { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 12px; }
+.foot2 > .cr { border-top: 1px solid var(--line); margin: 12px auto 0; padding-top: 10px; width: 100%; max-width: 900px; }
+@media (max-width: 599px) { .foot2 .fcon, .foot2 .fstores { gap: 6px; } .foot2 .fh { font-size: 10px; letter-spacing: 0.1em; } }
+@media (min-width: 760px) {
+  .foot2 { padding: 28px 32px 16px; }
+  .foot2 .f3 { gap: 12px 28px; grid-template-areas: "st mid con" "st mid con"; }
+  .foot2 .f3 > .flinks { grid-area: auto; grid-column: 2; grid-row: 2; border-top: 1px solid var(--line); margin-top: 6px; padding: 14px 0 2px; }
+  .foot2 .fmid { grid-row: 1; padding: 0 20px; }
+  .foot2 .fstores { grid-row: 1 / span 2; } .foot2 .fcon { grid-row: 1 / span 2; }
+  .foot2 .fstores, .foot2 .fcon { justify-content: flex-start; gap: 10px; }
+  .foot2 .fh { font-size: 12px; margin-bottom: 4px; }
+  .foot2 > .fpay { margin-top: 20px; padding-top: 16px; }
+  .foot2 > .cr { margin-top: 16px; padding-top: 12px; }
+}
+
+/* Header hides on scroll down, returns on scroll up */
+.top { transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s ease; will-change: transform; }
+.top.hide { transform: translateY(-115%); box-shadow: none; }
+.tabs { transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform; }
+.tabs.hide { transform: translateY(115%); }
+.top.scrolled:not(.hide) { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14); }
+@media (prefers-reduced-motion: reduce) { .top { transition: none; } }
+
+/* Product detail: Bangla + why it works */
+.bnd { font-family: var(--f-pay); color: var(--muted); font-size: 14px; line-height: 1.55; margin: 4px 0 0; }
+.label .bl { text-transform: none; letter-spacing: 0; font-size: 12.5px; margin-left: 6px; font-weight: 500; }
+.why { display: grid; gap: 8px; }
+.whyi { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 10px 12px; }
+.whyi b { display: block; font-family: var(--f-pay); font-size: 14.5px; line-height: 1.25; }
+.whyi b small { display: block; font-size: 12.5px; font-weight: 500; color: var(--accent); margin-top: 1px; }
+.whyi p { margin: 5px 0 0; font-size: 14px; line-height: 1.5; }
+.whyi p.bnd { margin-top: 3px; }
+.gk { margin-top: 12px; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 12px 12px 0; padding: 10px 12px; }
+.gk b { font-family: var(--f-pay); font-size: 13.5px; }
+.gk b .bl { font-weight: 500; color: var(--muted); font-size: 12.5px; margin-left: 4px; }
+.gk p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.5; }
+.gk .disc { font-size: 11.5px; color: var(--muted); margin-top: 8px; }
+.gk .disc .bnd { font-size: inherit; margin: 0; }
+.thumbs { flex-wrap: wrap; }
+
+/* Smooth motion */
+html { scroll-behavior: smooth; }
+@keyframes vin { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+#view.vin { animation: vin 0.38s cubic-bezier(0.22, 0.8, 0.3, 1); }
+@keyframes fadeb { from { opacity: 0; } to { opacity: 1; } }
+.scrim { animation: fadeb 0.22s ease; }
+.btn, .primary, .ghost, .mini, .chip, .navbtn, .tab, .sbtn, .fsq, .fl, .stp, .pm, .qty button, .copy, .cat-tile, .card, .fcard, .oline, .ob, .hw, .store, .openapp, .hv, .mt, .orem, .ocard {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+.ph img, .hv img { transition: transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1); }
+@media (hover: hover) {
+  .btn:hover, .primary:hover, .ghost:hover, .openapp:hover, .mini:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(194, 24, 91, 0.22); }
+  .card:hover, .fcard:hover, .cat-tile:hover, .oline:hover, .ob:hover, .hw:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(42, 22, 32, 0.14); }
+  .card:hover .ph img, .fcard:hover .ph img, .oline:hover .ph img { transform: scale(1.06); }
+  .hv:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(194, 24, 91, 0.25); }
+  .hv:hover img { transform: scale(1.05); }
+  .sbtn:hover, .fsq:hover, .stp:hover { transform: translateY(-2px); }
+  .pm:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(42, 22, 32, 0.1); }
+  .chip:hover, .navbtn:hover { border-color: var(--accent); color: var(--accent); }
+  .store:not(:disabled):hover { transform: translateY(-2px); }
+}
+.btn:active, .primary:active, .ghost:active, .pm:active, .mini:active { transform: scale(0.98); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } #view.vin, .scrim { animation: none; } * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .sheet { animation: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1 class="brand"><button class="brandbtn" type="button" data-go="shop" data-home="1" aria-label="Zoni Skin Care home"><img class="logo" src="img/logo.png" alt="Zoni Skin Care logo"><span class="bname">Zoni<small>Skin Care</small></span></button></h1>
+    <nav class="nav" aria-label="Pages">
+      <button class="navbtn" id="nav-shop" data-go="shop" data-home="1" type="button">Home</button>
+      <button class="navbtn" type="button" data-scroll="products">Shop</button>
+      <button class="navbtn" type="button" data-scroll="categories">Categories</button>
+      <button class="navbtn" type="button" data-scroll="contact">Contact</button>
+      <button class="navbtn" id="nav-cart" data-go="cart" type="button">My order<span class="dot" id="dot2" hidden>0</span></button>
+    </nav>    <div class="social">
+      <a class="sbtn" href="https://wa.me/c/8801349751534" target="_blank" rel="noopener" aria-label="WhatsApp catalog" title="WhatsApp catalog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 00-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1012 3.5z"/><path d="M9 8.8c.3 2.8 2.4 5 5.3 5.7l1-1.3-1.9-.9-.7.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.7-.9-1.9L9 8.8z"/></svg></a>
+      <a class="sbtn" href="https://www.facebook.com/share/19kcMm9c6L/" target="_blank" rel="noopener" aria-label="Facebook page" title="Facebook page"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21h3z"/></svg></a>
+    </div>
+  </header>
+  <main id="view"></main>
+</div>
+
+<nav class="tabs" aria-label="Main">
+  <div>
+    <button class="tab" id="tab-shop" data-go="shop" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg>
+      Shop
+    </button>
+    <button class="tab" id="tab-cart" data-go="cart" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14l-1.2 12H6.2L5 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+      My order
+      <span class="dot" id="dot" hidden>0</span>
+    </button>
+  </div>
+</nav>
+
+<div id="sheet" hidden></div>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script>
+(function () {
+  var WA_CATALOG = 'https://wa.me/c/8801349751534';   // prices live in this WhatsApp catalog
+  var WA_CHAT = 'https://wa.me/8801349751534';        // orders are sent to this number
+  var FB = 'https://www.facebook.com/share/19kcMm9c6L/';
+  var ICON_FB = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.5V21h3z"/></svg>';
+  var ICON_WA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 00-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1012 3.5z"/><path d="M9 8.8c.3 2.8 2.4 5 5.3 5.7l1-1.3-1.9-.9-.7.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.7-.9-1.9L9 8.8z"/></svg>';
+
+  // Store links. Paste your Google Play and App Store addresses here once the app is published. Empty means the button shows "Coming soon".
+  var APP_LINKS = { play: '', apple: '' };
+
+  // Payment methods. Put your own numbers in num (bKash, Nagad, Rocket) and your bank details in info.
+  // While they are empty, customers are told you will send the number on WhatsApp.
+  var QR = { n: 21, d: 'M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM10 0h1v1h-1zM12 0h1v1h-1zM14 0h1v1h-1zM15 0h1v1h-1zM16 0h1v1h-1zM17 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM20 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM12 1h1v1h-1zM14 1h1v1h-1zM20 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM14 2h1v1h-1zM16 2h1v1h-1zM17 2h1v1h-1zM18 2h1v1h-1zM20 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h1v1h-1zM17 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h1v1h-1zM12 4h1v1h-1zM14 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM11 5h1v1h-1zM14 5h1v1h-1zM20 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM15 6h1v1h-1zM16 6h1v1h-1zM17 6h1v1h-1zM18 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM0 8h1v1h-1zM1 8h1v1h-1zM2 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM18 8h1v1h-1zM0 9h1v1h-1zM3 9h1v1h-1zM5 9h1v1h-1zM8 9h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM11 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM15 9h1v1h-1zM16 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM0 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM20 10h1v1h-1zM0 11h1v1h-1zM4 11h1v1h-1zM5 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM15 11h1v1h-1zM16 11h1v1h-1zM18 11h1v1h-1zM3 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM11 12h1v1h-1zM14 12h1v1h-1zM16 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM8 13h1v1h-1zM13 13h1v1h-1zM15 13h1v1h-1zM17 13h1v1h-1zM20 13h1v1h-1zM0 14h1v1h-1zM1 14h1v1h-1zM2 14h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM8 14h1v1h-1zM12 14h1v1h-1zM14 14h1v1h-1zM16 14h1v1h-1zM18 14h1v1h-1zM19 14h1v1h-1zM20 14h1v1h-1zM0 15h1v1h-1zM6 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM13 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM20 15h1v1h-1zM0 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM4 16h1v1h-1zM6 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM18 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM0 17h1v1h-1zM2 17h1v1h-1zM3 17h1v1h-1zM4 17h1v1h-1zM6 17h1v1h-1zM11 17h1v1h-1zM16 17h1v1h-1zM18 17h1v1h-1zM19 17h1v1h-1zM0 18h1v1h-1zM2 18h1v1h-1zM3 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM14 18h1v1h-1zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM8 19h1v1h-1zM9 19h1v1h-1zM11 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM20 19h1v1h-1zM0 20h1v1h-1zM1 20h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM6 20h1v1h-1zM8 20h1v1h-1zM11 20h1v1h-1zM14 20h1v1h-1zM15 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM20 20h1v1h-1z' };
+  // Android app packages used to open the wallet apps. If the app is not installed the phone opens its Play Store page.
+  var APPPKG = { bkash: 'com.bKash.customerapp', nagad: 'com.konasl.nagad', rocket: 'com.dbbl.mbs.apps.main' };
+  var LOGO = { bkash: 'img/l-bkash.png', nagad: 'img/l-nagad.png', rocket: 'img/l-rocket.png', bank: 'img/l-bank.png', card: 'img/l-card.png', apple: 'img/l-apple.png', play: 'img/l-play.png' };
+  function intentUrl(id) { var pk = APPPKG[id]; return 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=' + pk + ';S.browser_fallback_url=' + encodeURIComponent('https://play.google.com/store/apps/details?id=' + pk) + ';end'; }
+  var PAY = [
+    { id: 'cod', n: 'Cash on delivery', bn: 'ক্যাশ অন ডেলিভারি', s: 'Pay in cash when your order arrives', c: '#2E7D32' },
+    { id: 'bkash', n: 'bKash', bn: 'বিকাশ', s: 'Send Money from the bKash app', num: '+8801330027701', c: '#E2136E', wallet: 1 },
+    { id: 'nagad', n: 'Nagad', bn: 'নগদ', s: 'Send Money from the Nagad app', num: '+8801330027701', c: '#F6921E', wallet: 1 },
+    { id: 'rocket', n: 'Rocket', bn: 'রকেট', s: 'Send Money from the Rocket app', num: '+8801330027701', c: '#8C3494', wallet: 1 },
+    { id: 'bank', n: 'Bank transfer', bn: 'ব্যাংক ট্রান্সফার', s: 'Transfer to our bank account', bank: { holder: 'SHAKIL HOSSAIN', name: 'Rupali Bank Ltd.', acc: '5074010025503', routing: '185280882' }, c: '#1565C0', wallet: 1 },
+    { id: 'card', n: 'Debit or credit card', bn: 'ডেবিট বা ক্রেডিট কার্ড', s: 'We send a secure payment link', c: '#455A64' }
+  ];
+
+  // feat: 1 puts a product in the Featured row on the home page.
+  var P = [
+    { id: 1, n: 'Salicylic Acid 3% Acne Repair Cream', b: 'Sadoer', t: 'Face cream', feat: 1, bn: 'নিখুঁত ত্বকের জন্য ৩% স্যালিসাইলিক অ্যাসিডের শক্তি', d: 'A 3% salicylic acid cream for acne-prone skin. It helps clear pimples, shrink the look of pores and fade acne marks, while nourishing and moisturizing.', k: ['Salicylic acid 3%'], poster: 1 },
+    { id: 2, n: 'Retinol Collagen Day & Night Cream', b: 'BL Vterly', t: 'Face cream', feat: 1, tag: 'New', s: '50 g', bn: 'যৌবনের ছাপ দূর করে ত্বক টানটান রাখে', d: 'A retinol and collagen cream that softens fine lines and wrinkles and helps skin feel firm, smooth and bright. For all skin types.', k: ['Retinol', 'Collagen', 'Hyaluronic acid', 'Vitamin E', 'Glycerin'], poster: 1 },
+    { id: 3, n: 'Baby Moisturizing Cream', b: 'Bioaqua', t: 'Face cream', bn: 'গভীর ময়েশ্চারাইজিংয়ের ক্রিম', d: 'A mild hydrating cream that locks in water and helps relieve dryness and rough patches. For all skin types.', k: ['Hyaluronic acid', 'Glycerin', 'Milk protein', 'Plant extract'], u: 'After cleansing, massage a generous amount gently into the face. Use twice a day.', poster: 1 },
+    { id: 4, n: 'Rice Raw Pulp Neck Cream', b: 'Bioaqua', t: 'Neck cream', s: '60 g', bn: 'বায়োঅ্যাকুয়া রাইস র-পাল্প নেক ক্রিম', d: 'A hydrating, firming neck cream with rice polypeptide. It helps reduce the look of fine lines on the neck and leaves skin tender, smooth and elastic.', k: ['Rice polypeptide', 'Rice pulp'], u: 'Wash and dry your neck. Massage the cream upward. Use every night.', poster: 1 },
+    { id: 5, n: 'Anti-Aging Collagen Face Cream', b: 'Sadoer', t: 'Face cream', s: '40 g', bn: 'কোলাজেন ফেস ক্রিম', d: 'A collagen face cream that helps firm skin, soften wrinkles and keep it deeply moisturized, smooth and bright.', k: ['Natural active collagen'], u: 'Use morning and night.', poster: 1 },
+    { id: 6, n: 'Freckle Snail Whitening Cream', b: 'Vterly', t: 'Face cream', s: '50 g', bn: 'শামুক ও ফর্সা করার ক্রিম', d: 'A snail whitening cream made to help even out and brighten the look of freckled skin.', k: ['Snail extract'], poster: 1 },
+    { id: 7, n: 'Nicotinamide Whitening Anti-Freckle Cream', b: 'Sadoer', t: 'Face cream', s: '20 g', bn: 'নিকোটিনামাইড হোয়াইটেনিং অ্যান্টি-ফ্রেকল ক্রিম', d: 'A nicotinamide cream that helps lighten dullness and dark spots, leaving skin bright, soft and smooth.', k: ['Nicotinamide'], u: 'Wash your face well. Wash and dry your hands, then apply a small amount at night.', poster: 1 },
+    { id: 8, n: 'Nicotinamide Whitening Freckle Essence', b: 'Sadoer', t: 'Serum', s: '30 ml', d: 'A nicotinamide essence made to lighten freckles and pigmentation. It leaves skin moisturized, smooth, tender and bright.', k: ['Nicotinamide'] },
+    { id: 9, n: 'Minoxidil Keratin Black Rice Serum', b: 'Saoder', t: 'Serum', feat: 1, s: '30 ml', imgs: ['t9', 't9b'], d: 'A hair serum for anti-hair loss and regrowth, with minoxidil, keratin and black rice extract. Made for stronger hair roots and healthier, shinier hair. For all hair types.', k: ['Minoxidil', 'Keratin', 'Black rice extract'] },
+    { id: 10, n: 'Salicylic Acid 3% Acne Repair Serum', b: 'Sadoer', t: 'Serum', s: '40 ml', bn: 'সাদোর স্যালিসাইলিক অ্যাসিড ব্রণ সারানোর সিরাম', d: 'An acne repair serum that helps clear pimples fast. Centella and niacinamide keep skin calm and nourished, while it helps shrink the look of pores and hydrates deeply.', k: ['Salicylic acid 3%', 'Collagen peptide', 'Centella asiatica', 'Niacinamide'], poster: 1 },
+    { id: 11, n: 'Whitening Dark Knuckle Serum', b: 'Sadoer', t: 'Serum', s: '50 ml', d: 'A whitening and brightening serum for dark knuckles, with niacinamide and vitamin C.', k: ['Niacinamide', 'Vitamin C'] },
+    { id: 12, n: 'Aloe Vera Eye Serum', b: 'Moika', t: 'Eye serum', feat: 1, s: '30 ml', bn: 'অ্যালোভেরা আই সিরাম, চোখের কালো দাগ দূর করে উজ্জ্বল ও তরুণ দেখায়', d: 'A lightweight eye serum that helps reduce dark circles, puffiness and fine lines around the eyes while it hydrates. Paraben free and sulfate free.', k: ['Aloe vera extract', 'Caffeine', 'Hyaluronic acid', 'Vitamin E'], u: 'On clean skin, gently tap a small amount around the eyes. Use morning and night.', poster: 1 },
+    { id: 13, n: 'Lip Gloss', b: 'Liphop', t: 'Lips', d: 'Liphop lip gloss in soft coral and pink shades.', k: [] },
+    { id: 14, n: 'Lip Paint, shade Love', b: 'Liphop', t: 'Lips', d: 'Liphop lip paint in the shade Love.', k: [] },
+    { id: 15, n: 'Moisturizing Lip Care Set', b: 'Marc Buse', t: 'Lips', d: 'A pink moisturizing lip care set with a lip gel tube, a lip jar and a small applicator brush.', k: [] },
+    { id: 16, n: 'Rice Raw Pulp Cleanser', b: 'Bioaqua', t: 'Face wash', s: '100 g', d: 'A deep cleansing face wash with rice extract. It soothes and repairs the skin and leaves it moist and delicate.', k: ['Rice extract'] },
+    { id: 17, n: 'Rice Raw Pulp Hair Removal Cream', b: 'Bioaqua', t: 'Hair removal', s: '60 g', bn: 'মসৃণ এবং উজ্জ্বল ত্বকের গোপন রহস্য', d: 'A hair removal cream with rice extract. It removes hair quickly without pain, brightens skin and leaves it smooth.', k: ['Rice raw pulp'] },
+    { id: 18, n: 'Whiten Hand Cream', b: 'Sadoer', t: 'Hand cream', s: '100 g', d: 'A niacinamide and vitamin C hand cream that helps fade melanin and brighten, while it hydrates and nourishes.', k: ['Niacinamide', 'Vitamin C'] }
+  ];
+  var CATS = ['All'].concat(P.map(function (p) { return p.t; }).filter(function (t, i, a) { return a.indexOf(t) === i; }));
+
+  // Prices from your WhatsApp catalog, in BDT: id -> [sale price, original price]. Product 15 has no catalog price yet.
+  var PRICE = { 1: [850, 950], 2: [450, 650], 3: [500, 600], 4: [750, 850], 5: [600, 700], 6: [700, 800], 7: [300, 400], 8: [400, 500], 9: [400, 550], 10: [750, 850], 11: [650, 750], 12: [550, 650], 13: [380, 450], 14: [380, 450], 16: [500, 600], 17: [400, 500], 18: [350, 400] };
+  P.forEach(function (p) { var x = PRICE[p.id]; if (x) { p.pr = x[0]; p.was = x[1]; } });
+
+  var S = { view: 'shop', cat: 'All', q: '', cart: [], sheet: null, pay: 'cod', form: { name: '', phone: '', addr: '', trx: '' } };
+  try { var saved = JSON.parse(localStorage.getItem('zoni-order') || '[]'); if (Array.isArray(saved)) S.cart = saved.filter(function (x) { return x && byId(x.id); }); } catch (e) {}
+
+  function byId(id) { return P.filter(function (p) { return p.id === id; })[0]; }
+  function payById(id) { return PAY.filter(function (m) { return m.id === id; })[0]; }
+  function persist() { try { localStorage.setItem('zoni-order', JSON.stringify(S.cart)); } catch (e) {} }
+  function count() { return S.cart.reduce(function (a, x) { return a + x.qty; }, 0); }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); }
+  var $ = function (id) { return document.getElementById(id); };
+  function money(n) { return '৳ ' + n.toLocaleString('en-US'); }
+  function priceHtml(p) { return p.pr ? '<span class="price"><b>' + money(p.pr) + '</b><s>' + money(p.was) + '</s></span>' : '<span class="price ask">Price on WhatsApp</span>'; }
+  function priceBlock(p) { return p.pr ? '<div class="pbox"><strong>' + money(p.pr) + '</strong><s>' + money(p.was) + '</s><span>Save ' + money(p.was - p.pr) + '</span></div>' : '<p class="meta">Price on WhatsApp</p>'; }
+  var NEWIMG = { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1, 9: 1, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 1, 16: 1, 17: 1, 18: 1 };
+  function timg(id) { return 'img/t' + id + (NEWIMG[id] ? 'n' : '') + '.jpg'; }
+  function photo(p, extra) { return '<div class="ph">' + (extra || '') + '<img src="' + timg(p.id) + '" alt="' + esc(p.n) + '" loading="lazy"></div>'; }
+  function ext(href, cls, icon, text) { return '<a class="' + cls + '" href="' + href + '" target="_blank" rel="noopener">' + icon + '<span>' + text + '</span></a>'; }
+  function allPriced() { return S.cart.every(function (x) { return byId(x.id).pr; }); }
+  function cartTotal() { return S.cart.reduce(function (a, x) { return a + (byId(x.id).pr || 0) * x.qty; }, 0); }
+
+  function cards(list) {
+    return list.map(function (p) {
+      return '<button class="card" type="button" data-open="' + p.id + '">' + photo(p, p.tag ? '<span class="badge">' + p.tag + '</span>' : '') + '<div class="info"><span class="cat">' + p.b + '</span><span class="name">' + p.n + '</span><span class="meta">' + (p.s || p.t) + '</span>' + priceHtml(p) + '</div></button>';
+    }).join('');
+  }
+  // Recommendations: products not already shown, same category as the first match first.
+  function recs(list) {
+    var ids = list.map(function (p) { return p.id; }), first = list[0];
+    var pool = P.filter(function (p) { return ids.indexOf(p.id) < 0; });
+    if (first) pool.sort(function (a, b) { return (b.t === first.t) - (a.t === first.t); });
+    return pool.slice(0, 4);
+  }
+  function gridHtml() {
+    var q = S.q.trim().toLowerCase();
+    var list = P.filter(function (p) { return (S.cat === 'All' || p.t === S.cat) && (!q || (p.n + ' ' + p.b + ' ' + p.t).toLowerCase().indexOf(q) > -1); });
+    var out = list.length ? cards(list) : '<p class="empty">No products match that search.</p>';
+    if (q || S.cat !== 'All') { var r = recs(list); if (r.length) out += '<h3 class="recs">You may also like</h3>' + cards(r); }
+    return out;
+  }
+  function featured() {
+    var f = P.filter(function (p) { return p.feat; });
+    if (!f.length) return '';
+    return '<section class="block" aria-label="Featured products"><div class="sec-head"><h2>Featured products</h2><span>Our best picks</span></div><div class="feat-row">' + f.map(function (p) {
+      return '<article class="fcard"><button class="fopen" type="button" data-open="' + p.id + '">' + photo(p, '<span class="badge">' + (p.tag || 'Featured') + '</span>') + '<div class="info"><span class="cat">' + p.b + '</span><span class="name">' + p.n + '</span><span class="meta">' + (p.s || p.t) + '</span>' + priceHtml(p) + '</div></button><button class="mini" type="button" data-quick="' + p.id + '">Add to order</button></article>';
+    }).join('') + '</div></section>';
+  }
+
+  function social() {
+    return '<section class="follow" aria-label="Follow us"><span>Follow us</span><a class="sbtn" href="' + FB + '" target="_blank" rel="noopener" aria-label="Facebook page" title="Facebook page">' + ICON_FB + '</a><a class="sbtn" href="' + WA_CATALOG + '" target="_blank" rel="noopener" aria-label="WhatsApp catalog" title="WhatsApp catalog">' + ICON_WA + '</a></section>';
+  }
+
+  var HERO_IDS = [5, 8, 11];
+  function hero() {
+    var vis = HERO_IDS.map(function (id) { var p = byId(id); return '<button class="hv" type="button" data-open="' + id + '" aria-label="' + esc(p.n) + '"><img src="' + timg(id) + '" alt="' + esc(p.n) + '"></button>'; }).join('');
+    var ic = function (d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
+    return '<section class="hero2"><div><span class="eyebrow">আসল ফ্যাক্টরি পণ্য</span><h2 class="lead">Natural glow,<br><em>pure care.</em></h2><p class="sub">Face creams, serums, face wash and more from brands like Sadoer, Bioaqua and BL Vterly. Delivered all over Bangladesh.</p><div class="cta-row"><button class="btn" type="button" data-scroll="products">Shop now <span aria-hidden="true">&rarr;</span></button><a class="ghost pill" href="' + WA_CATALOG + '" target="_blank" rel="noopener">' + ICON_WA + '<span>WhatsApp catalog</span></a></div>' +
+      '<ul class="trust"><li>' + ic('<path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/>') + '<b>Original products</b></li>' +
+      '<li>' + ic('<path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/>') + '<b>Delivery all over Bangladesh</b></li>' +
+      '<li>' + ic('<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/>') + '<b>bKash, Nagad, Rocket</b></li></ul></div><div class="hvis">' + vis + '</div></section>';
+  }
+  function categories() {
+    var cats = CATS.slice(1);
+    return '<section class="block" id="categories"><div class="sec-head"><h2>Shop by category</h2><span>' + cats.length + ' categories</span></div><div class="cats">' + cats.map(function (c) {
+      var items = P.filter(function (p) { return p.t === c; });
+      return '<button class="cat-tile" type="button" data-cat="' + c + '" data-scroll="products"><img src="' + timg(items[0].id) + '" alt="" loading="lazy"><b>' + c + '</b><small>' + items.length + (items.length > 1 ? ' products' : ' product') + '</small></button>';
+    }).join('') + '</div></section>';
+  }
+  function promo() {
+    var tile = function (p, dup) { return '<button class="mt" type="button" data-open="' + p.id + '" aria-label="' + esc(p.n) + '"' + (dup ? ' tabindex="-1" aria-hidden="true"' : '') + '><img src="' + timg(p.id) + '" alt="' + (dup ? '' : esc(p.n)) + '" loading="lazy"></button>'; };
+    return '<section class="block" aria-label="All products"><div class="allb"><div class="allb-top"><div class="allb-t"><img class="allb-logo" src="img/logo.png" alt=""><div><span class="allb-eye">' + P.length + ' products, one shop</span><h2>Everything for your skin, <em>in one place.</em></h2></div></div><button class="btn gold" type="button" data-scroll="products">Shop all products <span aria-hidden="true">&rarr;</span></button></div>' +
+      '<div class="marq"><div class="track">' + P.map(function (p) { return tile(p, false); }).join('') + P.map(function (p) { return tile(p, true); }).join('') + '</div></div></div></section>';
+  }
+  var PHONE = '+880 1349-751534', PHONE_TEL = '+8801349751534';
+  var ICON_PHONE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>';
+  function footer() {
+    var sv = function (d, fill) { return '<svg viewBox="0 0 24 24" ' + (fill ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"') + ' aria-hidden="true">' + d + '</svg>'; };
+    var store = function (url, icon, top, name) {
+      var inner = icon + '<span><small>' + (url ? top : 'Coming soon') + '</small><b>' + name + '</b></span>';
+      return url ? '<a class="store" href="' + esc(url) + '" target="_blank" rel="noopener">' + inner + '</a>' : '<button class="store" type="button" disabled aria-label="' + name + ', coming soon">' + inner + '</button>';
+    };
+    var pay = function (id, label) { return '<span class="pay plogo" title="' + label + '"><img src="' + LOGO[id] + '" alt="' + label + '"></span>'; };
+    var pill = function (href, icon, label, ext) { return '<a class="fcl" href="' + href + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' + icon + '<span>' + label + '</span></a>'; };
+    return '<footer class="foot2" id="contact"><div class="f3">' +
+      '<div class="fcol fstores"><h4 class="fh">Get the app<small>অ্যাপ নিন</small></h4>' + store(APP_LINKS.play, '<img src="' + LOGO.play + '" alt="">', 'Get it on', 'Google Play') + store(APP_LINKS.apple, '<img src="' + LOGO.apple + '" alt="">', 'Download on the', 'App Store') + '</div>' +
+      '<div class="fcol fmid"><img class="flogo" src="img/logo.png" alt="Zoni Skin Care logo"><div class="fname">Zoni Skin Care</div><div class="ftag">Natural glow, pure care.<small>আসল ফ্যাক্টরি পণ্য</small></div></div>' +
+      '<div class="fcol fcon"><h4 class="fh">Contact us<small>যোগাযোগ</small></h4>' + pill('tel:' + PHONE_TEL, ICON_PHONE, PHONE) + pill(FB, ICON_FB, 'Facebook', 1) + pill(WA_CHAT, ICON_WA, 'WhatsApp', 1) + '</div>' +
+      '<nav class="flinks" aria-label="Footer"><button class="fl" type="button" data-go="shop" data-home="1">Home</button><button class="fl" type="button" data-scroll="products">Shop</button><button class="fl" type="button" data-scroll="categories">Categories</button><button class="fl" type="button" data-go="cart">My order</button></nav></div>' +
+      '<div class="fpay"><span>We accept</span><div class="pays" aria-label="Payment methods">' + pay('bkash', 'bKash') + pay('nagad', 'Nagad') + pay('rocket', 'Rocket') + pay('bank', 'Bank transfer') + pay('card', 'Card') + '</div></div>' +
+      '<p class="cr">&copy; ' + new Date().getFullYear() + ' Zoni Skin Care. All rights reserved. Patch test new products on your inner arm first.</p></footer>';
+  }
+
+  function shop() {
+    var browsing = S.q.trim() || S.cat !== 'All';
+    var h = '';
+    if (!browsing) h += hero() + categories() + promo() + featured();
+    h += '<section class="block" id="products"><div class="sec-head"><h2>All products</h2><span>' + P.length + ' items</span></div>';
+    h += '<input class="search" id="q" type="search" placeholder="Search products" aria-label="Search products" value="' + esc(S.q) + '">';
+    h += '<div class="chips" role="group" aria-label="Category">' + CATS.map(function (c) { return '<button class="chip" type="button" data-cat="' + c + '" data-scroll="products" aria-pressed="' + (S.cat === c) + '">' + c + '</button>'; }).join('') + '</div>';
+    h += '<div class="grid" id="grid">' + gridHtml() + '</div></section>';
+    return h + footer();
+  }
+
+  function bi(en, bn) { return '<span class="bi">' + en + '<small>' + bn + '</small></span>'; }
+  function bd(n) { return String(n).replace(/[0-9]/g, function (d) { return '০১২৩৪৫৬৭৮৯'.charAt(+d); }); }
+  function ico(d) { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; }
+  var IC = {
+    bag: '<path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 016 0"/>',
+    user: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/>',
+    wallet: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/>',
+    phone: '<rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/>',
+    send: '<path d="M4 12l16-8-6 16-3-6-7-2z"/>',
+    keypad: '<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h.01M12 8h.01M15 8h.01M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"/>',
+    taka: '<circle cx="12" cy="12" r="9"/><path d="M9 7v7a2 2 0 002 2h1M9 10h6"/>',
+    lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>',
+    receipt: '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z"/><path d="M9 8h6M9 12h6"/>',
+    bank: '<path d="M3 10l9-6 9 6"/><path d="M5 10v8M9 10v8M15 10v8M19 10v8M3 20h18"/>',
+    truck: '<path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.7"/><circle cx="17" cy="17.5" r="1.7"/>',
+    link: '<path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/>',
+    check: '<path d="M5 13l4 4 10-10"/>',
+    card: '<rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><path d="M7 15h3"/>'
+  };
+  function steps(n) {
+    var st = function (k, en, bn, attrs) { return '<button class="stp' + (n > k ? ' done' : '') + '" type="button" ' + (n === k ? 'aria-current="step"' : '') + ' ' + attrs + '>' + k + ' ' + en + ' &middot; ' + bn + '</button>'; };
+    return st(1, 'Cart', 'কার্ট', 'data-go="cart"') + st(2, 'Details', 'তথ্য', n >= 2 ? 'data-jump="sec-details"' : 'data-act="checkout"') + st(3, 'Payment', 'পেমেন্ট', n >= 2 ? 'data-jump="sec-pay"' : 'data-act="checkout"');
+  }
+  function howto(n) {
+    var items = [[IC.bag, 'Choose products', 'পণ্য বাছুন'], [IC.user, 'Enter your details', 'তথ্য দিন'], [IC.wallet, 'Make the payment', 'পেমেন্ট করুন'], [IC.send, 'Send on WhatsApp', 'WhatsApp-এ পাঠান']];
+    return '<ol class="howto" aria-label="How to order">' + items.map(function (it, k) { var on = n === 1 ? k === 0 : k >= 1; return '<li class="hw' + (on ? ' on' : '') + '"><span class="hi">' + ico(it[0]) + '</span>' + bi((k + 1) + '. ' + it[1], it[2]) + '</li>'; }).join('') + '</ol>';
+  }
+  function ohead(n) {
+    var c = count();
+    return '<div class="ohead"><div class="ocard otitle"><span class="script">Almost there</span><h2>My <em>order.</em></h2><p class="bnline">আমার অর্ডার</p><p>' + c + ' item' + (c > 1 ? 's' : '') + ', delivery all over Bangladesh</p></div>' +
+      '<div class="ocard osteps"><span class="elabel">Checkout steps</span><span class="script">Step ' + n + ' of 3</span><div class="stps">' + steps(n) + '</div></div></div>' + howto(n);
+  }
+  function obottom() {
+    var t = function (href, icon, en, bn, tel) { return '<a class="otile" href="' + href + '"' + (tel ? '' : ' target="_blank" rel="noopener"') + '><span class="oti">' + icon + '</span><span class="bi"><b>' + en + '</b><small>' + bn + '</small></span></a>'; };
+    return '<section class="obottom" aria-label="Catalog and contact">' +
+      '<div class="osupport"><div class="oshead"><h3>Need anything else?<small>আর কিছু লাগলে জানান</small></h3></div><div class="otiles">' +
+      t(WA_CATALOG, ICON_WA, 'WhatsApp catalog', 'সব পণ্য ও দাম') +
+      t(WA_CHAT, ICON_WA, 'Chat with us', 'কথা বলুন') +
+      t('tel:' + PHONE_TEL, ICON_PHONE, 'Call ' + PHONE, 'ফোন করুন', 1) +
+      t(FB, ICON_FB, 'Facebook page', 'ফেসবুক পেজ') +
+      '</div></div></section>';
+  }
+  function sumRows(compact) {
+    var h = '';
+    if (compact) {
+      S.cart.forEach(function (x) { var p = byId(x.id); h += '<div class="srow sitem"><span>' + esc(p.n) + ' &times; ' + x.qty + '</span><b>' + (p.pr ? money(p.pr * x.qty) : 'Ask') + '</b></div>'; });
+    } else {
+      h += '<div class="srow">' + bi('Items (' + count() + ')', 'পণ্য') + '<b>' + (allPriced() ? money(cartTotal()) : 'See WhatsApp') + '</b></div>';
+    }
+    h += '<div class="srow">' + bi('Delivery', 'ডেলিভারি') + '<b>Confirmed on WhatsApp</b></div><hr class="sline">';
+    h += '<div class="srow stot">' + bi('Total before delivery', 'মোট টাকা') + '<strong>' + (allPriced() ? money(cartTotal()) : 'On WhatsApp') + '</strong></div>';
+    return h;
+  }
+  var SUMT = '<span class="script">Order summary<small class="bsub">অর্ডারের সারাংশ</small></span>';
+  function cart() {
+    if (!S.cart.length) return '<h2 class="screen">My order<small class="enl">আমার অর্ডার</small></h2><p class="empty" style="padding:48px 0">Nothing here yet.<br><br><button class="ghost" type="button" data-go="shop">' + bi('Browse products', 'পণ্য দেখুন') + '</button></p>' + obottom() + footer();
+    var h = ohead(1) + '<div class="cartgrid"><div class="lines"><p class="hint">Prices are from our WhatsApp catalog. The delivery charge is confirmed when you send your order.<small class="bsub">ডেলিভারি চার্জ WhatsApp-এ জানানো হবে</small></p>';
+    S.cart.forEach(function (x, i) {
+      var p = byId(x.id);
+      h += '<div class="oline">' + photo(p) + '<div class="omid"><div class="oname">' + p.n + '</div><div class="meta">' + p.b + (p.s ? ' &middot; ' + p.s : '') + (p.pr ? ' &middot; ' + money(p.pr) + ' each' : '') + '</div><div class="qty"><button type="button" data-q="' + i + '" data-d="-1" aria-label="Remove one">&minus;</button><output>' + x.qty + '</output><button type="button" data-q="' + i + '" data-d="1" aria-label="Add one">+</button></div></div>' +
+        '<div class="oprice"><b>' + (p.pr ? money(p.pr * x.qty) : 'Price on WhatsApp') + '</b><button class="orem" type="button" data-q="' + i + '" data-d="-99">Remove &middot; সরান</button></div></div>';
+    });
+    h += '<button class="ghost addmore" type="button" data-go="shop" data-home="1">&larr; ' + bi('Add more products', 'আরও পণ্য') + '</button></div>';
+    h += '<aside class="osum">' + SUMT + sumRows(false) + '<button class="primary" type="button" data-act="checkout">' + bi('Continue to payment', 'পেমেন্টে যান') + '<span aria-hidden="true">&rarr;</span></button><p class="small">Pay with bKash, Nagad, Rocket, bank transfer, card or cash on delivery. You choose in the next step.</p></aside></div>';
+    return h + obottom() + footer();
+  }
+  function checkout() {
+    if (!S.cart.length) return cart();
+    var f = S.form, m = payById(S.pay);
+    var SH = { cod: ['Cash', 'ক্যাশ'], bank: ['Bank', 'ব্যাংক'], card: ['Card', 'কার্ড'] };
+    var pms = PAY.map(function (x) { var l = SH[x.id] || [x.n, x.bn]; return '<label class="pm" title="' + x.n + '"><input type="radio" name="pay" value="' + x.id + '"' + (S.pay === x.id ? ' checked' : '') + ' aria-label="' + x.n + '">' + (LOGO[x.id] ? '<img src="' + LOGO[x.id] + '" alt="">' : '<span class="pmi">' + ico(IC.truck) + '</span>') + '<b>' + l[0] + '</b><small>' + l[1] + '</small></label>'; }).join('');
+    var h = ohead(2) + '<div class="cartgrid"><div class="lines">';
+    h += '<section class="ocard" id="sec-details"><span class="elabel">Step 2</span><h3 class="osec">Your details<small class="enl">আপনার তথ্য</small></h3><div class="form"><div class="f2">' +
+      '<label class="f" for="f-name">' + bi('Full name', 'নাম') + '<input id="f-name" type="text" autocomplete="name" placeholder="Your name" value="' + esc(f.name) + '"></label>' +
+      '<label class="f" for="f-phone">' + bi('Mobile number', 'মোবাইল নম্বর') + '<input id="f-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="01XXXXXXXXX" value="' + esc(f.phone) + '"></label></div>' +
+      '<label class="f" for="f-addr">' + bi('Delivery address', 'ঠিকানা') + '<textarea id="f-addr" autocomplete="street-address" placeholder="House, road, area, district">' + esc(f.addr) + '</textarea></label></div></section>';
+    h += '<section class="ocard" id="sec-pay"><span class="elabel">Step 3</span><h3 class="osec">How do you want to pay?<small class="enl">কীভাবে পেমেন্ট করবেন</small></h3><div class="form"><div class="pms" role="radiogroup" aria-label="Payment method">' + pms + '</div>' +
+      '<div class="payinfo" id="pay-info">' + payInfo(S.pay) + '</div>' +
+      '<label class="f" id="trx-wrap" for="f-trx"' + (m.wallet ? '' : ' hidden') + '>' + bi('Transaction ID (required, from your payment)', 'ট্রানজেকশন আইডি') + '<input id="f-trx" type="text" autocomplete="off" placeholder="Transaction ID" value="' + esc(f.trx) + '"></label></div></section>';
+    h += '<button class="ghost addmore" type="button" data-act="back">&larr; ' + bi('Back to my order', 'অর্ডারে ফিরুন') + '</button></div>';
+    h += '<aside class="osum">' + SUMT + sumRows(true) +
+      '<p class="fine err" id="f-err" role="alert" hidden>' + ERR_FILL + '</p>' +
+      '<a class="primary" id="wa-send" href="' + WA_CHAT + '" target="_blank" rel="noopener">' + ICON_WA + '<span id="wa-label">' + sendLabel(S.pay) + '</span></a><p class="fine" id="f-hint" hidden>WhatsApp is opening. Press send there to place your order. If the message box is empty, paste it: your order text was copied.<small class="bsub">WhatsApp-এ Send চাপুন</small></p>' +
+      '<p class="small">Any delivery charge is confirmed on WhatsApp before we send your order.</p></aside></div>';
+    return h + obottom() + footer();
+  }
+  var ERR_FILL = 'Please fill in your name, mobile number and address. (নাম, মোবাইল ও ঠিকানা দিন)';
+  var ERR_TRX = 'Please pay first, then enter the Transaction ID. (আগে পেমেন্ট করুন, তারপর ট্রানজেকশন আইডি দিন)';
+
+  function sendLabel(id) { return payById(id).wallet ? bi('Send order and payment ID on WhatsApp', 'অর্ডার ও পেমেন্ট আইডি পাঠান') : bi('Send order on WhatsApp', 'WhatsApp-এ অর্ডার পাঠান'); }
+  function guide(id, steps) {
+    var m = payById(id);
+    var head = '<div class="howh">' + (LOGO[id] ? '<img src="' + LOGO[id] + '" alt="">' : '<span class="hi">' + ico(IC.truck) + '</span>') + '<span class="bi"><b>How to pay with ' + m.n + '</b><small>' + m.bn + ' পেমেন্টের নিয়ম</small></span></div>';
+    return head + '<ol class="how">' + steps.map(function (st, k) { return '<li><span class="hi">' + ico(IC[st[0]]) + '<span class="hn">' + (k + 1) + '</span></span><span class="ht"><span class="t">' + st[1] + '</span><small>' + st[2] + '</small></span></li>'; }).join('') + '</ol>';
+  }
+  function help(inner) { return '<details class="helpd"><summary><span class="bi">Need help? See how to pay<small>সাহায্য লাগবে? পেমেন্টের নিয়ম দেখুন</small></span></summary><div class="helpb">' + inner + '</div></details>'; }
+  function payInfo(id) {
+    var m = payById(id);
+    var amt = allPriced() ? '<b>' + money(cartTotal()) + '</b>' : 'the order total';
+    var wa = ['send', 'Press the <b>Send order on WhatsApp</b> button', 'WhatsApp-এ অর্ডার পাঠান'];
+    if (id === 'cod') return '<p class="pnote">Pay cash when your order arrives.<small>পণ্য পেয়ে টাকা দিন</small></p>' + help(guide(id, [['send', 'Press the <b>Send order on WhatsApp</b> button below', 'অর্ডার পাঠান'], ['check', 'We confirm your order and the delivery charge on WhatsApp', 'আমরা কনফার্ম করব'], ['truck', 'Pay the courier in cash when you receive your order', 'পণ্য পেয়ে টাকা দিন']]));
+    if (id === 'card') return '<p class="pnote">We send a secure payment link on WhatsApp.<small>আমরা পেমেন্ট লিংক পাঠাব</small></p><p class="warn">Never type card details into this page.<small>এখানে কার্ডের তথ্য লিখবেন না</small></p>' + help(guide(id, [['send', 'Press the <b>Send order on WhatsApp</b> button below', 'অর্ডার পাঠান'], ['link', 'We send a secure payment link on WhatsApp', 'আমরা পেমেন্ট লিংক পাঠাব'], ['card', 'Open the link and pay with your card', 'লিংকে কার্ড দিয়ে পেমেন্ট করুন']]));
+    if (id === 'bank') {
+      var b = m.bank;
+      return '<div class="bankbox"><div class="brow">' + bi('Account name', 'অ্যাকাউন্টের নাম') + '<b>' + esc(b.holder) + '</b></div><div class="brow">' + bi('Bank', 'ব্যাংক') + '<b>' + esc(b.name) + '</b></div><div class="brow">' + bi('Account number', 'অ্যাকাউন্ট নম্বর') + '<span><b>' + esc(b.acc) + '</b> <button class="copy" type="button" data-copy="' + esc(b.acc) + '">Copy</button></span></div><div class="brow">' + bi('Routing number', 'রাউটিং নম্বর') + '<b>' + esc(b.routing) + '</b></div>' + (allPriced() ? '<div class="brow">' + bi('Amount', 'টাকার পরিমাণ') + '<b>' + money(cartTotal()) + '</b></div>' : '') + '</div>' +
+        help(guide(id, [['bank', 'Open your bank app or visit your bank', 'ব্যাংক অ্যাপ বা শাখা'], ['keypad', 'Send money to the account shown above', 'ওপরের অ্যাকাউন্টে পাঠান'], ['taka', 'Amount: ' + amt, 'টাকার পরিমাণ'], ['receipt', 'Type the transaction reference in the box below', 'রেফারেন্স নম্বর লিখুন'], wa]));
+    }
+    var quick = '<div class="quick"><div class="qgrid"><div class="qnumbox"><span class="bi qlab">Send Money to<small>এই নম্বরে পাঠান</small></span><b class="qn">' + esc(m.num) + '</b><button class="copy" type="button" data-copy="' + esc(m.num) + '">Copy number</button></div>' +
+      '<a class="openapp" data-openapp="' + id + '" href="' + intentUrl(id) + '" target="_blank" rel="noopener" style="background:' + m.c + '"><img src="' + LOGO[id] + '" alt=""><span class="bi"><b>Open ' + m.n + ' app</b><small>' + m.bn + ' অ্যাপ খুলুন</small></span></a></div>' +
+      (allPriced() ? '<div class="qline qamt">' + bi('Amount', 'টাকার পরিমাণ') + '<b>' + money(cartTotal()) + '</b></div>' : '') + '</div>';
+    var qr = '<div class="qrbox"><svg viewBox="-3 -3 ' + (QR.n + 6) + ' ' + (QR.n + 6) + '" shape-rendering="crispEdges" role="img" aria-label="QR code with the ' + m.n + ' number ' + esc(m.num) + '"><rect x="-3" y="-3" width="' + (QR.n + 6) + '" height="' + (QR.n + 6) + '" fill="#fff"/><path d="' + QR.d + '" fill="#000"/></svg><span><b>Scan to get our ' + m.n + ' number</b><small>Scan with your phone camera to see <b>' + esc(m.num) + '</b>, then paste it in Send Money. (QR স্ক্যান করে নম্বর দেখুন)</small></span></div>';
+    return quick + help(guide(id, [['phone', 'Open the <b>' + m.n + '</b> app', m.bn + ' অ্যাপ খুলুন'], ['send', 'Tap <b>Send Money</b>', 'সেন্ড মানি চাপুন'], ['keypad', 'Send to the number shown above', 'ওপরের নম্বরে পাঠান'], ['taka', 'Amount: ' + amt, 'টাকার পরিমাণ'], ['lock', 'Confirm with your PIN', 'পিন দিন'], ['receipt', 'Type the <b>Transaction ID</b> from the SMS in the box below', 'ট্রানজেকশন আইডি লিখুন'], wa]) + qr);
+  }
+
+  // Product detail content: Bangla translation, why it works, good to know. General skincare information, not medical advice.
+  var DET = {
+    1: { bd: '৩% স্যালিসাইলিক অ্যাসিডযুক্ত ক্রিম, ব্রণপ্রবণ ত্বকের জন্য। ব্রণ পরিষ্কার করতে, লোমকূপ ছোট দেখাতে ও ব্রণের দাগ হালকা করতে সাহায্য করে এবং ত্বককে পুষ্টি ও আর্দ্রতা দেয়।',
+      why: [['Clears clogged pores', 'ছিদ্র পরিষ্কার করে', 'Salicylic acid is an oil-soluble BHA. It loosens dead skin and reaches inside the pore to clear the oil and debris behind blackheads and pimples.', 'স্যালিসাইলিক অ্যাসিড তেলে মিশে যায়। এটি মৃত ত্বক আলগা করে এবং লোমকূপের ভেতরের তেল ও ময়লা পরিষ্কার করে, যা ব্ল্যাকহেড ও ব্রণের কারণ।'],
+        ['Builds up over weeks', 'কয়েক সপ্তাহে ফল দেখা যায়', 'It does not work overnight. Blackheads and breakouts usually look better after several weeks of regular use.', 'এক রাতে ফল হয় না। নিয়মিত কয়েক সপ্তাহ ব্যবহার করলে ব্ল্যাকহেড ও ব্রণ কম দেখায়।'],
+        ['Cream base moisturizes', 'ক্রিম ত্বক নরম রাখে', 'The cream base adds moisture, so skin feels less tight and dry while you use an active ingredient.', 'ক্রিমের আর্দ্রতা ত্বককে শুষ্ক ও টানটান হতে দেয় না।']],
+      note: ['Start every other day. Keep away from eyes and broken skin. Use sunscreen in the morning. Ask a doctor first if you are pregnant or allergic to aspirin.', 'প্রথমে একদিন পর পর লাগান। চোখ ও কাটা ত্বক এড়িয়ে চলুন। সকালে সানস্ক্রিন ব্যবহার করুন। গর্ভবতী হলে বা অ্যাসপিরিনে অ্যালার্জি থাকলে আগে ডাক্তারের পরামর্শ নিন।'] },
+    2: { bd: 'রেটিনল ও কোলাজেনযুক্ত ক্রিম, যা সূক্ষ্ম রেখা ও বলিরেখা নরম করে এবং ত্বক টানটান, মসৃণ ও উজ্জ্বল রাখতে সাহায্য করে। সব ধরনের ত্বকের জন্য।',
+      why: [['Retinol renews skin', 'রেটিনল ত্বক নতুন করে', 'Retinol speeds up skin renewal and supports the skin’s own collagen, so fine lines and rough texture can look softer with regular use over weeks to months.', 'রেটিনল ত্বকের নতুন কোষ তৈরি দ্রুত করে এবং নিজস্ব কোলাজেনকে সাহায্য করে। কয়েক সপ্তাহ থেকে মাস নিয়মিত ব্যবহারে সূক্ষ্ম রেখা নরম দেখায়।'],
+        ['Locks in moisture', 'আর্দ্রতা ধরে রাখে', 'Hyaluronic acid, glycerin and collagen hold water on the surface. Hydrated skin looks plumper and smoother.', 'হায়ালুরনিক অ্যাসিড, গ্লিসারিন ও কোলাজেন ত্বকে পানি ধরে রাখে। আর্দ্র ত্বক ভরাট ও মসৃণ দেখায়।'],
+        ['Vitamin E protects', 'ভিটামিন ই সুরক্ষা দেয়', 'Vitamin E is an antioxidant that helps protect skin from everyday stress.', 'ভিটামিন ই একটি অ্যান্টিঅক্সিডেন্ট, যা প্রতিদিনের ক্ষতি থেকে ত্বককে রক্ষা করতে সাহায্য করে।']],
+      note: ['Retinol can cause dryness or redness at first, so start slowly. Always use sunscreen in the daytime. Ask a doctor first if you are pregnant or breastfeeding.', 'রেটিনল প্রথমে ত্বক শুষ্ক বা লাল করতে পারে, তাই ধীরে শুরু করুন। দিনে অবশ্যই সানস্ক্রিন লাগান। গর্ভবতী বা বুকের দুধ খাওয়ালে আগে ডাক্তারের পরামর্শ নিন।'] },
+    3: { bd: 'হালকা আর্দ্রতার ক্রিম, যা ত্বকে পানি ধরে রাখে এবং শুষ্কতা ও খসখসে ভাব কমাতে সাহায্য করে। সব ধরনের ত্বকের জন্য।', bu: 'ক্লিনজিংয়ের পর মুখে হালকা হাতে পরিমাণমতো ক্রিম মালিশ করুন। দিনে দুইবার ব্যবহার করুন।',
+      why: [['Draws water into skin', 'ত্বকে পানি টানে', 'Hyaluronic acid and glycerin are humectants. They pull water into the top layer of skin and hold it there.', 'হায়ালুরনিক অ্যাসিড ও গ্লিসারিন ত্বকের উপরের স্তরে পানি টেনে ধরে রাখে।'],
+        ['Seals and softens', 'আর্দ্রতা আটকে নরম করে', 'The cream layer slows water loss, and milk protein helps skin feel soft and smooth.', 'ক্রিমের স্তর পানি হারানো কমায় এবং দুধের প্রোটিন ত্বক নরম ও মসৃণ রাখে।']],
+      note: ['Gentle enough for daily use. Try a small amount on your inner arm first if your skin is sensitive.', 'প্রতিদিন ব্যবহারের জন্য হালকা। ত্বক সংবেদনশীল হলে আগে হাতের ভেতরে অল্প লাগিয়ে দেখুন।'] },
+    4: { bd: 'চাল থেকে পাওয়া রাইস পলিপেপটাইডযুক্ত ময়েশ্চারাইজিং নেক ক্রিম। গলার সূক্ষ্ম রেখা কম দেখাতে সাহায্য করে এবং ত্বক নরম, মসৃণ ও স্থিতিস্থাপক রাখে।', bu: 'গলা ধুয়ে শুকিয়ে নিন। ক্রিম ওপরের দিকে মালিশ করুন। প্রতি রাতে ব্যবহার করুন।',
+      why: [['Hydrates thin neck skin', 'গলার পাতলা ত্বকে আর্দ্রতা', 'Neck skin is thinner and dries out easily. Rice-based peptides and moisturizers help it hold water, so lines look softer.', 'গলার ত্বক পাতলা ও সহজে শুষ্ক হয়। রাইস পেপটাইড ও ময়েশ্চারাইজার পানি ধরে রাখে, ফলে রেখা নরম দেখায়।'],
+        ['Upward massage', 'ওপরের দিকে মালিশ', 'Massaging upward helps the cream spread evenly and feels firming on the skin.', 'ওপরের দিকে মালিশ করলে ক্রিম সমানভাবে ছড়ায় এবং ত্বক টানটান লাগে।']],
+      note: ['Use sunscreen on the neck in the daytime. Results vary from person to person.', 'দিনে গলায় সানস্ক্রিন লাগান। ফল মানুষভেদে আলাদা হতে পারে।'] },
+    5: { bd: 'কোলাজেন ফেস ক্রিম, যা ত্বক টানটান ও বলিরেখা নরম করতে সাহায্য করে এবং ত্বককে গভীরভাবে আর্দ্র, মসৃণ ও উজ্জ্বল রাখে।', bu: 'সকাল ও রাতে ব্যবহার করুন।',
+      why: [['Collagen holds moisture', 'কোলাজেন আর্দ্রতা ধরে', 'Collagen in a cream is a large molecule that stays on the surface. It forms a moisture-holding film, so skin looks plumper and smoother.', 'ক্রিমের কোলাজেন বড় অণু, তাই ত্বকের উপরে থাকে। এটি আর্দ্রতা ধরে রাখার স্তর তৈরি করে, ফলে ত্বক ভরাট ও মসৃণ দেখায়।'],
+        ['Softens the look of lines', 'রেখা নরম দেখায়', 'Well-hydrated skin makes fine dry lines less visible.', 'ভালোভাবে আর্দ্র ত্বকে শুষ্কতার সূক্ষ্ম রেখা কম চোখে পড়ে।']],
+      note: ['It moisturizes the surface and does not replace the collagen your skin makes itself. Use daily for best results.', 'এটি ত্বকের উপরের স্তরে আর্দ্রতা দেয়, শরীরের নিজস্ব কোলাজেনের বিকল্প নয়। ভালো ফলের জন্য প্রতিদিন ব্যবহার করুন।'] },
+    6: { bd: 'শামুকের নির্যাসযুক্ত ক্রিম, যা ফ্রেকলযুক্ত ত্বকের রঙ সমান ও উজ্জ্বল দেখাতে সাহায্য করে।',
+      why: [['Snail extract hydrates', 'শামুকের নির্যাস আর্দ্রতা দেয়', 'Snail mucin may help skin hold on to moisture and feel soothed. Studies so far are small, so results vary.', 'শামুকের নির্যাস ত্বকে আর্দ্রতা ধরে রাখতে ও আরাম দিতে পারে। এখনকার গবেষণা ছোট, তাই ফল মানুষভেদে আলাদা।'],
+        ['Even-looking tone', 'সমান রঙ দেখায়', 'Smooth, hydrated skin reflects light more evenly, so freckles and dullness can look less noticeable.', 'মসৃণ ও আর্দ্র ত্বক আলো সমানভাবে ফেরায়, তাই ফ্রেকল ও নিস্তেজ ভাব কম চোখে পড়ে।']],
+      note: ['Sun makes freckles darker, so use sunscreen every day. If you have acne or eczema, try a small patch first.', 'রোদে ফ্রেকল গাঢ় হয়, তাই প্রতিদিন সানস্ক্রিন ব্যবহার করুন। ব্রণ বা একজিমা থাকলে আগে অল্প জায়গায় পরীক্ষা করুন।'] },
+    7: { bd: 'নিকোটিনামাইড ক্রিম, যা নিস্তেজ ভাব ও কালো দাগ হালকা করতে সাহায্য করে এবং ত্বক উজ্জ্বল, নরম ও মসৃণ রাখে।', bu: 'মুখ ভালো করে ধুয়ে নিন। হাত ধুয়ে শুকিয়ে রাতে অল্প পরিমাণ ক্রিম লাগান।',
+      why: [['Slows pigment spread', 'রঙের ছড়িয়ে পড়া কমায়', 'Niacinamide (vitamin B3) reduces the transfer of pigment to skin cells. Reviews report that it can lessen dark spots with regular use.', 'নিকোটিনামাইড (ভিটামিন বি৩) ত্বকের কোষে রঙ (মেলানিন) যাওয়া কমায়। নিয়মিত ব্যবহারে কালো দাগ হালকা হতে পারে বলে গবেষণায় বলা হয়েছে।'],
+        ['Supports the skin barrier', 'ত্বকের সুরক্ষা স্তর মজবুত', 'It also helps the skin barrier hold water, so skin looks smoother and brighter.', 'এটি ত্বকের সুরক্ষা স্তরকে পানি ধরে রাখতে সাহায্য করে, ফলে ত্বক মসৃণ ও উজ্জ্বল দেখায়।']],
+      note: ['Results usually take several weeks. Use sunscreen daily, because sun can bring dark spots back.', 'ফল পেতে সাধারণত কয়েক সপ্তাহ লাগে। প্রতিদিন সানস্ক্রিন লাগান, নইলে রোদে দাগ আবার গাঢ় হতে পারে।'] },
+    8: { bd: 'নিকোটিনামাইড এসেন্স, যা ফ্রেকল ও রঙের দাগ হালকা করতে সাহায্য করে। ত্বক আর্দ্র, মসৃণ, নরম ও উজ্জ্বল থাকে।',
+      why: [['Niacinamide brightens', 'নিকোটিনামাইড উজ্জ্বলতা দেয়', 'Niacinamide reduces the transfer of pigment to skin cells, which can lessen freckles and dark marks over time.', 'নিকোটিনামাইড ত্বকের কোষে রঙ যাওয়া কমায়, ফলে সময়ের সাথে ফ্রেকল ও দাগ হালকা হতে পারে।'],
+        ['Lightweight essence', 'হালকা এসেন্স', 'A thin essence sinks in fast and adds moisture without a heavy feel. Use it before your cream.', 'পাতলা এসেন্স দ্রুত ত্বকে মিশে যায় ও ভারী লাগে না। ক্রিমের আগে লাগান।']],
+      note: ['Be patient: visible change usually takes several weeks. Use sunscreen in the morning.', 'ধৈর্য ধরুন, পরিবর্তন দেখতে সাধারণত কয়েক সপ্তাহ লাগে। সকালে সানস্ক্রিন লাগান।'] },
+    9: { bd: 'মিনোক্সিডিল, কেরাটিন ও ব্ল্যাক রাইস নির্যাসযুক্ত হেয়ার সিরাম, চুল পড়া কমাতে ও নতুন চুল গজাতে সাহায্য করার জন্য। চুলের গোড়া মজবুত এবং চুল স্বাস্থ্যকর ও চকচকে রাখে। সব ধরনের চুলের জন্য।',
+      why: [['Minoxidil supports regrowth', 'মিনোক্সিডিল চুল গজাতে সাহায্য করে', 'Minoxidil is used for hereditary hair loss. It usually takes 2 to 4 months of regular use before you see a change, and regrown hair can fall out again if you stop.', 'মিনোক্সিডিল বংশগত চুল পড়ায় ব্যবহার হয়। ফল দেখতে সাধারণত ২ থেকে ৪ মাস নিয়মিত ব্যবহার করতে হয়। ব্যবহার বন্ধ করলে নতুন চুল আবার পড়ে যেতে পারে।'],
+        ['Keratin and black rice care', 'কেরাটিন ও ব্ল্যাক রাইস যত্ন', 'Keratin and black rice extract help condition hair, so strands feel smoother and look shinier.', 'কেরাটিন ও ব্ল্যাক রাইস নির্যাস চুল নরম করে, ফলে চুল মসৃণ ও চকচকে দেখায়।']],
+      note: ['For use on the scalp only. Check the minoxidil percentage on the pack. Ask a doctor first for sudden or patchy hair loss, if you are pregnant or breastfeeding, or if your scalp is red or sore. Not for children.', 'শুধু মাথার ত্বকে ব্যবহার করুন। প্যাকে মিনোক্সিডিলের শতাংশ দেখে নিন। হঠাৎ বা ছোপ ছোপ চুল পড়লে, গর্ভবতী বা বুকের দুধ খাওয়ালে, বা মাথার ত্বক লাল বা ব্যথা হলে আগে ডাক্তারের পরামর্শ নিন। শিশুদের জন্য নয়।'] },
+    10: { bd: 'ব্রণ সারানোর সিরাম, যা দ্রুত ব্রণ পরিষ্কার করতে সাহায্য করে। সেন্টেলা ও নিকোটিনামাইড ত্বককে শান্ত ও পুষ্ট রাখে, লোমকূপ ছোট দেখায় এবং গভীর আর্দ্রতা দেয়।',
+      why: [['Clears pores', 'লোমকূপ পরিষ্কার করে', 'Salicylic acid goes into the pore and clears oil and dead skin that cause blackheads and pimples.', 'স্যালিসাইলিক অ্যাসিড লোমকূপের ভেতরে গিয়ে তেল ও মৃত ত্বক পরিষ্কার করে, যা ব্ল্যাকহেড ও ব্রণের কারণ।'],
+        ['Centella calms', 'সেন্টেলা শান্ত করে', 'Centella asiatica is known for calming skin that feels red or irritated.', 'সেন্টেলা এশিয়াটিকা লাল বা জ্বালা করা ত্বককে শান্ত করার জন্য পরিচিত।'],
+        ['Niacinamide balances', 'নিকোটিনামাইড ভারসাম্য রাখে', 'Niacinamide supports the skin barrier and helps fade the look of marks.', 'নিকোটিনামাইড ত্বকের সুরক্ষা স্তরকে সাহায্য করে এবং দাগ হালকা দেখাতে পারে।']],
+      note: ['Start every other day and avoid the eye area. You may see small breakouts at first as pores clear. Use sunscreen in the morning. Ask a doctor first if you are pregnant or allergic to aspirin.', 'প্রথমে একদিন পর পর লাগান, চোখের চারপাশ এড়িয়ে চলুন। শুরুতে লোমকূপ পরিষ্কার হওয়ার সময় অল্প ব্রণ দেখা দিতে পারে। সকালে সানস্ক্রিন লাগান। গর্ভবতী বা অ্যাসপিরিনে অ্যালার্জি থাকলে আগে ডাক্তারের পরামর্শ নিন।'] },
+    11: { bd: 'নিকোটিনামাইড ও ভিটামিন সি-যুক্ত সিরাম, হাতের গিঁটের কালো ভাব হালকা ও উজ্জ্বল করতে সাহায্য করে।',
+      why: [['Niacinamide lightens', 'নিকোটিনামাইড হালকা করে', 'It reduces the transfer of pigment to skin cells, which can lessen dark patches over time.', 'এটি ত্বকের কোষে রঙ যাওয়া কমায়, ফলে সময়ের সাথে কালো ছোপ হালকা হতে পারে।'],
+        ['Vitamin C brightens', 'ভিটামিন সি উজ্জ্বল করে', 'Vitamin C is an antioxidant that helps brighten dull skin and supports an even tone.', 'ভিটামিন সি একটি অ্যান্টিঅক্সিডেন্ট, যা নিস্তেজ ত্বক উজ্জ্বল ও সমান রঙ করতে সাহায্য করে।']],
+      note: ['Apply on knuckles and other dark areas, then use sunscreen on exposed skin. Visible change takes several weeks.', 'গিঁট ও অন্য কালো জায়গায় লাগান, খোলা ত্বকে সানস্ক্রিন ব্যবহার করুন। পরিবর্তন দেখতে কয়েক সপ্তাহ লাগে।'] },
+    12: { bd: 'হালকা আই সিরাম, যা চোখের নিচের কালো দাগ, ফোলাভাব ও সূক্ষ্ম রেখা কমাতে সাহায্য করে এবং আর্দ্রতা দেয়। প্যারাবেন ও সালফেট মুক্ত।', bu: 'পরিষ্কার ত্বকে অল্প পরিমাণ সিরাম চোখের চারপাশে আলতো করে চাপড় দিয়ে লাগান। সকাল ও রাতে ব্যবহার করুন।',
+      why: [['Aloe and hyaluronic acid hydrate', 'অ্যালো ও হায়ালুরনিক অ্যাসিড আর্দ্রতা দেয়', 'Aloe vera soothes and hyaluronic acid holds water. Hydrated skin around the eyes makes fine lines look softer.', 'অ্যালোভেরা আরাম দেয় এবং হায়ালুরনিক অ্যাসিড পানি ধরে রাখে। চোখের চারপাশের ত্বক আর্দ্র থাকলে সূক্ষ্ম রেখা নরম দেখায়।'],
+        ['Caffeine wakes up the look', 'ক্যাফেইন সতেজ দেখায়', 'Caffeine is often used to help tired, puffy eyes look fresher.', 'ক্লান্ত ও ফোলা চোখ সতেজ দেখাতে ক্যাফেইন প্রায়ই ব্যবহার হয়।']],
+      note: ['Dark circles have many causes, such as sleep, genes and pigmentation, so a serum may soften their look but not remove them fully.', 'চোখের নিচের কালো দাগের অনেক কারণ আছে, যেমন ঘুম, বংশগতি ও রঙ। সিরাম দাগ হালকা দেখাতে পারে, পুরোপুরি দূর নাও করতে পারে।'] },
+    13: { bd: 'নরম কোরাল ও গোলাপি শেডে লিপহপ লিপ গ্লস।',
+      why: [['Shine and colour', 'উজ্জ্বলতা ও রঙ', 'A gloss reflects light, so lips look fuller and shinier, with a soft touch of colour.', 'গ্লস আলো ফেরায়, তাই ঠোঁট ভরাট ও চকচকে দেখায়, সাথে হালকা রঙ থাকে।']],
+      note: ['Apply with the wand on clean lips and reapply when needed.', 'পরিষ্কার ঠোঁটে ওয়ান্ড দিয়ে লাগান, দরকারে আবার লাগান।'] },
+    14: { bd: 'লিপহপের লিপ পেইন্ট, শেড "লাভ"।',
+      why: [['Rich colour', 'গাঢ় রঙ', 'A liquid lip paint gives strong colour in one or two strokes and stays on longer than a gloss.', 'তরল লিপ পেইন্ট এক-দুই টানেই গাঢ় রঙ দেয় এবং গ্লসের চেয়ে বেশিক্ষণ থাকে।']],
+      note: ['Prep lips with a balm first, then apply a thin layer and let it set.', 'আগে লিপ বাম লাগিয়ে নিন, তারপর পাতলা করে লাগিয়ে শুকাতে দিন।'] },
+    15: { bd: 'গোলাপি ময়েশ্চারাইজিং লিপ কেয়ার সেট, যাতে লিপ জেল টিউব, লিপ জার ও ছোট অ্যাপ্লিকেটর ব্রাশ আছে।',
+      why: [['Soft, moisturised lips', 'নরম ও আর্দ্র ঠোঁট', 'A lip gel and jar coat the lips and keep moisture in, so they feel soft and less dry.', 'লিপ জেল ও জার ঠোঁটে আস্তরণ দিয়ে আর্দ্রতা ধরে রাখে, ফলে ঠোঁট নরম ও কম শুষ্ক থাকে।']],
+      note: ['Use the brush for a neat, even layer. Apply at night for extra care.', 'ব্রাশ দিয়ে সমান করে লাগান। বাড়তি যত্নের জন্য রাতে লাগান।'] },
+    16: { bd: 'চালের নির্যাসযুক্ত গভীর পরিষ্কারের ফেস ওয়াশ। ত্বককে আরাম ও যত্ন দেয় এবং আর্দ্র ও কোমল রাখে।',
+      why: [['Lifts oil and dirt', 'তেল ও ময়লা তোলে', 'A cleanser lifts oil, dirt and sweat so they rinse away, leaving pores cleaner.', 'ক্লিনজার তেল, ময়লা ও ঘাম তুলে ফেলে, ধুয়ে ফেললে লোমকূপ পরিষ্কার থাকে।'],
+        ['Rice extract softens', 'চালের নির্যাস নরম করে', 'Rice extract is a gentle, soothing ingredient that helps skin feel soft after washing.', 'চালের নির্যাস মৃদু ও আরামদায়ক, যা ধোয়ার পর ত্বক নরম রাখে।']],
+      note: ['Massage on wet face for about 30 seconds, then rinse well. Use morning and night.', 'ভেজা মুখে প্রায় ৩০ সেকেন্ড মালিশ করে ভালো করে ধুয়ে ফেলুন। সকালে ও রাতে ব্যবহার করুন।'] },
+    17: { bd: 'চালের নির্যাসযুক্ত হেয়ার রিমুভাল ক্রিম। ব্যথা ছাড়াই দ্রুত লোম দূর করে, ত্বক উজ্জ্বল ও মসৃণ রাখে।',
+      why: [['Dissolves hair at the surface', 'ত্বকের উপরে লোম গলায়', 'Hair removal creams contain thioglycolate salts that break down keratin, the protein in hair. The weakened hair then wipes off at skin level.', 'হেয়ার রিমুভাল ক্রিমে থায়োগ্লাইকোলেট লবণ থাকে, যা চুলের কেরাটিন প্রোটিন ভেঙে দেয়। দুর্বল লোম ত্বকের উপর থেকে মুছে ফেলা যায়।'],
+        ['Painless and quick', 'ব্যথাহীন ও দ্রুত', 'It takes about 5 to 10 minutes or as the pack says. Smoothness usually lasts 3 to 7 days, because the root stays.', 'প্যাকের নির্দেশমতো সাধারণত ৫ থেকে ১০ মিনিট লাগে। গোড়া থাকে বলে মসৃণতা সাধারণত ৩ থেকে ৭ দিন থাকে।']],
+      note: ['Patch test on your inner arm 24 to 48 hours before first use. Do not use on broken, sunburnt or irritated skin, or on the face or private areas unless the pack says so. Do not leave on longer than directed.', 'প্রথমবার ব্যবহারের ২৪ থেকে ৪৮ ঘণ্টা আগে হাতের ভেতরে প্যাচ টেস্ট করুন। কাটা, রোদে পোড়া বা জ্বালা করা ত্বকে এবং প্যাকে না থাকলে মুখ বা গোপন অঙ্গে ব্যবহার করবেন না। নির্দেশের চেয়ে বেশিক্ষণ রাখবেন না।'] },
+    18: { bd: 'নিকোটিনামাইড ও ভিটামিন সি-যুক্ত হ্যান্ড ক্রিম, যা মেলানিন দাগ হালকা ও উজ্জ্বল করতে সাহায্য করে এবং হাতকে আর্দ্র ও পুষ্ট রাখে।',
+      why: [['Brightens dull hands', 'নিস্তেজ হাত উজ্জ্বল করে', 'Niacinamide and vitamin C help even skin tone and lessen dark patches over time.', 'নিকোটিনামাইড ও ভিটামিন সি ত্বকের রঙ সমান করে এবং সময়ের সাথে কালো ছোপ হালকা করতে সাহায্য করে।'],
+        ['Nourishes and softens', 'পুষ্টি ও কোমলতা', 'The cream base hydrates dry hands so they feel smooth and tender.', 'ক্রিম শুষ্ক হাতে আর্দ্রতা দেয়, ফলে হাত মসৃণ ও কোমল লাগে।']],
+      note: ['Apply after washing and drying your hands, and use sunscreen on the backs of your hands in the daytime.', 'হাত ধুয়ে শুকানোর পর লাগান। দিনে হাতের পিঠে সানস্ক্রিন ব্যবহার করুন।'] }
+  };
+
+  var GAL = { 1:'abc',2:'abc',3:'abc',4:'abc',5:'abc',6:'abc',7:'abc',8:'abc',9:'abc',10:'abc',11:'abc',12:'abc',13:'abc',14:'abc',15:'abc',16:'abc',17:'abc',18:'abc' };
+  function gallery(p) { var l = ['t' + p.id + 'n']; (GAL[p.id] || '').split('').forEach(function (c) { l.push('g' + p.id + c); }); if (p.id === 9) l.push('t9b'); return l; }
+  function sheet() {
+    var s = S.sheet; if (!s) return '';
+    var end = '<div class="end"></div>', closeBtn = '<div class="closebar"><button class="close" type="button" data-act="close" aria-label="Close">&times;</button></div>';
+    var p = byId(s.id);
+    var imgs = gallery(p), cur = Math.min(s.img || 0, imgs.length - 1);
+    var h = closeBtn + '<div class="pcols"><div><div class="hero"><img src="img/' + imgs[cur] + '.jpg" alt="' + esc(p.n) + '"></div>';
+    if (imgs.length > 1) h += '<div class="thumbs">' + imgs.map(function (m, i) { return '<button class="thumb" type="button" data-img="' + i + '" aria-pressed="' + (i === cur) + '" aria-label="Photo ' + (i + 1) + '"><img src="img/' + m + '.jpg" alt=""></button>'; }).join('') + '</div>';
+    h += '</div><div><span class="cat">' + p.b + ' &middot; ' + p.t + '</span><h3>' + p.n + '</h3>' + (p.bn ? '<p class="bn">' + p.bn + '</p>' : '') + priceBlock(p) + '<p>' + p.d + '</p>' + (DET[p.id] ? '<p class="bnd">' + DET[p.id].bd + '</p>' : '');
+    if (p.s) h += '<div class="label">Pack</div><div class="row"><span class="size">' + p.s + '</span></div>';
+    if (p.k.length) h += '<div class="label">Key ingredients</div><div class="tags">' + p.k.map(function (k) { return '<span>' + k + '</span>'; }).join('') + '</div>';
+    if (p.u) h += '<div class="label">How to use <span class="bl">ব্যবহারের নিয়ম</span></div><p style="margin:0">' + p.u + '</p>' + (DET[p.id] && DET[p.id].bu ? '<p class="bnd">' + DET[p.id].bu + '</p>' : '');
+    var dt = DET[p.id];
+    if (dt) {
+      h += '<div class="label">Why it works <span class="bl">কেন কাজ করে</span></div><div class="why">' + dt.why.map(function (w) { return '<div class="whyi"><b>' + w[0] + '<small>' + w[1] + '</small></b><p>' + w[2] + '</p><p class="bnd">' + w[3] + '</p></div>'; }).join('') + '</div>';
+      h += '<div class="gk"><b>Good to know <span class="bl">জেনে রাখুন</span></b><p>' + dt.note[0] + '</p><p class="bnd">' + dt.note[1] + '</p><p class="disc">General skincare information, not medical advice. Results vary from person to person.<span class="bnd"> সাধারণ তথ্য, চিকিৎসা পরামর্শ নয়। ফল মানুষভেদে আলাদা।</span></p></div>';
+    }
+    h += '<div class="pricelink">' + ext(WA_CATALOG, 'ghost', ICON_WA, 'Open WhatsApp catalog') + '</div></div></div>';
+    h += '<div class="buy"><div class="qty"><button type="button" data-sq="-1" aria-label="Fewer">&minus;</button><output>' + s.qty + '</output><button type="button" data-sq="1" aria-label="More">+</button></div><button class="primary" type="button" data-act="add">Add to my order</button></div>';
+    if (p.poster) h += '<div class="label">Full product details</div><img class="poster" src="img/p' + p.id + '.jpg" alt="Product details for ' + esc(p.n) + '" loading="lazy">';
+    return h + end;
+  }
+
+  var toastTimer;
+  function toast(msg) { var t = $('toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 1800); }
+
+  function orderNo() { if (!S.orderNo) { var d = new Date(); S.orderNo = 'ZSC-' + String(d.getDate()).padStart(2, '0') + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(Math.floor(100 + Math.random() * 900)); } return S.orderNo; }
+  function done() {
+    var o = S.done || {};
+    return '<div class="doneBox"><div class="tick" aria-hidden="true">&#10003;</div><h2 class="screen" style="margin:0">Order sent<small class="enl">অর্ডার পাঠানো হয়েছে</small></h2>' +
+      '<p>Thank you' + (o.name ? ', ' + esc(o.name) : '') + '! Your order number is <b>' + esc(o.no || '') + '</b>' + (o.total ? ' (' + esc(o.total) + ')' : '') + '.</p>' +
+      '<p class="hint">Press <b>Send</b> in WhatsApp if you have not yet. We will reply there to confirm your order, the delivery charge and the delivery day. Keep your order number.<small class="bsub">WhatsApp-এ Send চাপুন, অর্ডার নম্বর রাখুন</small></p>' +
+      '<div class="doneBtns"><button class="primary" type="button" data-go="shop" data-home="1">' + bi('Order new products', 'নতুন পণ্য অর্ডার করুন') + '</button>' + ext(WA_CHAT, 'ghost', ICON_WA, 'Open WhatsApp chat') + '</div></div>' + footer();
+  }
+  function finishOrder() {
+    var m = payById(S.pay);
+    S.done = { no: orderNo(), name: S.form.name.trim(), total: allPriced() ? money(cartTotal()) : '' };
+    S.cart = []; persist(); S.form = { name: '', phone: '', addr: '', trx: '' }; S.pay = 'cod'; S.sheet = null; S.orderNo = null; S.view = 'done';
+    draw(); fadeIn(); window.scrollTo(0, 0);
+  }
+  function draw() {
+    $('view').innerHTML = S.view === 'cart' ? cart() : S.view === 'checkout' ? checkout() : S.view === 'done' ? done() : shop();
+    ['tab', 'nav'].forEach(function (k) {
+      $(k + '-shop').setAttribute('aria-current', S.view === 'shop' ? 'page' : 'false');
+      $(k + '-cart').setAttribute('aria-current', S.view === 'cart' || S.view === 'checkout' ? 'page' : 'false');
+    });
+    var n = count();
+    ['dot', 'dot2'].forEach(function (id) { $(id).textContent = n; $(id).hidden = !n; });
+    var sh = $('sheet');
+    if (S.sheet) {
+      var keep = sh.firstChild ? sh.firstChild.scrollTop : 0;
+      sh.hidden = false; sh.className = 'scrim';
+      sh.innerHTML = '<div class="sheet" role="dialog" aria-modal="true">' + sheet() + '</div>';
+      if (S.sheet.keepScroll) sh.firstChild.scrollTop = keep;
+    } else { sh.hidden = true; sh.innerHTML = ''; }
+    syncWa();
+  }
+  function toSection(id) {
+    var el = $(id);
+    if (!el || S.view !== 'shop') { S.view = 'shop'; S.sheet = null; if (!el) { S.cat = 'All'; S.q = ''; } draw(); fadeIn(); el = $(id); }
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function fadeIn() { var v = $('view'); v.classList.remove('vin'); void v.offsetWidth; v.classList.add('vin'); }
+  function go(v) { S.view = v; S.sheet = null; draw(); fadeIn(); window.scrollTo(0, 0); }
+  function addToOrder(id, qty) {
+    var hit = S.cart.filter(function (x) { return x.id === id; })[0];
+    if (hit) hit.qty += qty; else S.cart.push({ id: id, qty: qty });
+    persist();
+  }
+
+  function orderMessage() {
+    var f = S.form, m = payById(S.pay);
+    var lines = S.cart.map(function (x, i) { var p = byId(x.id); return (i + 1) + '. ' + p.n + ' (' + p.b + ') x ' + x.qty + (p.pr ? ' - BDT ' + p.pr * x.qty : ''); });
+    var msg = 'Hello Zoni Skin Care, I would like to order.\nOrder No: ' + orderNo() + '\nDate: ' + new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) + '\n\n' + lines.join('\n');
+    if (allPriced()) msg += '\n\nOrder total before delivery: BDT ' + cartTotal();
+    msg += '\n\nPayment method: ' + m.n;
+    if (m.wallet) {
+      msg += '\nI have paid' + (allPriced() ? ' BDT ' + cartTotal() : '') + ' to ' + (m.num || (m.bank && m.bank.acc + ' (' + m.bank.name + ')'));
+      msg += '\nTransaction ID: ' + f.trx.trim();
+    }
+    msg += '\n\nName: ' + f.name.trim() + '\nMobile: ' + f.phone.trim() + '\nAddress: ' + f.addr.trim();
+    msg += m.wallet ? '\n\nPlease verify my payment and confirm my order.' : '\n\nPlease confirm the final amount including delivery.';
+    return msg;
+  }
+
+  // Keep the WhatsApp button's link filled with the order text at all times, so the first tap already carries the message.
+  function syncWa() {
+    var a = $('wa-send'); if (!a) return;
+    var f = S.form, ok = f.name.trim() && f.phone.trim() && f.addr.trim() && (!payById(S.pay).wallet || f.trx.trim());
+    a.href = ok ? WA_CHAT + '?text=' + encodeURIComponent(orderMessage()) : WA_CHAT;
+  }
+  document.addEventListener('input', function (e) {
+    var id = e.target.id;
+    if (id === 'q') { S.q = e.target.value; $('grid').innerHTML = gridHtml(); }
+    if (id === 'f-name') S.form.name = e.target.value;
+    if (id === 'f-phone') S.form.phone = e.target.value;
+    if (id === 'f-addr') S.form.addr = e.target.value;
+    if (id === 'f-trx') S.form.trx = e.target.value;
+    syncWa();
+  });
+  document.addEventListener('change', function (e) {
+    if (e.target.name !== 'pay') return;
+    S.pay = e.target.value;
+    $('pay-info').innerHTML = payInfo(S.pay);
+    $('trx-wrap').hidden = !payById(S.pay).wallet;
+    $('wa-label').innerHTML = sendLabel(S.pay);
+    $('f-err').hidden = true;
+    syncWa();
+  });
+  document.addEventListener('click', function (e) {
+    var oa = e.target.closest('a[data-openapp]');
+    if (oa) {
+      var num = payById(oa.dataset.openapp).num;
+      try { navigator.clipboard.writeText(num).catch(function () {}); } catch (x) {}
+      toast('Number copied. Paste it in Send Money.');
+      if (!/Android/i.test(navigator.userAgent)) { e.preventDefault(); toast('Open the ' + payById(oa.dataset.openapp).n + ' app on your phone. Number copied.'); }
+      return;
+    }
+    var el = e.target.closest('button, .scrim, #wa-send'); if (!el) return;
+    if (el.id === 'wa-send') {
+      var f = S.form;
+      var err = $('f-err');
+      if (!f.name.trim() || !f.phone.trim() || !f.addr.trim()) { e.preventDefault(); err.textContent = ERR_FILL; err.hidden = false; return; }
+      if (payById(S.pay).wallet && !f.trx.trim()) { e.preventDefault(); err.textContent = ERR_TRX; err.hidden = false; $('f-trx').focus(); return; }
+      err.hidden = true; $('f-hint').hidden = false;
+      var text = orderMessage();
+      el.href = WA_CHAT + '?text=' + encodeURIComponent(text);
+      try { navigator.clipboard.writeText(text).catch(function () {}); } catch (x) {}
+      setTimeout(finishOrder, 700);
+      return;
+    }
+    var d = el.dataset;
+    if (el.classList.contains('scrim') && e.target === el) { S.sheet = null; return draw(); }
+    if (d.copy) {
+      var copied = function () { toast('Number copied'); }, shown = function () { toast('Number: ' + d.copy); };
+      try { navigator.clipboard.writeText(d.copy).then(copied, shown); } catch (x) { shown(); }
+      return;
+    }
+    if (d.jump) { var jt = $(d.jump); if (jt) jt.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    if (d.go) { if (d.home) { S.cat = 'All'; S.q = ''; } return go(d.go); }
+    if (d.cat) { S.cat = d.cat; draw(); if (d.scroll) toSection(d.scroll); return; }
+    if (d.scroll) return toSection(d.scroll);
+    if (d.open) { S.sheet = { id: +d.open, qty: 1, img: 0 }; return draw(); }
+    if (d.quick) { addToOrder(+d.quick, 1); draw(); return toast('Added to your order'); }
+    if (d.img) { S.sheet.img = +d.img; S.sheet.keepScroll = true; return draw(); }
+    if (d.sq) { S.sheet.qty = Math.max(1, Math.min(9, S.sheet.qty + +d.sq)); S.sheet.keepScroll = true; return draw(); }
+    if (d.q) {
+      var i = +d.q; S.cart[i].qty += +d.d;
+      if (S.cart[i].qty < 1) S.cart.splice(i, 1);
+      persist(); return draw();
+    }
+    switch (d.act) {
+      case 'close': S.sheet = null; return draw();
+      case 'add': addToOrder(S.sheet.id, S.sheet.qty); S.sheet = null; draw(); return toast('Added to your order');
+      case 'checkout': return go('checkout');
+      case 'back': return go('cart');
+    }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && S.sheet) { S.sheet = null; draw(); } });
+  draw();
+  // Header: slides up when scrolling down, slides back when scrolling up
+  (function () {
+    var hd = document.querySelector('header.top'); if (!hd) return;
+    var tb = document.querySelector('nav.tabs');
+    function setHide(on) { hd.classList.toggle('hide', on); if (tb) tb.classList.toggle('hide', on); }
+    var last = window.pageYOffset || 0, tick = false, acc = 0;
+    function update() {
+      tick = false;
+      var y = Math.max(0, window.pageYOffset || 0), dy = y - last; last = y;
+      var h = hd.offsetHeight || 64;
+      hd.classList.toggle('scrolled', y > 4);
+      if (y <= h) { acc = 0; setHide(false); return; }
+      if ((dy > 0) !== (acc > 0)) acc = 0;
+      acc += dy;
+      if (acc > 14) setHide(true);
+      else if (acc < -8) setHide(false);
+    }
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(update); } }, { passive: true });
+    hd.addEventListener('focusin', function () { setHide(false); });
+    window.addEventListener('hashchange', function () { setHide(false); });
+  })();
+})();
+</script>
+
+</body></html>
